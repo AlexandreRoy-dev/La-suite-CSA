@@ -19,6 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php wp_body_open(); ?>
 
 <a class="skip-link" href="#main">Aller au contenu</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="atmosphere" aria-hidden="true">
+	<span class="orb orb-blue"></span>
+	<span class="orb orb-wine"></span>
+	<span class="grain"></span>
+</div>
 
 <header class="site-header" role="banner">
 	<div class="site-header__inner">
@@ -42,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<ul class="site-nav__list">
 					<?php foreach ( la_suite_csa_primary_nav_items() as $item ) : ?>
 						<li>
-							<a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
+							<a href="<?php echo esc_url( $item['url'] ); ?>"<?php echo ! empty( $item['current'] ) ? ' aria-current="page"' : ''; ?>><?php echo esc_html( $item['label'] ); ?></a>
 						</li>
 					<?php endforeach; ?>
 				</ul>

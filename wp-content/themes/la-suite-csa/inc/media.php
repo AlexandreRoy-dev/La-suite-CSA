@@ -1,6 +1,6 @@
 <?php
 /**
- * Stock media URLs (Unsplash). Replace with client assets later.
+ * Editorial photos. Founder portraits ship with the theme.
  *
  * @package La_Suite_CSA
  */
@@ -45,16 +45,16 @@ function la_suite_csa_media() {
 			'alt' => 'Conversation d’affaires',
 		),
 		'founder-1'    => array(
-			'src' => 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80',
-			'alt' => 'Portrait fondateur 1',
+			'src' => LA_SUITE_CSA_URI . '/assets/images/founders/charles-brassard.jpg',
+			'alt' => 'Charles Brassard',
 		),
 		'founder-2'    => array(
-			'src' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80',
-			'alt' => 'Portrait fondatrice 2',
+			'src' => LA_SUITE_CSA_URI . '/assets/images/founders/anika-gaudet.jpg',
+			'alt' => 'Anika Gaudet',
 		),
 		'founder-3'    => array(
-			'src' => 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=900&q=80',
-			'alt' => 'Portrait fondateur 3',
+			'src' => LA_SUITE_CSA_URI . '/assets/images/founders/sandrine-quirion.jpg',
+			'alt' => 'Sandrine Quirion',
 		),
 	);
 }

@@ -164,12 +164,61 @@ function la_suite_csa_acf_register_fields() {
 
 	$page_id = la_suite_csa_get_settings_page_id();
 
+	$founder_fields = array();
+	for ( $i = 1; $i <= 3; $i++ ) {
+		$founder_fields[] = array(
+			'key'     => 'field_la_suite_csa_founder_' . $i . '_tab',
+			'label'   => sprintf( __( 'Fondateur %d', 'la-suite-csa' ), $i ),
+			'name'    => 'founder_' . $i . '_note',
+			'type'    => 'message',
+			'message' => sprintf( __( 'Fondateur %d. Laisser un champ vide pour garder le texte ou la photo livrés avec le thème.', 'la-suite-csa' ), $i ),
+		);
+		$founder_fields[] = array(
+			'key'   => 'field_la_suite_csa_founder_' . $i . '_name',
+			'label' => __( 'Nom', 'la-suite-csa' ),
+			'name'  => 'founder_' . $i . '_name',
+			'type'  => 'text',
+		);
+		$founder_fields[] = array(
+			'key'   => 'field_la_suite_csa_founder_' . $i . '_role',
+			'label' => __( 'Rôle', 'la-suite-csa' ),
+			'name'  => 'founder_' . $i . '_role',
+			'type'  => 'text',
+		);
+		$founder_fields[] = array(
+			'key'          => 'field_la_suite_csa_founder_' . $i . '_excerpt',
+			'label'        => __( 'Extrait', 'la-suite-csa' ),
+			'name'         => 'founder_' . $i . '_excerpt',
+			'type'         => 'textarea',
+			'rows'         => 3,
+			'instructions' => __( 'Court texte affiché sur la carte.', 'la-suite-csa' ),
+		);
+		$founder_fields[] = array(
+			'key'          => 'field_la_suite_csa_founder_' . $i . '_bio',
+			'label'        => __( 'Bio complète', 'la-suite-csa' ),
+			'name'         => 'founder_' . $i . '_bio',
+			'type'         => 'textarea',
+			'rows'         => 10,
+			'instructions' => __( 'Séparez les paragraphes par une ligne vide.', 'la-suite-csa' ),
+		);
+		$founder_fields[] = array(
+			'key'           => 'field_la_suite_csa_founder_' . $i . '_photo',
+			'label'         => __( 'Photo', 'la-suite-csa' ),
+			'name'          => 'founder_' . $i . '_photo',
+			'type'          => 'image',
+			'return_format' => 'array',
+			'preview_size'  => 'medium',
+			'library'       => 'all',
+		);
+	}
+
 	if ( $page_id ) {
 		acf_add_local_field_group(
 			array(
 				'key'      => 'group_la_suite_csa_site_options',
 				'title'    => __( 'Site Options', 'la-suite-csa' ),
-				'fields'   => array(
+				'fields'   => array_merge(
+					array(
 					array(
 						'key'   => 'field_la_suite_csa_footer_blurb',
 						'label' => __( 'Footer blurb', 'la-suite-csa' ),
@@ -207,6 +256,16 @@ function la_suite_csa_acf_register_fields() {
 						'name'  => 'social_linkedin',
 						'type'  => 'url',
 					),
+					array(
+						'key'          => 'field_la_suite_csa_address',
+						'label'        => __( 'Adresse', 'la-suite-csa' ),
+						'name'         => 'address',
+						'type'         => 'textarea',
+						'rows'         => 2,
+						'instructions' => __( 'Laisser vide pour l’adresse par défaut du thème.', 'la-suite-csa' ),
+					),
+				),
+					$founder_fields
 				),
 				'location' => array(
 					array(

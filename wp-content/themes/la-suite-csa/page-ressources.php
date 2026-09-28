@@ -38,14 +38,18 @@ $data = la_suite_csa_ressources();
 							rel="noopener noreferrer"
 						>
 							<span class="resource-card__logo">
-								<img
-									src="<?php echo esc_url( la_suite_csa_logo_uri( $item['logo'] ) ); ?>"
-									alt=""
-									width="160"
-									height="64"
-									loading="lazy"
-									decoding="async"
-								>
+								<?php if ( ! empty( $item['logo_url'] ) ) : ?>
+									<img
+										src="<?php echo esc_url( $item['logo_url'] ); ?>"
+										alt=""
+										width="160"
+										height="64"
+										loading="lazy"
+										decoding="async"
+									>
+								<?php else : ?>
+									<span class="resource-card__logo-fallback"><?php echo esc_html( $item['short'] ?? '' ); ?></span>
+								<?php endif; ?>
 							</span>
 							<span class="resource-card__meta">
 								<span class="resource-card__tag"><?php echo esc_html( $item['tag'] ); ?></span>

@@ -13,26 +13,31 @@ $footer_blurb = la_suite_csa_get_option( 'footer_blurb' );
 if ( ! is_string( $footer_blurb ) || '' === trim( $footer_blurb ) ) {
 	$footer_blurb = la_suite_csa_copy_get( 'footer.blurb' );
 }
-$phone        = la_suite_csa_get_option( 'phone' );
-$email        = la_suite_csa_get_option( 'email' );
+$phone        = la_suite_csa_get_phone();
+$email        = la_suite_csa_get_email();
+$address      = la_suite_csa_get_address();
 $social_links = la_suite_csa_get_social_links();
 ?>
 </main>
 
 <footer class="site-footer" role="contentinfo">
 	<div class="site-footer__inner">
+		<p class="site-footer__brand"><?php bloginfo( 'name' ); ?></p>
 		<?php if ( $footer_blurb ) : ?>
 			<p class="site-footer__blurb"><?php echo esc_html( $footer_blurb ); ?></p>
 		<?php endif; ?>
 
 		<div class="site-footer__contact">
 			<?php if ( $phone ) : ?>
-				<a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a>
+				<a href="<?php echo esc_attr( la_suite_csa_tel_href( $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a>
 			<?php endif; ?>
 			<?php if ( $email ) : ?>
 				<a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
 			<?php endif; ?>
 		</div>
+		<?php if ( $address ) : ?>
+			<p class="site-footer__address"><?php echo esc_html( $address ); ?></p>
+		<?php endif; ?>
 
 		<?php if ( ! empty( $social_links ) ) : ?>
 			<ul class="site-footer__social">
