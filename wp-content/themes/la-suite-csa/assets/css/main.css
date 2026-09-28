@@ -1033,7 +1033,7 @@ body.nav-open .nav-toggle__bars span:last-child {
 
 .friction-list__item {
 	display: grid;
-	grid-template-columns: auto 1fr;
+	grid-template-columns: minmax(0, 1fr);
 	gap: 1rem 1.25rem;
 	padding: 1.35rem 0;
 	border-top: 1px solid var(--line);
@@ -1046,25 +1046,6 @@ body.nav-open .nav-toggle__bars span:last-child {
 
 .friction-list__item:hover {
 	transform: translateX(6px);
-}
-
-.friction-list__index {
-	display: grid;
-	place-items: center;
-	width: 2.4rem;
-	height: 2.4rem;
-	border-radius: 0.8rem;
-	border: 0.5px solid rgba(255, 255, 255, 0.16);
-	background: linear-gradient(150deg, rgba(74, 122, 232, 0.3), rgba(255, 255, 255, 0.04));
-	color: var(--cream);
-	font-size: 0.78rem;
-	font-weight: 700;
-	transition: background 0.4s var(--ease), transform 0.4s var(--ease-soft);
-}
-
-.friction-list__item:hover .friction-list__index {
-	background: linear-gradient(150deg, rgba(184, 51, 74, 0.45), rgba(74, 122, 232, 0.3));
-	transform: scale(1.06);
 }
 
 .friction-list__title,
@@ -1101,10 +1082,8 @@ body.nav-open .nav-toggle__bars span:last-child {
 
 .trust-metrics__label,
 .team-card__role,
-.timeline-step,
 .resource-card__tag,
-.post-card__meta,
-.tray__index {
+.post-card__meta {
 	margin: 0 0 0.35rem;
 	font-size: 0.68rem;
 	font-weight: 700;
@@ -1170,7 +1149,7 @@ body.nav-open .nav-toggle__bars span:last-child {
 .service-band__inner {
 	position: relative;
 	display: grid;
-	grid-template-columns: auto 1fr auto;
+	grid-template-columns: minmax(0, 1fr) auto;
 	align-items: center;
 	gap: 1.5rem 2rem;
 	padding-block: 2.6rem;
@@ -1179,13 +1158,6 @@ body.nav-open .nav-toggle__bars span:last-child {
 
 .service-band:hover .service-band__inner {
 	transform: translateX(8px);
-}
-
-.service-band__index {
-	font-size: 0.78rem;
-	font-weight: 700;
-	letter-spacing: 0.14em;
-	color: var(--muted);
 }
 
 .service-band__title {
@@ -1557,13 +1529,6 @@ body.nav-open .nav-toggle__bars span:last-child {
 	width: 100%;
 }
 
-.lever__index {
-	margin: 0 0 0.35rem;
-	font-size: 0.75rem;
-	letter-spacing: 0.14em;
-	color: var(--muted);
-}
-
 .lever__title {
 	margin: 0 0 0.45rem;
 	font-size: clamp(1.5rem, 3vw, 2.3rem);
@@ -1658,16 +1623,9 @@ body.nav-open .nav-toggle__bars span:last-child {
 	gap: 1.25rem;
 }
 
-.steps__circle {
-	display: grid;
-	place-items: center;
-	width: 2.5rem;
-	height: 2.5rem;
-	margin-bottom: 0.7rem;
-	border-radius: 0.8rem;
-	background: linear-gradient(150deg, rgba(74, 122, 232, 0.45), rgba(184, 51, 74, 0.35));
-	color: #fff;
-	font-weight: 700;
+.steps__item {
+	padding-top: 1rem;
+	border-top: 1px solid var(--line);
 }
 
 .context-band__grid,

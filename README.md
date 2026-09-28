@@ -1,6 +1,6 @@
 # La Suite CSA Inc.
 
-Thème WordPress vitrine, version **4.4.0**. Services : **Financements**, **Subventions**, **Crédits d’impôt**.
+Thème WordPress vitrine, version **4.4.1**. Services : **Financements**, **Subventions**, **Crédits d’impôt**.
 
 Direction visuelle sombre (encre, crème, bleu et vin), inspirée de la maquette [darkcsa.roymarketing.ca](https://darkcsa.roymarketing.ca/).
 

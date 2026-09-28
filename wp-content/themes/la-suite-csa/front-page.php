@@ -157,9 +157,8 @@ if ( empty( array_filter( wp_list_pluck( $glass_levers, 'title' ) ) ) && $servic
 		</header>
 		<?php if ( ! empty( $home['problem_points'] ) ) : ?>
 			<ul class="friction-list">
-				<?php foreach ( $home['problem_points'] as $index => $point ) : ?>
+				<?php foreach ( $home['problem_points'] as $point ) : ?>
 					<li class="friction-list__item reveal" data-reveal>
-						<span class="friction-list__index" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span>
 						<div>
 							<h3 class="friction-list__title"><?php echo esc_html( $point['label'] ); ?></h3>
 							<p><?php echo esc_html( $point['text'] ); ?></p>
@@ -180,10 +179,9 @@ if ( empty( array_filter( wp_list_pluck( $glass_levers, 'title' ) ) ) && $servic
 		</header>
 	</div>
 	<ul class="service-bands">
-		<?php foreach ( $services as $index => $item ) : ?>
+		<?php foreach ( $services as $item ) : ?>
 			<li class="service-band reveal" data-reveal>
 				<div class="section-block service-band__inner">
-					<span class="service-band__index" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span>
 					<div class="service-band__copy">
 						<h3 class="service-band__title"><?php echo esc_html( $item['title'] ); ?></h3>
 						<p><?php echo esc_html( $item['text'] ); ?></p>
@@ -218,11 +216,10 @@ if ( empty( array_filter( wp_list_pluck( $glass_levers, 'title' ) ) ) && $servic
 			<h2 class="section-header__title" id="process-heading"><?php echo esc_html( $home['method_title'] ); ?></h2>
 		</header>
 		<ol class="timeline">
-			<?php foreach ( $home['method_steps'] as $index => $step ) : ?>
+			<?php foreach ( $home['method_steps'] as $step ) : ?>
 				<li class="timeline-item" data-reveal>
 					<span class="timeline-dot" aria-hidden="true"></span>
 					<div class="timeline-card glass-card">
-						<p class="timeline-step">Étape <?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></p>
 						<h3 class="timeline-card__title"><?php echo esc_html( $step['title'] ); ?></h3>
 						<p><?php echo esc_html( $step['text'] ); ?></p>
 					</div>
