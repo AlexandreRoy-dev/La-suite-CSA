@@ -10,6 +10,16 @@ get_header();
 
 $copy  = la_suite_csa_copy_get( 'about' );
 $media = la_suite_csa_media_get( 'entreprise' );
+
+get_template_part(
+	'template-parts/page-intro',
+	null,
+	array(
+		'eyebrow' => 'Entreprise',
+		'title'   => $copy['title'],
+		'lede'    => $copy['lead'],
+	)
+);
 ?>
 
 <section class="content-section">
@@ -29,10 +39,6 @@ $media = la_suite_csa_media_get( 'entreprise' );
 			</div>
 		<?php endif; ?>
 		<div class="reveal">
-			<header class="section-header section-header--flush">
-				<h1 class="entry__title"><?php echo esc_html( $copy['title'] ); ?></h1>
-				<p class="section-lede"><?php echo esc_html( $copy['lead'] ); ?></p>
-			</header>
 			<div class="prose-stack">
 				<?php foreach ( $copy['body'] as $paragraph ) : ?>
 					<p><?php echo esc_html( $paragraph ); ?></p>

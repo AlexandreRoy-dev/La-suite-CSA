@@ -12,15 +12,21 @@ $copy    = la_suite_csa_copy_get( 'contact' );
 $phone   = la_suite_csa_get_phone();
 $email   = la_suite_csa_get_email();
 $address = la_suite_csa_get_address();
+
+get_template_part(
+	'template-parts/page-intro',
+	null,
+	array(
+		'eyebrow' => 'Contact',
+		'title'   => $copy['title'],
+		'lede'    => $copy['intro'],
+	)
+);
 ?>
 
 <section class="content-section">
 	<div class="section-block contact-layout">
 		<div class="contact-layout__main">
-			<header class="section-header">
-				<h1 class="entry__title"><?php echo esc_html( $copy['title'] ); ?></h1>
-				<p class="section-lede"><?php echo esc_html( $copy['intro'] ); ?></p>
-			</header>
 
 			<?php
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended

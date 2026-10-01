@@ -1,1201 +1,233 @@
-﻿<!DOCTYPE html>
-<html lang="fr-CA">
+﻿<!doctype html>
+<html lang="fr-CA" class="no-js">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-	<title>Aperçu | La Suite CSA Inc.</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="preconnect" href="https://images.unsplash.com">
-	<link rel="icon" href="../wp-content/themes/la-suite-csa/assets/images/brand/favicon.svg" type="image/svg+xml">
-	<link rel="icon" href="../wp-content/themes/la-suite-csa/assets/images/brand/favicon-32.png" type="image/png" sizes="32x32">
-	<link rel="apple-touch-icon" href="../wp-content/themes/la-suite-csa/assets/images/brand/apple-touch-icon.png" sizes="180x180">
-	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="../wp-content/themes/la-suite-csa/assets/css/main.css?v=4.5.0">
-	<style>
-		.preview-banner {
-			position: fixed;
-			bottom: max(0.45rem, env(safe-area-inset-bottom));
-			left: 0.55rem;
-			z-index: 50;
-			background: var(--color-blue-ink);
-			color: var(--color-cream);
-			padding: 0.3rem 0.55rem;
-			font-size: 0.65rem;
-			letter-spacing: 0.04em;
-			white-space: nowrap;
-			pointer-events: none;
-			opacity: 0.78;
-		}
-		@media (min-width: 900px) {
-			.preview-banner {
-				left: 50%;
-				bottom: 1rem;
-				transform: translateX(-50%);
-				padding: 0.45rem 1rem;
-				font-size: 0.75rem;
-				opacity: 1;
-			}
-		}
-		.page { display: none; }
-		.page.is-active { display: block; }
-		.site-nav__list a.is-active { color: var(--color-text); }
-	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>La Suite CSA Inc. | Aperçu</title>
+	<link rel="stylesheet" href="../wp-content/themes/la-suite-csa/assets/vendor/lenis.css">
+	<link rel="stylesheet" href="../wp-content/themes/la-suite-csa/assets/css/main.css">
+	<script>document.documentElement.classList.add('js');if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&]static(?:=|&|$)/.test(location.search)){document.documentElement.classList.add('no-motion');}else{document.documentElement.classList.add('motion');window.__csaStall=setTimeout(function(){document.documentElement.classList.add('js-stalled');},7000);}</script>
 </head>
-<body class="home front-page">
-	<p class="preview-banner">Aperçu · SaaS fintech</p>
-
-	<header class="site-header" role="banner">
-		<div class="site-header__inner">
-			<a class="site-logo site-logo--header" href="#accueil" data-nav="accueil" aria-label="La Suite CSA">
-				<img class="site-logo__img" src="../wp-content/themes/la-suite-csa/assets/images/brand/logo-la-suite-csa-gris.svg" alt="La Suite CSA" width="301" height="177" decoding="async">
-			</a>
-			<nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-				<ul class="site-nav__list">
-					<li><a href="#accueil" data-nav="accueil" class="is-active">Accueil</a></li>
-					<li><a href="#services" data-nav="services">Services</a></li>
-					<li><a href="#entreprise" data-nav="entreprise">Entreprise</a></li>
-					<li><a href="#ressources" data-nav="ressources">Ressources</a></li>
-					<li><a href="#outils" data-nav="outils">Outils</a></li>
-					<li><a href="#blogue" data-nav="blogue">Blogue</a></li>
-					<li><a href="#contact" data-nav="contact">Contact</a></li>
-				</ul>
-			</nav>
-			<a class="header-cta" href="#contact" data-nav="contact">
-				Contact
-				<span class="header-cta__icon" aria-hidden="true">→</span>
-			</a>
-			<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-				<span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span></span>
-				<span class="screen-reader-text">Menu</span>
-			</button>
+<body class="home">
+<a class="skip-link" href="#main">Aller au contenu</a>
+<div class="loader" aria-hidden="true">
+	<div class="loader__inner">
+		<img class="loader__mark" src="../wp-content/themes/la-suite-csa/assets/images/brand/logo-la-suite-csa-blanc.svg" alt="" width="301" height="177">
+		<p class="loader__word"><span>La Suite</span><span>CSA</span></p>
+	</div>
+</div>
+<div class="cursor" aria-hidden="true"><div class="cursor__ring"><span class="cursor__label">Voir</span></div><div class="cursor__dot"></div></div>
+<header class="hdr" data-hdr>
+	<a class="hdr__logo" href="#top" aria-label="La Suite CSA">
+		<img class="hdr__logo-w" src="../wp-content/themes/la-suite-csa/assets/images/brand/logo-la-suite-csa-blanc.svg" alt="La Suite CSA" width="301" height="177">
+		<img class="hdr__logo-n" src="../wp-content/themes/la-suite-csa/assets/images/brand/logo-la-suite-csa-bleu.svg" alt="" width="301" height="177">
+	</a>
+	<nav class="hdr__nav" id="site-nav" aria-label="Navigation principale">
+		<ul class="hdr__menu">
+			<li><a href="#top">Accueil</a></li>
+			<li><a href="#services">Services</a></li>
+			<li><a href="#equipe">Entreprise</a></li>
+			<li><a href="services.html">Ressources</a></li>
+			<li><a href="services.html">Outils</a></li>
+			<li><a href="services.html">Blogue</a></li>
+			<li><a href="#contact">Contact</a></li>
+		</ul>
+	</nav>
+	<div class="hdr__cta">
+		<a class="hdr__tel" href="tel:+15148302355">514-830-2355</a>
+		<a class="btn btn--sm" href="#contact" data-magnetic><span class="btn__label" data-text="Contact">Contact</span><span class="btn__arrow"></span></a>
+		<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span></span><span class="screen-reader-text">Menu</span></button>
+	</div>
+</header>
+<main id="main" data-section="light">
+	<section class="hero" id="top" data-section="dark">
+		<div class="hero__media">
+			<img class="hero__img" src="../wp-content/themes/la-suite-csa/assets/images/editorial/hero-towers.jpg" alt="Tours de bureaux vues en contre-plongée" width="2400" height="1600">
+			<div class="hero__grade"></div>
+			<div class="hero__veil"></div>
+			<div class="hero__cols" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+			<div class="grain"></div>
 		</div>
-	</header>
-
-	<main id="main" class="site-main">
-
-		<article id="page-accueil" class="page is-active" data-page="accueil">
-			<section class="hero hero--canvas" aria-label="Accueil">
-				<div class="hero__atmosphere" aria-hidden="true">
-					<span class="hero__orb hero__orb--a"></span>
-					<span class="hero__orb hero__orb--b"></span>
-					<span class="hero__orb hero__orb--c"></span>
-					<span class="hero__vignette"></span>
-					<span class="hero__grain"></span>
+		<div class="hero__grid wrap">
+			<div class="hero__top">
+				<p class="label label--on-dark hero__kicker"><span class="stripes" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Suite financière pour PME québécoises</p>
+			</div>
+			<h1 class="hero__title" aria-label="La Suite CSA Le financement et les aides, clarifiés.">
+				<span class="ln"><span class="ln__i">La Suite</span></span>
+				<span class="ln"><span class="ln__i">CSA</span></span>
+				<span class="ln ln--sentence"><span class="ln__i">Le financement et les aides, clarifiés.</span></span>
+			</h1>
+			<div class="hero__foot">
+				<span class="hero__rule"></span>
+				<div class="hero__lede fade">
+					<p>La Suite CSA Inc. aide les entrepreneurs québécois à structurer leurs demandes de financement, à repérer les subventions pertinentes et à maximiser les crédits d’impôt disponibles.</p>
+					<a class="btn btn--light" href="#contact" data-magnetic><span class="btn__label" data-text="Réserver un appel">Réserver un appel</span><span class="btn__arrow"></span></a>
 				</div>
+				<div class="hero__meta fade">
+					<p class="label label--on-dark">Nos services</p>
+					<p class="hero__aside">Financements<br>Subventions<br>Crédits d’impôt</p>
+				</div>
+				<a class="hero__scroll fade" href="#promesse"><span class="label label--on-dark">Découvrir</span><span class="hero__scroll-line"></span></a>
+			</div>
+		</div>
+	</section>
 
-				<p class="hero-eyebrow"><span>Suite financière pour PME québécoises</span></p>
-
-				<div class="hero-canvas">
-					<h1 class="hero-brand" aria-label="La Suite CSA">
-						<span>La Suite</span>
-						<span>CSA</span>
-					</h1>
-
-					<div class="hero-stage">
-						<div class="hero-stage__glow" aria-hidden="true"></div>
-						<img
-							class="hero-visual"
-							src="../wp-content/themes/la-suite-csa/assets/images/hero-suite.svg"
-							alt=""
-							width="720"
-							height="480"
-							fetchpriority="high"
-							decoding="async"
-						>
+	<section class="about" id="promesse" data-section="light">
+		<div class="wrap">
+			<div class="sec-head"><p class="label">Promesse</p><span class="hair"></span></div>
+			<p class="about__statement" data-words>Quand vous voulez avancer, nous structurons <strong>financement, subventions et crédits d’impôt</strong> autour d’une méthode claire, sans jargon.</p>
+			<div class="about__grid">
+				<figure class="about__fig reveal-clip" data-cursor>
+					<div class="about__fig-in parallax" data-speed="0.12">
+						<img src="../wp-content/themes/la-suite-csa/assets/images/editorial/discussion.jpg" alt="Équipe en discussion" width="1600" height="1067">
 					</div>
-
-					<div class="hero-left">
-						<p>Structurer vos demandes de financement, subventions et crédits d’impôt, clairement.</p>
-						<a class="button button--hero" href="#contact" data-nav="contact">
-							Réserver un appel
-							<span class="button__icon" aria-hidden="true">→</span>
-						</a>
-					</div>
-
-					<aside class="hero-right" aria-label="Leviers">
-						<ul class="glass-stack">
-							<li class="glass-shell">
-								<div class="glass-card glass-tile">
-									<span class="glass-mark" aria-hidden="true"></span>
-									<div class="glass-copy">
-										<strong>Financements</strong>
-										<span>Structuration et accompagnement de vos démarches…</span>
-									</div>
-								</div>
-							</li>
-							<li class="glass-shell">
-								<div class="glass-card glass-tile">
-									<span class="glass-mark" aria-hidden="true"></span>
-									<div class="glass-copy">
-										<strong>Subventions</strong>
-										<span>Programmes adaptés à votre réalité d’entreprise…</span>
-									</div>
-								</div>
-							</li>
-							<li class="glass-shell">
-								<div class="glass-card glass-tile">
-									<span class="glass-mark" aria-hidden="true"></span>
-									<div class="glass-copy">
-										<strong>Crédits d’impôt</strong>
-										<span>Repérage et optimisation des crédits pertinents…</span>
-									</div>
-								</div>
-							</li>
-						</ul>
-						<a class="explore" href="#services" data-nav="services">Explorer</a>
-					</aside>
-				</div>
-
-				<div class="scroll-hint" aria-hidden="true">
-					<span>Scroll</span>
-					<i></i>
-				</div>
-			</section>
-
-			<section class="promise" aria-label="Promesse">
-				<div class="glass-card promise-card">
-					<p>
-						Quand vous voulez avancer, nous structurons
-						<strong>financement, subventions et crédits d’impôt</strong>
-						autour d’une méthode claire, sans jargon.
-					</p>
-				</div>
-			</section>
-
-			<section class="logo-cloud" aria-label="Écosystème">
-				<div class="section-block">
-					<p class="logo-cloud__label reveal">Dans l’écosystème des programmes publics et privés</p>
-					<div class="logo-cloud__track" aria-hidden="true">
-						<div class="logo-cloud__row">
-							<span>Investissement Québec</span><span>BDC</span><span>Revenu Québec</span><span>ARC</span><span>clicSÉQUR</span><span>EDC</span><span>Innovation Canada</span><span>Registre des entreprises</span>
-							<span>Investissement Québec</span><span>BDC</span><span>Revenu Québec</span><span>ARC</span><span>clicSÉQUR</span><span>EDC</span><span>Innovation Canada</span><span>Registre des entreprises</span>
-						</div>
+				</figure>
+				<div class="about__copy">
+					<p class="about__lead split">La Suite CSA Inc. est un cabinet québécois dédié aux financements, aux subventions et aux crédits d’impôt pour les entreprises.</p>
+					<p class="body fade">Nous travaillons avec des dirigeants qui veulent avancer sans se perdre dans la complexité administrative. Notre valeur : clarifier ce qui est accessible, prioriser, et accompagner le dossier jusqu’au bout.</p>
+					<div class="about__trio fade">
+						<div><p class="label">Programmes</p><p>Des aides dispersées, peu lisibles au quotidien.</p></div>
+						<div><p class="label">Critères</p><p>Des exigences qui bougent et freinent les dossiers.</p></div>
+						<div><p class="label">Décision</p><p>Une suite claire pour passer à l’action.</p></div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</div>
+	</section>
 
-			<section class="content-section problem-split">
-				<div class="section-block problem-split__grid">
-					<header class="problem-split__intro reveal">
-						<p class="eyebrow">Contexte</p>
-						<h2 class="section-header__title">Les occasions existent. Encore faut-il les saisir.</h2>
-						<p class="section-lede">Entre les programmes publics, les critères changeants et la paperasse, beaucoup d’entreprises passent à côté d’argent auquel elles auraient droit. Notre rôle : tracer le chemin et accélérer les dossiers.</p>
-					</header>
-					<ul class="friction-list">
-						<li class="friction-list__item reveal" data-reveal>
-							<div>
-								<h3 class="friction-list__title">Programmes</h3>
-								<p>Des aides dispersées, peu lisibles au quotidien.</p>
-							</div>
-						</li>
-						<li class="friction-list__item reveal" data-reveal>
-							<div>
-								<h3 class="friction-list__title">Critères</h3>
-								<p>Des exigences qui bougent et freinent les dossiers.</p>
-							</div>
-						</li>
-						<li class="friction-list__item reveal" data-reveal>
-							<div>
-								<h3 class="friction-list__title">Décision</h3>
-								<p>Une suite claire pour passer à l’action.</p>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</section>
-
-			<section class="content-section features-bands">
-				<div class="section-block">
-					<header class="section-header section-header--center reveal">
-						<p class="eyebrow">Nos services</p>
-						<h2 class="section-header__title">Trois leviers pour avancer.</h2>
-						<p class="section-lede">Financements, subventions et crédits d’impôt : une suite claire pour soutenir vos projets de croissance, d’innovation ou d’investissement.</p>
-					</header>
-				</div>
-				<ul class="service-bands">
-					<li class="service-band reveal" data-reveal>
-						<div class="section-block service-band__inner">
-							<div class="service-band__copy">
-								<h3 class="service-band__title">Financements</h3>
-								<p>Structuration et accompagnement dans vos démarches de financement, pour présenter un dossier solide aux bons interlocuteurs.</p>
-							</div>
-							<a class="service-band__link" href="#financements" data-nav="financements">En savoir plus <span aria-hidden="true">→</span></a>
-						</div>
-					</li>
-					<li class="service-band reveal" data-reveal>
-						<div class="section-block service-band__inner">
-							<div class="service-band__copy">
-								<h3 class="service-band__title">Subventions</h3>
-								<p>Identification des programmes adaptés à votre réalité, préparation des demandes et suivi jusqu’à la décision.</p>
-							</div>
-							<a class="service-band__link" href="#subventions" data-nav="subventions">En savoir plus <span aria-hidden="true">→</span></a>
-						</div>
-					</li>
-					<li class="service-band reveal" data-reveal>
-						<div class="section-block service-band__inner">
-							<div class="service-band__copy">
-								<h3 class="service-band__title">Crédits d’impôt</h3>
-								<p>Repérage et optimisation des crédits d’impôt auxquels votre entreprise peut prétendre, avec une lecture nette des exigences.</p>
-							</div>
-							<a class="service-band__link" href="#credits-impot" data-nav="credits-impot">En savoir plus <span aria-hidden="true">→</span></a>
-						</div>
-					</li>
-				</ul>
-			</section>
-
-			<section class="content-section trust-saas">
-				<div class="section-block">
-					<ul class="trust-metrics">
-						<li class="trust-metrics__item reveal" data-reveal>
-							<p class="trust-metrics__label">Focus</p>
-							<p class="trust-metrics__value">Entreprises. Pas de jargon inutile.</p>
-						</li>
-						<li class="trust-metrics__item reveal" data-reveal>
-							<p class="trust-metrics__label">Méthode</p>
-							<p class="trust-metrics__value">Diagnostic, dossier, suivi</p>
-						</li>
-						<li class="trust-metrics__item reveal" data-reveal>
-							<p class="trust-metrics__label">Résultat</p>
-							<p class="trust-metrics__value">Des démarches qui aboutissent</p>
-						</li>
-					</ul>
-				</div>
-			</section>
-
-			<section class="content-section process-section" id="processus">
-				<div class="section-block">
-					<header class="process-intro reveal">
-						<p class="eyebrow">Déroulement</p>
-						<h2 class="section-header__title" id="process-heading">Comment ça se passe</h2>
-					</header>
-					<ol class="timeline">
-						<li class="timeline-item" data-reveal>
-							<span class="timeline-dot" aria-hidden="true"></span>
-							<div class="timeline-card glass-card">
-								<h3 class="timeline-card__title">Vous nous parlez du projet</h3>
-								<p>Un échange court pour comprendre votre entreprise, vos échéances et ce qui est réaliste à viser.</p>
-							</div>
-						</li>
-						<li class="timeline-item" data-reveal>
-							<span class="timeline-dot" aria-hidden="true"></span>
-							<div class="timeline-card glass-card">
-								<h3 class="timeline-card__title">On cartographie les leviers</h3>
-								<p>Financement, subventions, crédits d’impôt : on identifie ce qui colle vraiment à votre situation.</p>
-							</div>
-						</li>
-						<li class="timeline-item" data-reveal>
-							<span class="timeline-dot" aria-hidden="true"></span>
-							<div class="timeline-card glass-card">
-								<h3 class="timeline-card__title">On bâtit le dossier</h3>
-								<p>Documents, arguments, critères : un dossier clair, prêt à présenter aux bons interlocuteurs.</p>
-							</div>
-						</li>
-						<li class="timeline-item" data-reveal>
-							<span class="timeline-dot" aria-hidden="true"></span>
-							<div class="timeline-card glass-card">
-								<h3 class="timeline-card__title">Dépôt et échanges</h3>
-								<p>Nous accompagnons le dépôt et les allers-retours, pour éviter les angles morts administratifs.</p>
-							</div>
-						</li>
-						<li class="timeline-item" data-reveal>
-							<span class="timeline-dot" aria-hidden="true"></span>
-							<div class="timeline-card glass-card">
-								<h3 class="timeline-card__title">Suivi jusqu’à la réponse</h3>
-								<p>Vous gardez le fil. On reste dans le dossier jusqu’à obtenir des réponses concrètes.</p>
-							</div>
-						</li>
+	<section class="pillars" id="services" data-section="light">
+		<div class="pillars__pin">
+			<div class="wrap pillars__wrap">
+				<div class="pillars__top">
+					<p class="label">Nos services</p>
+					<p class="pillars__intro">Financements, subventions et crédits d’impôt : une suite claire pour soutenir vos projets de croissance, d’innovation ou d’investissement.</p>
+					<ol class="pillars__tabs">
+						<li class="is-on"><span>Financements</span><i></i></li>
+						<li><span>Subventions</span><i></i></li>
+						<li><span>Crédits d’impôt</span><i></i></li>
 					</ol>
 				</div>
-			</section>
-
-			<section class="content-section quote-saas">
-				<div class="section-block section-block--narrow reveal">
-					<blockquote class="quote quote--saas">
-						<p>L’argent disponible pour votre entreprise ne sert à rien s’il reste enfoui dans des programmes mal compris.</p>
-						<footer>La Suite CSA Inc.</footer>
-					</blockquote>
-				</div>
-			</section>
-
-			<section class="content-section team-section">
-				<div class="section-block">
-					<header class="section-header section-header--center reveal">
-						<h2 class="section-header__title">L’équipe fondatrice</h2>
-						<p class="section-lede">Trois cofondateurs. Une même exigence : des dossiers nets, des interlocuteurs pertinents, des réponses concrètes.</p>
-					</header>
-					<ul class="team-grid">
-						<li class="team-card reveal" data-reveal>
-							<figure class="team-card__media"><span class="team-card__placeholder" aria-hidden="true"></span></figure>
-							<div class="team-card__body">
-								<p class="team-card__role">Cofondateur · Direction</p>
-								<h3 class="team-card__name">Fondateur 1</h3>
-								<p class="team-card__bio">Vision, priorisation des dossiers et relation avec les dirigeants.</p>
-							</div>
-						</li>
-						<li class="team-card reveal" data-reveal>
-							<figure class="team-card__media"><span class="team-card__placeholder" aria-hidden="true"></span></figure>
-							<div class="team-card__body">
-								<p class="team-card__role">Cofondateur · Financements</p>
-								<h3 class="team-card__name">Fondateur 2</h3>
-								<p class="team-card__bio">Montages, interlocuteurs et dossiers prêts pour les prêteurs.</p>
-							</div>
-						</li>
-						<li class="team-card reveal" data-reveal>
-							<figure class="team-card__media"><span class="team-card__placeholder" aria-hidden="true"></span></figure>
-							<div class="team-card__body">
-								<p class="team-card__role">Cofondateur · Aides & crédits</p>
-								<h3 class="team-card__name">Fondateur 3</h3>
-								<p class="team-card__bio">Subventions, crédits d’impôt et conformité des demandes.</p>
-							</div>
-						</li>
-					</ul>
-					<p class="section-cta section-cta--center reveal">
-						<a class="button button--ghost" href="#entreprise" data-nav="entreprise">
-							Découvrir l’entreprise
-							<span class="button__icon" aria-hidden="true">→</span>
-						</a>
-					</p>
-				</div>
-			</section>
-
-			<section class="content-section band--cta band--cta-saas">
-				<div class="cta-media" aria-hidden="true">
-					<img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1600&q=80" alt="" width="1600" height="900" loading="lazy" decoding="async">
-				</div>
-				<div class="section-block section-block--narrow reveal">
-					<h2 class="section-header__title">Votre projet mérite d’être financé correctement.</h2>
-					<p class="section-lede">Parlez-nous de votre situation. Nous vous dirons rapidement ce qui est réaliste : financement, subvention, crédit d’impôt, ou une combinaison.</p>
-					<p class="section-cta section-cta--center">
-						<a class="button" href="#contact" data-nav="contact">
-							Nous contacter
-							<span class="button__icon" aria-hidden="true">→</span>
-						</a>
-					</p>
-				</div>
-			</section>
-		</article>
-
-		<article id="page-services" class="page" data-page="services">
-			<section class="content-section">
-				<div class="section-block">
-					<header class="section-header reveal">
-						<h1 class="entry__title">Services</h1>
-						<p class="section-lede">Trois services. Un même objectif : ouvrir l’accès au capital et aux aides dont votre entreprise a besoin.</p>
-					</header>
-				</div>
-				<div class="lever-stage">
-					<a class="lever is-active" href="#financements" data-nav="financements">
-						<img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=80" alt="" width="1400" height="1800" loading="eager" decoding="async">
-						<div class="lever__copy">
-							<h2 class="lever__title">Financements</h2>
-							<p class="lever__text">Nous vous aidons à préparer et à présenter vos demandes de financement. Analyse de besoin, montages possibles, interlocuteurs pertinents et dossier argumenté pour maximiser vos chances.</p>
-							<span class="lever__link">Voir la page</span>
-						</div>
-					</a>
-					<a class="lever" href="#subventions" data-nav="subventions">
-						<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80" alt="" width="1400" height="1800" loading="lazy" decoding="async">
-						<div class="lever__copy">
-							<h2 class="lever__title">Subventions</h2>
-							<p class="lever__text">Cartographie des programmes (fédéraux, provinciaux, régionaux) adaptés à votre secteur et à votre projet. Rédaction et dépôt des demandes, réponses aux questions des organismes, suivi administratif.</p>
-							<span class="lever__link">Voir la page</span>
-						</div>
-					</a>
-					<a class="lever" href="#credits-impot" data-nav="credits-impot">
-						<img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80" alt="" width="1400" height="1800" loading="lazy" decoding="async">
-						<div class="lever__copy">
-							<h2 class="lever__title">Crédits d’impôt</h2>
-							<p class="lever__text">Identification des crédits d’impôt applicables à vos activités. Collecte des pièces, structure du dossier et coordination avec vos comptables ou fiscalistes au besoin.</p>
-							<span class="lever__link">Voir la page</span>
-						</div>
-					</a>
-				</div>
-				<div class="section-block">
-					<p class="legal-note reveal">Les programmes et crédits d’impôt évoluent. Chaque dossier est évalué selon les critères en vigueur et l’admissibilité de votre entreprise.</p>
-					<p class="section-cta reveal">
-						<a class="button" href="#contact" data-nav="contact">Discuter de votre dossier <span class="button__icon" aria-hidden="true">→</span></a>
-					</p>
-				</div>
-			</section>
-		</article>
-
-		<article id="page-financements" class="page" data-page="financements">
-			<section class="content-section">
-				<div class="section-block split-media">
-					<div class="split-media__frame reveal">
-						<div class="split-media__crop">
-							<img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80" alt="Documents financiers sur un bureau" width="1200" height="1500" loading="eager" decoding="async">
-						</div>
+				<div class="pillars__stage">
+					<div class="pillars__texts">
+						<article class="pillar">
+							<h2 class="pillar__title">Financements</h2>
+							<p class="pillar__body">Un dossier solide, aux bons interlocuteurs.</p>
+							<a class="pillar__link" href="services.html">Voir le service</a>
+						</article>
+						<article class="pillar">
+							<h2 class="pillar__title">Subventions</h2>
+							<p class="pillar__body">Les programmes adaptés à votre réalité.</p>
+							<a class="pillar__link" href="services.html">Voir le service</a>
+						</article>
+						<article class="pillar">
+							<h2 class="pillar__title">Crédits d’impôt</h2>
+							<p class="pillar__body">Les crédits auxquels vous avez droit.</p>
+							<a class="pillar__link" href="services.html">Voir le service</a>
+						</article>
 					</div>
-					<div class="reveal">
-						<header class="section-header section-header--flush">
-							<p class="eyebrow">Services</p>
-							<h1 class="entry__title">Financements</h1>
-							<p class="section-lede">Structurer une demande de financement solide, avec les bons interlocuteurs et un dossier qui tient la route.</p>
-						</header>
-						<div class="prose-stack"><p>Qu’il s’agisse d’un prêt, d’un fonds de roulement ou d’un montage plus complexe, nous clarifions le besoin, le montant réaliste et la façon de le présenter.</p></div>
+					<div class="pillars__frame" data-cursor>
+						<img class="pillars__img" src="../wp-content/themes/la-suite-csa/assets/images/editorial/service-finance.jpg" alt="Atelier de production" width="1600" height="1067">
+						<img class="pillars__img" src="../wp-content/themes/la-suite-csa/assets/images/editorial/service-team.jpg" alt="Équipe autour d’un dossier" width="1600" height="1050">
+						<img class="pillars__img" src="../wp-content/themes/la-suite-csa/assets/images/editorial/service-docs.jpg" alt="Documents et pièces d’un dossier" width="1600" height="918">
 					</div>
 				</div>
-			</section>
-			<section class="content-section band">
-				<div class="section-block">
-					<header class="section-header reveal">
-						<p class="eyebrow">Ce que nous faisons</p>
-						<h2 class="section-header__title">Une démarche claire, étape par étape.</h2>
-					</header>
-					<ul class="feature-grid"><li class="feature-grid__item reveal"><h3 class="feature-grid__title">Lecture du besoin</h3><p>Nous cadrons le projet, les flux et la capacité de remboursement avant d’ouvrir trop de portes.</p></li><li class="feature-grid__item reveal"><h3 class="feature-grid__title">Montages possibles</h3><p>Banque, BDC, Investissement Québec ou autres leviers : on compare ce qui colle à votre réalité.</p></li><li class="feature-grid__item reveal"><h3 class="feature-grid__title">Dossier argumenté</h3><p>Chiffres, récit et pièces réunies pour maximiser vos chances auprès des bons décideurs.</p></li></ul>
-				</div>
-			</section>
-			<section class="content-section">
-				<div class="section-block section-block--narrow reveal">
-					<header class="section-header section-header--flush">
-						<p class="eyebrow">Pour qui</p>
-						<h2 class="section-header__title">À qui s’adresse ce service</h2>
-						<p class="section-lede">Dirigeants qui prévoient une croissance, un achat d’équipement, une consolidation ou un besoin de liquidités.</p>
-					</header>
-				</div>
-			</section>
-			<section class="content-section band band--cta">
-				<div class="section-block section-block--narrow reveal">
-					<h2 class="section-header__title">Discuter d’un financement</h2>
-					<p class="section-lede">Parlez-nous de votre projet. Nous vous dirons rapidement ce qui est réaliste.</p>
-					<p class="section-cta">
-						<a class="button" href="#contact" data-nav="contact">Nous contacter <span class="button__icon" aria-hidden="true">→</span></a>
-					</p>
-				</div>
-			</section>
-		</article>
-		<article id="page-subventions" class="page" data-page="subventions">
-			<section class="content-section">
-				<div class="section-block split-media">
-					<div class="split-media__frame reveal">
-						<div class="split-media__crop">
-							<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Réunion de travail autour d’un dossier" width="1200" height="1500" loading="eager" decoding="async">
-						</div>
-					</div>
-					<div class="reveal">
-						<header class="section-header section-header--flush">
-							<p class="eyebrow">Services</p>
-							<h1 class="entry__title">Subventions</h1>
-							<p class="section-lede">Repérer les programmes pertinents, préparer les demandes et suivre jusqu’à la décision.</p>
-						</header>
-						<div class="prose-stack"><p>Les aides existent, mais elles sont fragmentées. Notre travail : cartographier ce qui s’applique vraiment, puis bâtir un dossier admissible.</p></div>
-					</div>
-				</div>
-			</section>
-			<section class="content-section band">
-				<div class="section-block">
-					<header class="section-header reveal">
-						<p class="eyebrow">Ce que nous faisons</p>
-						<h2 class="section-header__title">Une démarche claire, étape par étape.</h2>
-					</header>
-					<ul class="feature-grid"><li class="feature-grid__item reveal"><h3 class="feature-grid__title">Cartographie</h3><p>Programmes fédéraux, provinciaux et régionaux filtrés selon votre secteur et votre projet.</p></li><li class="feature-grid__item reveal"><h3 class="feature-grid__title">Préparation</h3><p>Rédaction, budgets, justifications et pièces pour coller aux critères en vigueur.</p></li><li class="feature-grid__item reveal"><h3 class="feature-grid__title">Suivi</h3><p>Dépôt, questions des organismes et suivi administratif jusqu’à l’accusé ou l’octroi.</p></li></ul>
-				</div>
-			</section>
-			<section class="content-section">
-				<div class="section-block section-block--narrow reveal">
-					<header class="section-header section-header--flush">
-						<p class="eyebrow">Pour qui</p>
-						<h2 class="section-header__title">À qui s’adresse ce service</h2>
-						<p class="section-lede">Entreprises qui investissent, innovent, exportent ou modernisent et veulent une aide non remboursable lorsque c’est réaliste.</p>
-					</header>
-				</div>
-			</section>
-			<section class="content-section band band--cta">
-				<div class="section-block section-block--narrow reveal">
-					<h2 class="section-header__title">Explorer les subventions</h2>
-					<p class="section-lede">Parlez-nous de votre projet. Nous vous dirons rapidement ce qui est réaliste.</p>
-					<p class="section-cta">
-						<a class="button" href="#contact" data-nav="contact">Nous contacter <span class="button__icon" aria-hidden="true">→</span></a>
-					</p>
-				</div>
-			</section>
-		</article>
-		<article id="page-credits-impot" class="page" data-page="credits-impot">
-			<section class="content-section">
-				<div class="section-block split-media">
-					<div class="split-media__frame reveal">
-						<div class="split-media__crop">
-							<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Analyse de données et graphiques" width="1200" height="1500" loading="eager" decoding="async">
-						</div>
-					</div>
-					<div class="reveal">
-						<header class="section-header section-header--flush">
-							<p class="eyebrow">Services</p>
-							<h1 class="entry__title">Crédits d’impôt</h1>
-							<p class="section-lede">Identifier et documenter les crédits d’impôt auxquels votre entreprise peut prétendre.</p>
-						</header>
-						<div class="prose-stack"><p>Les crédits (dont la RS&DE et certains crédits québécois) demandent une lecture nette des exigences. Nous structurons le dossier et coordonnons avec vos comptables ou fiscalistes au besoin.</p></div>
-					</div>
-				</div>
-			</section>
-			<section class="content-section band">
-				<div class="section-block">
-					<header class="section-header reveal">
-						<p class="eyebrow">Ce que nous faisons</p>
-						<h2 class="section-header__title">Une démarche claire, étape par étape.</h2>
-					</header>
-					<ul class="feature-grid"><li class="feature-grid__item reveal"><h3 class="feature-grid__title">Repérage</h3><p>Quels crédits s’appliquent à vos activités, et lesquels ne valent pas le détour.</p></li><li class="feature-grid__item reveal"><h3 class="feature-grid__title">Documentation</h3><p>Collecte des pièces, traçabilité des dépenses et narrative conforme aux attentes.</p></li><li class="feature-grid__item reveal"><h3 class="feature-grid__title">Coordination</h3><p>Alignement avec votre équipe comptable ou fiscale pour un dépôt cohérent.</p></li></ul>
-				</div>
-			</section>
-			<section class="content-section">
-				<div class="section-block section-block--narrow reveal">
-					<header class="section-header section-header--flush">
-						<p class="eyebrow">Pour qui</p>
-						<h2 class="section-header__title">À qui s’adresse ce service</h2>
-						<p class="section-lede">Entreprises qui investissent en R-D, en numérique ou dans des activités ouvrant droit à des crédits provinciaux ou fédéraux.</p>
-					</header>
-				</div>
-			</section>
-			<section class="content-section band band--cta">
-				<div class="section-block section-block--narrow reveal">
-					<h2 class="section-header__title">Évaluer un crédit d’impôt</h2>
-					<p class="section-lede">Parlez-nous de votre projet. Nous vous dirons rapidement ce qui est réaliste.</p>
-					<p class="section-cta">
-						<a class="button" href="#contact" data-nav="contact">Nous contacter <span class="button__icon" aria-hidden="true">→</span></a>
-					</p>
-				</div>
-			</section>
-		</article>
-		<article id="page-entreprise" class="page" data-page="entreprise">
-			<section class="content-section">
-				<div class="section-block split-media">
-					<div class="split-media__frame reveal">
-						<div class="split-media__crop">
-							<img
-								src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80"
-								alt="Bureau lumineux d’entreprise"
-								width="1200"
-								height="1500"
-								loading="eager"
-								decoding="async"
-							>
-						</div>
-					</div>
-					<div class="reveal">
-						<header class="section-header">
-							<p class="eyebrow">Entreprise</p>
-							<h1 class="entry__title">Entreprise</h1>
-							<p class="section-lede">La Suite CSA Inc. est un cabinet québécois dédié aux financements, aux subventions et aux crédits d’impôt pour les entreprises.</p>
-						</header>
-						<div class="prose-stack">
-							<p>Nous travaillons avec des dirigeants qui veulent avancer sans se perdre dans la complexité administrative. Notre valeur : clarifier ce qui est accessible, prioriser, et accompagner le dossier jusqu’au bout.</p>
-							<p>« La Suite », parce que le financement d’entreprise se joue rarement en un seul geste. C’est un enchaînement de décisions, de demandes et de suivis. CSA, c’est notre signature d’exigence et de rigueur.</p>
-							<p>Que votre priorité soit d’obtenir du capital, de débloquer une subvention ou de récupérer des crédits d’impôt, nous structurons le parcours avec vous.</p>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="content-section band">
-				<div class="section-block">
-					<h2 class="section-header__title reveal">Ce qui nous guide</h2>
-					<ul class="feature-grid">
-						<li class="feature-grid__item reveal">
-							<h3 class="feature-grid__title">Clarté</h3>
-							<p>Vous savez ce qui est réaliste, ce qui ne l’est pas, et pourquoi.</p>
-						</li>
-						<li class="feature-grid__item reveal">
-							<h3 class="feature-grid__title">Rigueur</h3>
-							<p>Des dossiers préparés pour passer les filtres, pas pour « essayer ».</p>
-						</li>
-						<li class="feature-grid__item reveal">
-							<h3 class="feature-grid__title">Proximité</h3>
-							<p>Un accompagnement humain, ancré dans les réalités des entreprises du Québec.</p>
-						</li>
-					</ul>
-					<p class="section-cta reveal">
-						<a class="button" href="#contact" data-nav="contact">
-							Entrer en contact
-							<span class="button__icon" aria-hidden="true">→</span>
-						</a>
-					</p>
-				</div>
-			</section>
-		</article>
-
-		<article id="page-ressources" class="page" data-page="ressources">
-			<section class="content-section ressources-hero">
-				<div class="section-block reveal">
-					<header class="section-header">
-						<p class="eyebrow">Annuaire</p>
-						<h1 class="entry__title">Ressources</h1>
-						<p class="section-lede">Portails officiels pour connecter vos dossiers fiscaux, demandes de financement, subventions et inscriptions d’entreprise au Québec et au Canada.</p>
-					</header>
-				</div>
-			</section>
-			<section class="content-section band">
-				<div class="section-block">
-					<header class="section-header reveal">
-						<h2 class="section-header__title">Fiscalité et authentification</h2>
-						<p class="section-lede">Comptes d’entreprise, déclarations et accès sécurisé aux services en ligne.</p>
-					</header>
-					<ul class="resource-grid">
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.canada.ca/fr/agence-revenu/services/services-electroniques/services-numeriques-entreprises/dossier-entreprise.html" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/canada.svg" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Fédéral</span>
-									<span class="resource-card__name">Agence du revenu du Canada</span>
-									<span class="resource-card__desc">Mon dossier d’entreprise : TPS/TVH (hors Québec), retenues, impôt des sociétés et crédits fédéraux.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.canada.ca/fr/agence-revenu/services/services-electroniques/services-ouverture-session-arc.html" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/arc.svg" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Fédéral</span>
-									<span class="resource-card__name">Connexion au compte de l’ARC</span>
-									<span class="resource-card__desc">Page d’ouverture de session pour accéder aux services numériques de l’Agence.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.revenuquebec.ca/fr/entreprises/mon-dossier-pour-les-entreprises/" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/revenu-quebec.svg" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Québec</span>
-									<span class="resource-card__name">Revenu Québec</span>
-									<span class="resource-card__desc">Mon dossier pour les entreprises : TVQ, retenues, impôts et correspondance avec Revenu Québec.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.info.clicsequr.gouv.qc.ca/entreprises" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/clicsequr.svg" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Québec</span>
-									<span class="resource-card__name">clicSÉQUR Entreprises</span>
-									<span class="resource-card__desc">Authentification du gouvernement du Québec pour accéder aux services en ligne des ministères et organismes.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</section>
-			<section class="content-section band">
-				<div class="section-block">
-					<header class="section-header reveal">
-						<h2 class="section-header__title">Financement et accompagnement</h2>
-						<p class="section-lede">Prêts, capital et expertise pour faire avancer vos projets.</p>
-					</header>
-					<ul class="resource-grid">
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.investquebec.com/fr/accueil" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/investissement-quebec.png" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Québec</span>
-									<span class="resource-card__name">Investissement Québec</span>
-									<span class="resource-card__desc">Financement, programmes gouvernementaux (dont ESSOR) et accompagnement pour les entreprises du Québec.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.investquebec.com/fr/financement/programmes-gouvernementaux" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/iq-footer.svg" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Québec</span>
-									<span class="resource-card__name">Programmes gouvernementaux IQ</span>
-									<span class="resource-card__desc">Vitrine des volets de programmes administrés avec Investissement Québec.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.bdc.ca/fr" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/bdc.svg" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Fédéral</span>
-									<span class="resource-card__name">Banque de développement du Canada</span>
-									<span class="resource-card__desc">Financement flexible, capital et conseils pour les entrepreneur.es canadien.nes.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.edc.ca/fr" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/edc.svg" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Fédéral</span>
-									<span class="resource-card__name">Exportation et développement Canada</span>
-									<span class="resource-card__desc">Assurance, financement et solutions pour exporter ou se développer à l’international.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://dec.canada.ca/fr" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/dec-ced.png" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Fédéral</span>
-									<span class="resource-card__name">Développement économique Canada (régions du Québec)</span>
-									<span class="resource-card__desc">Programmes fédéraux de développement économique régional au Québec.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</section>
-			<section class="content-section band">
-				<div class="section-block">
-					<header class="section-header reveal">
-						<h2 class="section-header__title">Subventions et innovation</h2>
-						<p class="section-lede">Aides non remboursables, crédits liés à l’innovation et guichets de découverte.</p>
-					</header>
-					<ul class="resource-grid">
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.canada.ca/fr/services/entreprises/subventions.html" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/subventions-canada.svg" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Fédéral</span>
-									<span class="resource-card__name">Subventions et financement pour les entreprises</span>
-									<span class="resource-card__desc">Guichet fédéral des subventions, contributions et options de financement.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://innovation.canada.ca/fr" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/canada.svg" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Fédéral</span>
-									<span class="resource-card__name">Innovation Canada</span>
-									<span class="resource-card__desc">Outil pour trouver des programmes d’innovation, de R-D et de croissance.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.canada.ca/fr/agence-revenu/services/impot/entreprises/sujets/financement-scientifique-experimental.html" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/arc.svg" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Crédit d’impôt</span>
-									<span class="resource-card__name">RS&DE (crédit d’impôt)</span>
-									<span class="resource-card__desc">Crédit d’impôt fédéral pour la recherche scientifique et le développement expérimental.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.economie.gouv.qc.ca/" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/economie-quebec.png" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Québec</span>
-									<span class="resource-card__name">Économie, Innovation et Énergie (Québec)</span>
-									<span class="resource-card__desc">Ministère : politiques, programmes et ressources pour l’économie et l’innovation au Québec.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</section>
-			<section class="content-section band">
-				<div class="section-block">
-					<header class="section-header reveal">
-						<h2 class="section-header__title">Registres et démarrage</h2>
-						<p class="section-lede">Immatriculation, formalités et portails généraux pour les entreprises.</p>
-					</header>
-					<ul class="resource-grid">
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.registreentreprises.gouv.qc.ca/" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/req.png" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Québec</span>
-									<span class="resource-card__name">Registre des entreprises du Québec</span>
-									<span class="resource-card__desc">Immatriculation, mise à jour du dossier d’entreprise et recherches au registre provincial.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.quebec.ca/entreprises-et-travailleurs-autonomes" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/quebec-apple.png" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Québec</span>
-									<span class="resource-card__name">Québec.ca · Entreprises</span>
-									<span class="resource-card__desc">Portail gouvernemental : démarrer, gérer et financer une entreprise au Québec.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.quebec.ca/" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/gouv-qc.svg" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Québec</span>
-									<span class="resource-card__name">Gouvernement du Québec</span>
-									<span class="resource-card__desc">Accès central aux services en ligne et à l’information officielle.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-						<li class="resource-grid__item reveal">
-							<a class="resource-card" href="https://www.canada.ca/fr/services/entreprises.html" target="_blank" rel="noopener noreferrer">
-								<span class="resource-card__logo">
-									<img src="../wp-content/themes/la-suite-csa/assets/images/logos/canada.svg" alt="" width="160" height="64" loading="lazy" decoding="async">
-								</span>
-								<span class="resource-card__meta">
-									<span class="resource-card__tag">Fédéral</span>
-									<span class="resource-card__name">Canada.ca · Entreprises</span>
-									<span class="resource-card__desc">Hub fédéral : démarrer une entreprise, taxes, embauche et plus.</span>
-									<span class="resource-card__action">Ouvrir le portail <span aria-hidden="true">↗</span></span>
-								</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</section>
-			<section class="content-section">
-				<div class="section-block section-block--narrow reveal">
-					<p class="legal-note">Les sites et programmes évoluent. Les liens mènent aux portails officiels. La Suite CSA Inc. n’administre pas ces services : nous vous aidons à préparer les bons dossiers avant d’y déposer.</p>
-				</div>
-			</section>
-			<section class="content-section band band--cta">
-				<div class="section-block section-block--narrow reveal">
-					<h2 class="section-header__title">Besoin d’y voir clair ?</h2>
-					<p class="section-lede">On cartographie avec vous ce qui s’applique, puis on structure le dépôt.</p>
-					<p class="section-cta">
-						<a class="button" href="#contact" data-nav="contact">
-							Parler à un conseiller
-							<span class="button__icon" aria-hidden="true">→</span>
-						</a>
-					</p>
-				</div>
-			</section>
-		</article>
-
-		<article id="page-outils" class="page" data-page="outils">
-			<section class="content-section ressources-hero">
-				<div class="section-block reveal">
-					<header class="section-header">
-						<p class="eyebrow">Calculateurs</p>
-						<h1 class="entry__title">Outils</h1>
-						<p class="section-lede">Estimations rapides pour vos décisions de financement, d’emprunt et de fiscalité. Indicatives uniquement : chaque dossier reste unique.</p>
-					</header>
-				</div>
-			</section>
-			<section class="content-section band">
-				<div class="section-block">
-					<div class="tools-shell reveal" data-tools-root>
-						<div class="tools-nav" role="tablist" aria-label="Calculateurs">
-							<button type="button" class="tools-nav__btn is-active" role="tab" id="tab-hypotheque" aria-selected="true" aria-controls="panel-hypotheque" data-tool-tab="hypotheque">Paiement de prêt / hypothèque</button><button type="button" class="tools-nav__btn" role="tab" id="tab-capacite" aria-selected="false" aria-controls="panel-capacite" data-tool-tab="capacite">Capacité d’emprunt</button><button type="button" class="tools-nav__btn" role="tab" id="tab-interet" aria-selected="false" aria-controls="panel-interet" data-tool-tab="interet">Coût total des intérêts</button><button type="button" class="tools-nav__btn" role="tab" id="tab-tvq" aria-selected="false" aria-controls="panel-tvq" data-tool-tab="tvq">TPS + TVQ (Québec)</button><button type="button" class="tools-nav__btn" role="tab" id="tab-subvention" aria-selected="false" aria-controls="panel-subvention" data-tool-tab="subvention">Part subventionnée</button><button type="button" class="tools-nav__btn" role="tab" id="tab-credit" aria-selected="false" aria-controls="panel-credit" data-tool-tab="credit">Crédit d’impôt estimé</button><button type="button" class="tools-nav__btn" role="tab" id="tab-seuil" aria-selected="false" aria-controls="panel-seuil" data-tool-tab="seuil">Seuil de rentabilité</button><button type="button" class="tools-nav__btn" role="tab" id="tab-marge" aria-selected="false" aria-controls="panel-marge" data-tool-tab="marge">Marge brute</button><button type="button" class="tools-nav__btn" role="tab" id="tab-roi" aria-selected="false" aria-controls="panel-roi" data-tool-tab="roi">ROI et récupération</button><button type="button" class="tools-nav__btn" role="tab" id="tab-endettement" aria-selected="false" aria-controls="panel-endettement" data-tool-tab="endettement">Ratio d’endettement</button>
-						</div>
-						<div class="tool-panel is-active" id="panel-hypotheque" role="tabpanel" aria-labelledby="tab-hypotheque" data-tool-panel="hypotheque">
-					<div class="tool-panel__intro">
-						<h2 class="tool-panel__title">Paiement de prêt / hypothèque</h2>
-						<p>Mensualité selon le montant, le taux et l’amortissement (style canadien).</p>
-					</div>
-					<form class="tool-form" data-calculator="hypotheque" novalidate>
-						<div class="tool-form__grid"><p class="tool-field"><label for="hypotheque-principal">Montant du prêt ($)</label><input id="hypotheque-principal" name="principal" type="number" inputmode="decimal" min="1000" step="1000" value="350000" data-field></p><p class="tool-field"><label for="hypotheque-rate">Taux annuel (%)</label><input id="hypotheque-rate" name="rate" type="number" inputmode="decimal" min="0.1" step="0.05" value="4.89" data-field></p><p class="tool-field"><label for="hypotheque-amortYears">Amortissement (années)</label><input id="hypotheque-amortYears" name="amortYears" type="number" inputmode="decimal" min="1" step="1" value="25" data-field></p><p class="tool-field"><label for="hypotheque-termYears">Terme (années)</label><input id="hypotheque-termYears" name="termYears" type="number" inputmode="decimal" min="1" step="1" value="5" data-field></p></div>
-						<div class="tool-results" data-results aria-live="polite"></div>
-					</form>
-				</div><div class="tool-panel" id="panel-capacite" role="tabpanel" aria-labelledby="tab-capacite" data-tool-panel="capacite" hidden>
-					<div class="tool-panel__intro">
-						<h2 class="tool-panel__title">Capacité d’emprunt</h2>
-						<p>Montant maximal approximatif selon une mensualité cible.</p>
-					</div>
-					<form class="tool-form" data-calculator="capacite" novalidate>
-						<div class="tool-form__grid"><p class="tool-field"><label for="capacite-payment">Mensualité souhaitée ($)</label><input id="capacite-payment" name="payment" type="number" inputmode="decimal" min="100" step="50" value="1800" data-field></p><p class="tool-field"><label for="capacite-rate">Taux annuel (%)</label><input id="capacite-rate" name="rate" type="number" inputmode="decimal" min="0.1" step="0.05" value="4.89" data-field></p><p class="tool-field"><label for="capacite-amortYears">Amortissement (années)</label><input id="capacite-amortYears" name="amortYears" type="number" inputmode="decimal" min="1" step="1" value="25" data-field></p></div>
-						<div class="tool-results" data-results aria-live="polite"></div>
-					</form>
-				</div><div class="tool-panel" id="panel-interet" role="tabpanel" aria-labelledby="tab-interet" data-tool-panel="interet" hidden>
-					<div class="tool-panel__intro">
-						<h2 class="tool-panel__title">Coût total des intérêts</h2>
-						<p>Intérêt et capital remboursé sur le terme choisi.</p>
-					</div>
-					<form class="tool-form" data-calculator="interet" novalidate>
-						<div class="tool-form__grid"><p class="tool-field"><label for="interet-principal">Montant du prêt ($)</label><input id="interet-principal" name="principal" type="number" inputmode="decimal" min="1000" step="1000" value="250000" data-field></p><p class="tool-field"><label for="interet-rate">Taux annuel (%)</label><input id="interet-rate" name="rate" type="number" inputmode="decimal" min="0.1" step="0.05" value="5.25" data-field></p><p class="tool-field"><label for="interet-amortYears">Amortissement (années)</label><input id="interet-amortYears" name="amortYears" type="number" inputmode="decimal" min="1" step="1" value="20" data-field></p><p class="tool-field"><label for="interet-termYears">Période analysée (années)</label><input id="interet-termYears" name="termYears" type="number" inputmode="decimal" min="1" step="1" value="5" data-field></p></div>
-						<div class="tool-results" data-results aria-live="polite"></div>
-					</form>
-				</div><div class="tool-panel" id="panel-tvq" role="tabpanel" aria-labelledby="tab-tvq" data-tool-panel="tvq" hidden>
-					<div class="tool-panel__intro">
-						<h2 class="tool-panel__title">TPS + TVQ (Québec)</h2>
-						<p>Taxes de vente sur un montant hors taxes ou toutes taxes comprises.</p>
-					</div>
-					<form class="tool-form" data-calculator="tvq" novalidate>
-						<div class="tool-form__grid"><p class="tool-field"><label for="tvq-amount">Montant ($)</label><input id="tvq-amount" name="amount" type="number" inputmode="decimal" min="0" step="0.01" value="10000" data-field></p><p class="tool-field"><label for="tvq-mode">Mode</label><select id="tvq-mode" name="mode" data-field><option value="ht" selected>Hors taxes → TTC</option><option value="ttc">TTC → hors taxes</option></select></p></div>
-						<div class="tool-results" data-results aria-live="polite"></div>
-					</form>
-				</div><div class="tool-panel" id="panel-subvention" role="tabpanel" aria-labelledby="tab-subvention" data-tool-panel="subvention" hidden>
-					<div class="tool-panel__intro">
-						<h2 class="tool-panel__title">Part subventionnée</h2>
-						<p>Quote-part de l’aide et reste à financer pour un projet.</p>
-					</div>
-					<form class="tool-form" data-calculator="subvention" novalidate>
-						<div class="tool-form__grid"><p class="tool-field"><label for="subvention-cost">Coût du projet ($)</label><input id="subvention-cost" name="cost" type="number" inputmode="decimal" min="0" step="100" value="150000" data-field></p><p class="tool-field"><label for="subvention-rate">Taux d’aide (%)</label><input id="subvention-rate" name="rate" type="number" inputmode="decimal" min="0" step="0.5" value="40" data-field></p><p class="tool-field"><label for="subvention-ceiling">Plafond de l’aide ($)</label><input id="subvention-ceiling" name="ceiling" type="number" inputmode="decimal" min="0" step="1000" value="75000" data-field></p></div>
-						<div class="tool-results" data-results aria-live="polite"></div>
-					</form>
-				</div><div class="tool-panel" id="panel-credit" role="tabpanel" aria-labelledby="tab-credit" data-tool-panel="credit" hidden>
-					<div class="tool-panel__intro">
-						<h2 class="tool-panel__title">Crédit d’impôt estimé</h2>
-						<p>Estimation simple : dépenses admissibles × taux du crédit.</p>
-					</div>
-					<form class="tool-form" data-calculator="credit" novalidate>
-						<div class="tool-form__grid"><p class="tool-field"><label for="credit-spend">Dépenses admissibles ($)</label><input id="credit-spend" name="spend" type="number" inputmode="decimal" min="0" step="100" value="80000" data-field></p><p class="tool-field"><label for="credit-rate">Taux du crédit (%)</label><input id="credit-rate" name="rate" type="number" inputmode="decimal" min="0" step="0.5" value="30" data-field></p></div>
-						<div class="tool-results" data-results aria-live="polite"></div>
-					</form>
-				</div><div class="tool-panel" id="panel-seuil" role="tabpanel" aria-labelledby="tab-seuil" data-tool-panel="seuil" hidden>
-					<div class="tool-panel__intro">
-						<h2 class="tool-panel__title">Seuil de rentabilité</h2>
-						<p>Volume à atteindre pour couvrir les frais fixes.</p>
-					</div>
-					<form class="tool-form" data-calculator="seuil" novalidate>
-						<div class="tool-form__grid"><p class="tool-field"><label for="seuil-fixed">Frais fixes ($ / période)</label><input id="seuil-fixed" name="fixed" type="number" inputmode="decimal" min="0" step="100" value="12000" data-field></p><p class="tool-field"><label for="seuil-price">Prix de vente unitaire ($)</label><input id="seuil-price" name="price" type="number" inputmode="decimal" min="0.01" step="0.01" value="85" data-field></p><p class="tool-field"><label for="seuil-variable">Coût variable unitaire ($)</label><input id="seuil-variable" name="variable" type="number" inputmode="decimal" min="0" step="0.01" value="35" data-field></p></div>
-						<div class="tool-results" data-results aria-live="polite"></div>
-					</form>
-				</div><div class="tool-panel" id="panel-marge" role="tabpanel" aria-labelledby="tab-marge" data-tool-panel="marge" hidden>
-					<div class="tool-panel__intro">
-						<h2 class="tool-panel__title">Marge brute</h2>
-						<p>Marge et coefficient à partir du coût et du prix.</p>
-					</div>
-					<form class="tool-form" data-calculator="marge" novalidate>
-						<div class="tool-form__grid"><p class="tool-field"><label for="marge-cost">Coût ($)</label><input id="marge-cost" name="cost" type="number" inputmode="decimal" min="0" step="0.01" value="42" data-field></p><p class="tool-field"><label for="marge-price">Prix de vente ($)</label><input id="marge-price" name="price" type="number" inputmode="decimal" min="0.01" step="0.01" value="69" data-field></p></div>
-						<div class="tool-results" data-results aria-live="polite"></div>
-					</form>
-				</div><div class="tool-panel" id="panel-roi" role="tabpanel" aria-labelledby="tab-roi" data-tool-panel="roi" hidden>
-					<div class="tool-panel__intro">
-						<h2 class="tool-panel__title">ROI et récupération</h2>
-						<p>Retour sur investissement et délai de récupération.</p>
-					</div>
-					<form class="tool-form" data-calculator="roi" novalidate>
-						<div class="tool-form__grid"><p class="tool-field"><label for="roi-invest">Investissement ($)</label><input id="roi-invest" name="invest" type="number" inputmode="decimal" min="1" step="100" value="50000" data-field></p><p class="tool-field"><label for="roi-gain">Gain net annuel ($)</label><input id="roi-gain" name="gain" type="number" inputmode="decimal" min="0" step="100" value="14000" data-field></p></div>
-						<div class="tool-results" data-results aria-live="polite"></div>
-					</form>
-				</div><div class="tool-panel" id="panel-endettement" role="tabpanel" aria-labelledby="tab-endettement" data-tool-panel="endettement" hidden>
-					<div class="tool-panel__intro">
-						<h2 class="tool-panel__title">Ratio d’endettement</h2>
-						<p>Poids des mensualités sur le revenu (indicatif).</p>
-					</div>
-					<form class="tool-form" data-calculator="endettement" novalidate>
-						<div class="tool-form__grid"><p class="tool-field"><label for="endettement-income">Revenu mensuel brut ($)</label><input id="endettement-income" name="income" type="number" inputmode="decimal" min="1" step="100" value="8500" data-field></p><p class="tool-field"><label for="endettement-housing">Frais logement ($ / mois)</label><input id="endettement-housing" name="housing" type="number" inputmode="decimal" min="0" step="50" value="2100" data-field></p><p class="tool-field"><label for="endettement-debts">Autres dettes ($ / mois)</label><input id="endettement-debts" name="debts" type="number" inputmode="decimal" min="0" step="50" value="450" data-field></p></div>
-						<div class="tool-results" data-results aria-live="polite"></div>
-					</form>
-				</div>
-					</div>
-					<p class="legal-note reveal">Ces calculateurs sont fournis à titre informatif. Ils ne remplacent pas un avis professionnel, une offre de prêteur ni une lecture officielle d’un programme ou d’un crédit d’impôt.</p>
-				</div>
-			</section>
-			<section class="content-section band band--cta">
-				<div class="section-block section-block--narrow reveal">
-					<h2 class="section-header__title">Un chiffre, et ensuite ?</h2>
-					<p class="section-lede">Nous transformons l’estimation en dossier crédible auprès des bons interlocuteurs.</p>
-					<p class="section-cta">
-						<a class="button" href="#contact" data-nav="contact">
-							Parler à un conseiller
-							<span class="button__icon" aria-hidden="true">→</span>
-						</a>
-					</p>
-				</div>
-			</section>
-		</article>
-
-		<article id="page-blogue" class="page" data-page="blogue">
-			<section class="content-section blog-hero">
-				<div class="section-block reveal">
-					<header class="section-header section-header--flush">
-						<p class="eyebrow">Perspectives</p>
-						<h1 class="entry__title">Blogue</h1>
-						<p class="section-lede">Conseils et mises à jour sur les financements, subventions et crédits d’impôt au Québec.</p>
-					</header>
-				</div>
-			</section>
-			<section class="content-section band blog-index">
-				<div class="section-block">
-					<ul class="post-grid">
-						<li class="post-grid__item post-grid__item--featured reveal">
-							<article class="post-card">
-								<a class="post-card__media" href="#blogue" tabindex="-1" aria-hidden="true">
-									<img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80" alt="" width="1400" height="900" loading="eager" decoding="async">
-								</a>
-								<div class="post-card__body">
-									<p class="post-card__meta"><time>15 juillet 2026</time><span class="post-card__sep" aria-hidden="true">·</span><span>Financements</span></p>
-									<h2 class="post-card__title"><a href="#blogue">Comment préparer un dossier de financement qui se lit bien</a></h2>
-									<div class="post-card__excerpt"><p>Les chiffres comptent. Le récit aussi. Voici comment présenter un besoin clair aux bons interlocuteurs.</p></div>
-									<a class="post-card__link" href="#blogue">Lire l’article <span aria-hidden="true">→</span></a>
-								</div>
-							</article>
-						</li>
-						<li class="post-grid__item reveal">
-							<article class="post-card">
-								<a class="post-card__media" href="#blogue" tabindex="-1" aria-hidden="true">
-									<img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1000&q=80" alt="" width="1000" height="700" loading="lazy" decoding="async">
-								</a>
-								<div class="post-card__body">
-									<p class="post-card__meta"><time>8 juillet 2026</time><span class="post-card__sep" aria-hidden="true">·</span><span>Subventions</span></p>
-									<h2 class="post-card__title"><a href="#blogue">Subventions : trois erreurs fréquentes avant le dépôt</a></h2>
-									<div class="post-card__excerpt"><p>Critères mal lus, budget flou, pièces manquantes. Ce qu’il faut vérifier avant d’envoyer.</p></div>
-									<a class="post-card__link" href="#blogue">Lire l’article <span aria-hidden="true">→</span></a>
-								</div>
-							</article>
-						</li>
-						<li class="post-grid__item reveal">
-							<article class="post-card">
-								<a class="post-card__media" href="#blogue" tabindex="-1" aria-hidden="true">
-									<span class="post-card__placeholder"></span>
-								</a>
-								<div class="post-card__body">
-									<p class="post-card__meta"><time>1 juillet 2026</time><span class="post-card__sep" aria-hidden="true">·</span><span>Crédits d’impôt</span></p>
-									<h2 class="post-card__title"><a href="#blogue">RS&DE : ce qui doit être documenté dès le départ</a></h2>
-									<div class="post-card__excerpt"><p>Sans traçabilité, le crédit s’effrite. Les bases à mettre en place avant la fin d’exercice.</p></div>
-									<a class="post-card__link" href="#blogue">Lire l’article <span aria-hidden="true">→</span></a>
-								</div>
-							</article>
-						</li>
-					</ul>
-				</div>
-			</section>
-		</article>
-
-		<article id="page-contact" class="page" data-page="contact">
-			<section class="content-section">
-				<div class="section-block contact-layout">
-					<div class="contact-layout__main reveal">
-						<header class="section-header">
-							<p class="eyebrow">Contact</p>
-							<h1 class="entry__title">Contact</h1>
-							<p class="section-lede">Parlez-nous de votre entreprise et de votre projet. Nous vous répondons rapidement.</p>
-						</header>
-						<form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('.form-success')?.remove(); var s=document.createElement('p'); s.className='form-success'; s.setAttribute('role','status'); s.textContent='Aperçu seulement. L’envoi réel passera par WordPress.'; this.prepend(s);">
-							<p>
-								<label for="contact_name">Nom complet *</label>
-								<input id="contact_name" required autocomplete="name">
-							</p>
-							<p>
-								<label for="contact_email">Courriel *</label>
-								<input type="email" id="contact_email" required autocomplete="email">
-							</p>
-							<p>
-								<label for="contact_phone">Téléphone</label>
-								<input type="tel" id="contact_phone" autocomplete="tel">
-							</p>
-							<p>
-								<label for="contact_message">Votre projet en quelques mots *</label>
-								<textarea id="contact_message" rows="5" required></textarea>
-							</p>
-							<p class="form-note">Les champs marqués d’un astérisque sont obligatoires. Vos renseignements restent confidentiels.</p>
-							<p>
-								<button type="submit" class="button">
-									Envoyer le message
-									<span class="button__icon" aria-hidden="true">→</span>
-								</button>
-							</p>
-						</form>
-					</div>
-					<aside class="aside-panel reveal">
-						<div class="aside-panel__inner">
-							<h2 class="feature-grid__title">Autres moyens</h2>
-							<p>Préférez écrire ou téléphoner directement ? Utilisez les coordonnées ci-dessous.</p>
-							<p>Téléphone et courriel s’ajouteront dans Site Options (WordPress).</p>
-						</div>
-					</aside>
-				</div>
-			</section>
-		</article>
-	</main>
-
-	<footer class="site-footer" role="contentinfo">
-		<div class="site-footer__inner">
-			<a class="site-logo site-logo--footer" href="#accueil" data-nav="accueil" aria-label="La Suite CSA">
-				<img class="site-logo__img" src="../wp-content/themes/la-suite-csa/assets/images/brand/logo-la-suite-csa-gris.svg" alt="La Suite CSA" width="301" height="177" decoding="async">
-			</a>
-			<p class="site-footer__blurb">La Suite CSA Inc. accompagne les entreprises du Québec en financements, subventions et crédits d’impôt.</p>
-			<nav aria-label="Pied de page">
-				<ul class="site-footer__nav-list">
-					<li><a href="#accueil" data-nav="accueil">Accueil</a></li>
-					<li><a href="#services" data-nav="services">Services</a></li>
-					<li><a href="#entreprise" data-nav="entreprise">Entreprise</a></li>
-					<li><a href="#ressources" data-nav="ressources">Ressources</a></li>
-					<li><a href="#outils" data-nav="outils">Outils</a></li>
-					<li><a href="#blogue" data-nav="blogue">Blogue</a></li>
-					<li><a href="#contact" data-nav="contact">Contact</a></li>
-				</ul>
-			</nav>
-			<p class="site-footer__copy">&copy; 2026 La Suite CSA Inc.</p>
+			</div>
 		</div>
-	</footer>
+	</section>
 
-	<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-	<script src="../wp-content/themes/la-suite-csa/assets/js/main.js?v=4.5.0"></script>
-	<script src="../wp-content/themes/la-suite-csa/assets/js/outils.js"></script>
-	<script>
-		function showPage(id) {
-			document.querySelectorAll('.page').forEach(function (el) {
-				el.classList.toggle('is-active', el.getAttribute('data-page') === id);
-			});
-			document.querySelectorAll('[data-nav]').forEach(function (el) {
-				if (el.classList.contains('header-cta') || el.classList.contains('button') || el.classList.contains('tray__link') || el.classList.contains('lever')) return;
-				el.classList.toggle('is-active', el.getAttribute('data-nav') === id);
-			});
-			var isHome = id === 'accueil';
-			document.body.classList.toggle('home', isHome);
-			document.body.classList.toggle('front-page', isHome);
-			document.body.classList.remove('nav-open');
-			var toggle = document.querySelector('.nav-toggle');
-			if (toggle) toggle.setAttribute('aria-expanded', 'false');
-			window.scrollTo(0, 0);
-			var active = document.querySelector('.page.is-active');
-			if (window.laSuiteCsaMotion && typeof window.laSuiteCsaMotion.refresh === 'function') {
-				window.laSuiteCsaMotion.refresh(active || document);
-			}
-			if (window.laSuiteCsaOutils && typeof window.laSuiteCsaOutils.init === 'function') {
-				window.laSuiteCsaOutils.init(active || document);
-			} else {
-				document.querySelectorAll('.page.is-active .reveal').forEach(function (el) {
-					el.classList.remove('is-in');
-					requestAnimationFrame(function () { el.classList.add('is-in'); });
-				});
-			}
-		}
-		document.querySelectorAll('[data-nav]').forEach(function (link) {
-			link.addEventListener('click', function (e) {
-				e.preventDefault();
-				var id = link.getAttribute('data-nav');
-				showPage(id);
-				history.replaceState(null, '', '#' + id);
-			});
-		});
-		var hash = (location.hash || '#accueil').slice(1);
-		if (document.querySelector('[data-page="' + hash + '"]')) showPage(hash);
-	</script>
+	<section class="inter" data-section="dark">
+		<div class="inter__media">
+			<img src="../wp-content/themes/la-suite-csa/assets/images/editorial/interlude-facade.jpg" alt="" width="2400" height="1600">
+		</div>
+		<div class="inter__content wrap">
+			<p class="label label--on-dark">Contexte</p>
+			<h2 class="inter__title split">Les occasions existent. Encore faut-il les saisir.</h2>
+			<p class="inter__body fade">Entre les programmes publics, les critères changeants et la paperasse, beaucoup d’entreprises passent à côté d’argent auquel elles auraient droit. Notre rôle : tracer le chemin et accélérer les dossiers.</p>
+		</div>
+	</section>
+
+	<section class="hscroll" id="deroulement" data-section="dark">
+		<div class="hscroll__pin">
+			<div class="hscroll__track">
+				<div class="hpanel hpanel--intro">
+					<p class="label label--on-dark">Déroulement</p>
+					<h2 class="hpanel__title split">Comment ça se passe</h2>
+				</div>
+				<article class="hpanel">
+					<figure class="hpanel__fig" data-cursor><img src="../wp-content/themes/la-suite-csa/assets/images/editorial/atelier.jpg" alt="" width="1600" height="1067"></figure>
+					<div class="hpanel__body"><p class="label label--on-dark">Déroulement</p><h3 class="hpanel__name">Vous nous parlez du projet</h3><p>Un échange court pour comprendre votre entreprise, vos échéances et ce qui est réaliste à viser.</p></div>
+				</article>
+				<article class="hpanel">
+					<figure class="hpanel__fig" data-cursor><img src="../wp-content/themes/la-suite-csa/assets/images/editorial/service-finance.jpg" alt="" width="1600" height="1067"></figure>
+					<div class="hpanel__body"><p class="label label--on-dark">Déroulement</p><h3 class="hpanel__name">On cartographie les leviers</h3><p>Financement, subventions, crédits d’impôt : on identifie ce qui colle vraiment à votre situation.</p></div>
+				</article>
+				<article class="hpanel">
+					<figure class="hpanel__fig" data-cursor><img src="../wp-content/themes/la-suite-csa/assets/images/editorial/service-docs.jpg" alt="" width="1600" height="918"></figure>
+					<div class="hpanel__body"><p class="label label--on-dark">Déroulement</p><h3 class="hpanel__name">On bâtit le dossier</h3><p>Documents, arguments, critères : un dossier clair, prêt à présenter aux bons interlocuteurs.</p></div>
+				</article>
+				<article class="hpanel">
+					<figure class="hpanel__fig" data-cursor><img src="../wp-content/themes/la-suite-csa/assets/images/editorial/service-team.jpg" alt="" width="1600" height="1050"></figure>
+					<div class="hpanel__body"><p class="label label--on-dark">Déroulement</p><h3 class="hpanel__name">Dépôt et échanges</h3><p>Nous accompagnons le dépôt et les allers-retours, pour éviter les angles morts administratifs.</p></div>
+				</article>
+				<article class="hpanel">
+					<figure class="hpanel__fig" data-cursor><img src="../wp-content/themes/la-suite-csa/assets/images/editorial/chantier.jpg" alt="" width="2000" height="1333"></figure>
+					<div class="hpanel__body"><p class="label label--on-dark">Déroulement</p><h3 class="hpanel__name">Suivi jusqu’à la réponse</h3><p>Vous gardez le fil. On reste dans le dossier jusqu’à obtenir des réponses concrètes.</p></div>
+				</article>
+			</div>
+			<div class="hscroll__bar wrap" aria-hidden="true"><span class="label label--on-dark">Défiler</span><div class="hscroll__prog"><i></i></div></div>
+		</div>
+	</section>
+
+	<section class="value" data-section="light">
+		<div class="wrap">
+			<div class="sec-head"><p class="label">Ce qui nous guide</p><span class="hair"></span></div>
+			<div class="value__grid">
+				<div class="value__side">
+					<h2 class="value__title split">Ce qui nous guide</h2>
+					<figure class="value__fig reveal-clip" data-cursor><div class="parallax" data-speed="0.1"><img src="../wp-content/themes/la-suite-csa/assets/images/editorial/meeting.jpg" alt="Conversation d’affaires" width="1800" height="1012"></div></figure>
+				</div>
+				<ul class="value__list">
+					<li class="vrow"><span class="vrow__t">Clarté</span><span class="vrow__d">Vous savez ce qui est réaliste, ce qui ne l’est pas, et pourquoi.</span></li>
+					<li class="vrow"><span class="vrow__t">Rigueur</span><span class="vrow__d">Des dossiers préparés pour passer les filtres, pas pour « essayer ».</span></li>
+					<li class="vrow"><span class="vrow__t">Proximité</span><span class="vrow__d">Un accompagnement humain, ancré dans les réalités des entreprises du Québec.</span></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="cta" id="contact" data-section="dark">
+		<div class="cta__media"><img src="../wp-content/themes/la-suite-csa/assets/images/editorial/meeting.jpg" alt="" width="1800" height="1012"></div>
+		<div class="cta__grade"></div>
+		<div class="wrap cta__wrap">
+			<p class="label label--on-dark">Contact</p>
+			<h2 class="cta__title split">Votre projet mérite d’être financé correctement.</h2>
+			<p class="cta__lede fade">Parlez-nous de votre situation. Nous vous dirons rapidement ce qui est réaliste : financement, subvention, crédit d’impôt, ou une combinaison.</p>
+			<div class="cta__row">
+				<a class="cta__link" href="tel:+15148302355"><span class="label label--on-dark">Téléphone</span><span class="cta__big">514-830-2355</span></a>
+				<div class="cta__link"><span class="label label--on-dark">Adresse</span><span class="cta__big">2011 Rue Léonard-de-Vinci, Sainte-Julie</span></div>
+				<a class="btn btn--light" href="services.html" data-magnetic><span class="btn__label" data-text="Nous contacter">Nous contacter</span><span class="btn__arrow"></span></a>
+			</div>
+		</div>
+	</section>
+</main>
+<footer class="ftr" data-section="dark">
+	<div class="wrap">
+		<div class="ftr__top">
+			<a class="ftr__logo" href="#top"><img src="../wp-content/themes/la-suite-csa/assets/images/brand/logo-la-suite-csa-blanc.svg" alt="La Suite CSA" width="301" height="177"></a>
+			<p class="ftr__tag">La Suite CSA Inc. accompagne les entreprises du Québec en financements, subventions et crédits d’impôt.</p>
+		</div>
+		<div class="ftr__cols">
+			<div><p class="label label--on-dark">Contact</p><p><a href="tel:+15148302355">514-830-2355</a></p><p>2011 Rue Léonard-de-Vinci, Suite 100, Sainte-Julie, QC J3E 1Z2</p></div>
+			<div><p class="label label--on-dark">Pages</p><ul><li><a href="#top">Accueil</a></li><li><a href="services.html">Services</a></li><li><a href="services.html">Entreprise</a></li><li><a href="services.html">Ressources</a></li><li><a href="services.html">Outils</a></li><li><a href="services.html">Contact</a></li></ul></div>
+			<div><p class="label label--on-dark">Blogue</p><p>Articles à venir sur les programmes et les dossiers.</p></div>
+		</div>
+		<p class="ftr__base"><span>© 2026 La Suite CSA Inc.</span><span>Financements, subventions, crédits d’impôt</span></p>
+	</div>
+</footer>
+<script src="../wp-content/themes/la-suite-csa/assets/vendor/gsap.min.js"></script>
+<script src="../wp-content/themes/la-suite-csa/assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../wp-content/themes/la-suite-csa/assets/vendor/lenis.min.js"></script>
+<script src="../wp-content/themes/la-suite-csa/assets/vendor/split-type.min.js"></script>
+<script src="../wp-content/themes/la-suite-csa/assets/js/main.js"></script>
 </body>
 </html>

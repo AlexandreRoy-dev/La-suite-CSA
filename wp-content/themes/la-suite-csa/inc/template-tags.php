@@ -344,7 +344,7 @@ function la_suite_csa_split_headline( $text ) {
 }
 
 /**
- * Official logo: Customizer logo when set, otherwise the bundled grey SVG.
+ * Official logo: Customizer logo when set, otherwise the bundled white and blue SVGs.
  *
  * @param string $placement header or footer.
  * @return string
@@ -352,7 +352,7 @@ function la_suite_csa_split_headline( $text ) {
 function la_suite_csa_brand_logo( $placement = 'header' ) {
 	$placement = ( 'footer' === $placement ) ? 'footer' : 'header';
 	$alt       = 'La Suite CSA';
-	$img       = '';
+	$base      = LA_SUITE_CSA_URI . '/assets/images/brand/';
 
 	if ( has_custom_logo() ) {
 		$logo_id = (int) get_theme_mod( 'custom_logo' );
@@ -361,7 +361,7 @@ function la_suite_csa_brand_logo( $placement = 'header' ) {
 			'full',
 			false,
 			array(
-				'class'    => 'site-logo__img',
+				'class'    => 'hdr__logo-img',
 				'alt'      => $alt,
 				'decoding' => 'async',
 			)
@@ -369,19 +369,29 @@ function la_suite_csa_brand_logo( $placement = 'header' ) {
 		if ( is_string( $img ) && preg_match( '/\b(?:width|height)="0"/', $img ) ) {
 			$img = preg_replace( '/\s(?:width|height)="0"/', '', $img );
 		}
-	}
-
-	if ( ! $img ) {
+	} elseif ( 'footer' === $placement ) {
 		$img = sprintf(
-			'<img class="site-logo__img" src="%1$s" alt="%2$s" width="301" height="177" decoding="async">',
-			esc_url( LA_SUITE_CSA_URI . '/assets/images/brand/logo-la-suite-csa-gris.svg' ),
+			'<img class="hdr__logo-img" src="%1$s" alt="%2$s" width="301" height="177" decoding="async">',
+			esc_url( $base . 'logo-la-suite-csa-blanc.svg' ),
 			esc_attr( $alt )
+		);
+	} else {
+		$img  = sprintf(
+			'<img class="hdr__logo-w" src="%1$s" alt="%2$s" width="301" height="177" decoding="async">',
+			esc_url( $base . 'logo-la-suite-csa-blanc.svg' ),
+			esc_attr( $alt )
+		);
+		$img .= sprintf(
+			'<img class="hdr__logo-n" src="%1$s" alt="" width="301" height="177" decoding="async">',
+			esc_url( $base . 'logo-la-suite-csa-bleu.svg' )
 		);
 	}
 
+	$class = ( 'footer' === $placement ) ? 'ftr__logo' : 'hdr__logo';
+
 	return sprintf(
-		'<a class="site-logo site-logo--%1$s" href="%2$s" aria-label="%3$s">%4$s</a>',
-		esc_attr( $placement ),
+		'<a class="%1$s" href="%2$s" aria-label="%3$s">%4$s</a>',
+		esc_attr( $class ),
 		esc_url( home_url( '/' ) ),
 		esc_attr( $alt ),
 		$img

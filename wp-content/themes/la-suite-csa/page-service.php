@@ -29,6 +29,16 @@ if ( ! $data ) {
 
 $media   = la_suite_csa_media_get( $data['media'] );
 $atmos   = la_suite_csa_media_get( 'atmosphere' );
+
+get_template_part(
+	'template-parts/page-intro',
+	null,
+	array(
+		'eyebrow' => $data['eyebrow'] ?? 'Services',
+		'title'   => $data['title'],
+		'lede'    => $data['lead'] ?? '',
+	)
+);
 $all     = la_suite_csa_service_pages();
 $related = array();
 foreach ( $data['related'] ?? array() as $rel_slug ) {
@@ -55,12 +65,6 @@ foreach ( $data['related'] ?? array() as $rel_slug ) {
 			</div>
 		<?php endif; ?>
 		<div class="reveal">
-			<header class="section-header section-header--flush">
-				<h1 class="entry__title"><?php echo esc_html( $data['title'] ); ?></h1>
-				<?php if ( ! empty( $data['lead'] ) ) : ?>
-					<p class="section-lede"><?php echo esc_html( $data['lead'] ); ?></p>
-				<?php endif; ?>
-			</header>
 			<?php if ( ! empty( $data['intro'] ) ) : ?>
 				<div class="prose-stack">
 					<p><?php echo esc_html( $data['intro'] ); ?></p>

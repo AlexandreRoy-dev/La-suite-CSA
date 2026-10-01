@@ -1,6 +1,7 @@
 <?php
 /**
  * Editorial photos. Founder portraits ship with the theme.
+ * Architecture and business photos are local copies, graded in CSS.
  *
  * @package La_Suite_CSA
  */
@@ -10,51 +11,93 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Theme-relative editorial image URL.
+ *
+ * @param string $file File name.
+ * @return string
+ */
+function la_suite_csa_editorial_uri( $file ) {
+	return LA_SUITE_CSA_URI . '/assets/images/editorial/' . ltrim( (string) $file, '/' );
+}
+
+/**
  * Media library for the theme.
  *
- * @return array<string, array{src:string,alt:string}>
+ * @return array<string, array{src:string,alt:string,width:int,height:int}>
  */
 function la_suite_csa_media() {
 	return array(
 		'hero'         => array(
-			'src' => 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=2000&q=80',
-			'alt' => '',
+			'src'    => la_suite_csa_editorial_uri( 'hero-towers.jpg' ),
+			'alt'    => 'Tours de bureaux vues en contre-plongée',
+			'width'  => 2400,
+			'height' => 1600,
+		),
+		'facade'       => array(
+			'src'    => la_suite_csa_editorial_uri( 'interlude-facade.jpg' ),
+			'alt'    => 'Façade contemporaine en contre-plongée',
+			'width'  => 2400,
+			'height' => 1600,
 		),
 		'atmosphere'   => array(
-			'src' => 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1600&q=80',
-			'alt' => 'Chantier et projet d’entreprise',
+			'src'    => la_suite_csa_editorial_uri( 'chantier.jpg' ),
+			'alt'    => 'Chantier et projet d’entreprise',
+			'width'  => 2000,
+			'height' => 1333,
 		),
 		'financements' => array(
-			'src' => 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=80',
-			'alt' => 'Atelier de production',
+			'src'    => la_suite_csa_editorial_uri( 'service-finance.jpg' ),
+			'alt'    => 'Atelier de production',
+			'width'  => 1600,
+			'height' => 1067,
 		),
 		'subventions'  => array(
-			'src' => 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80',
-			'alt' => 'Équipe autour d’un dossier',
+			'src'    => la_suite_csa_editorial_uri( 'service-team.jpg' ),
+			'alt'    => 'Équipe autour d’un dossier',
+			'width'  => 1600,
+			'height' => 1050,
 		),
 		'credits'      => array(
-			'src' => 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80',
-			'alt' => 'Documents et pièces d’un dossier',
+			'src'    => la_suite_csa_editorial_uri( 'service-docs.jpg' ),
+			'alt'    => 'Documents et pièces d’un dossier',
+			'width'  => 1600,
+			'height' => 918,
 		),
 		'entreprise'   => array(
-			'src' => 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80',
-			'alt' => 'Équipe en discussion',
+			'src'    => la_suite_csa_editorial_uri( 'discussion.jpg' ),
+			'alt'    => 'Équipe en discussion',
+			'width'  => 1600,
+			'height' => 1067,
 		),
 		'cta'          => array(
-			'src' => 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1600&q=80',
-			'alt' => 'Conversation d’affaires',
+			'src'    => la_suite_csa_editorial_uri( 'meeting.jpg' ),
+			'alt'    => 'Conversation d’affaires',
+			'width'  => 1800,
+			'height' => 1012,
+		),
+		'atelier'      => array(
+			'src'    => la_suite_csa_editorial_uri( 'atelier.jpg' ),
+			'alt'    => 'Atelier industriel',
+			'width'  => 1600,
+			'height' => 1067,
 		),
 		'founder-1'    => array(
-			'src' => LA_SUITE_CSA_URI . '/assets/images/founders/charles-brassard.jpg',
-			'alt' => 'Charles Brassard',
+			'src'    => LA_SUITE_CSA_URI . '/assets/images/founders/charles-brassard.jpg',
+			'alt'    => 'Charles Brassard',
+			'width'  => 1067,
+			'height' => 1600,
 		),
 		'founder-2'    => array(
-			'src' => LA_SUITE_CSA_URI . '/assets/images/founders/anika-gaudet.jpg',
-			'alt' => 'Anika Gaudet',
+			'src'    => LA_SUITE_CSA_URI . '/assets/images/founders/anika-gaudet.jpg',
+			'alt'    => 'Anika Gaudet',
+			'width'  => 1067,
+			'height' => 1600,
 		),
 		'founder-3'    => array(
-			'src' => LA_SUITE_CSA_URI . '/assets/images/founders/sandrine-quirion.jpg',
-			'alt' => 'Sandrine Quirion',
+			'src'    => LA_SUITE_CSA_URI . '/assets/images/founders/sandrine-quirion.jpg',
+			'alt'    => 'Sandrine Quirion',
+			'width'  => 1067,
+			'height' => 1600,
 		),
 	);
 }
@@ -63,7 +106,7 @@ function la_suite_csa_media() {
  * Get one media item.
  *
  * @param string $key Key.
- * @return array{src:string,alt:string}|null
+ * @return array{src:string,alt:string,width:int,height:int}|null
  */
 function la_suite_csa_media_get( $key ) {
 	$all = la_suite_csa_media();

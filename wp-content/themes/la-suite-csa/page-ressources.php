@@ -9,16 +9,17 @@
 get_header();
 
 $data = la_suite_csa_ressources();
-?>
 
-<section class="content-section ressources-hero">
-	<div class="section-block reveal">
-		<header class="section-header">
-			<h1 class="entry__title"><?php echo esc_html( $data['title'] ); ?></h1>
-			<p class="section-lede"><?php echo esc_html( $data['lead'] ); ?></p>
-		</header>
-	</div>
-</section>
+get_template_part(
+	'template-parts/page-intro',
+	null,
+	array(
+		'eyebrow' => 'Ressources',
+		'title'   => $data['title'],
+		'lede'    => $data['lead'],
+	)
+);
+?>
 
 <?php foreach ( $data['categories'] as $category ) : ?>
 	<section class="content-section band">

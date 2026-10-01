@@ -1,8 +1,8 @@
 # La Suite CSA Inc.
 
-Thème WordPress vitrine, version **4.5.0**. Services : **Financements**, **Subventions**, **Crédits d’impôt**.
+Thème WordPress vitrine, version **5.0.0**. Services : **Financements**, **Subventions**, **Crédits d’impôt**.
 
-Direction visuelle sombre, construite sur le bleu de marque du client, avec typographie gris clair. La structure reprend la maquette [darkcsa.roymarketing.ca](https://darkcsa.roymarketing.ca/).
+Direction éditoriale claire, proche du rythme de [versa.roymarketing.ca](https://versa.roymarketing.ca/) : hero plein écran, texte découpé, section services épinglée, défilement horizontal du déroulement. La palette reste celle de La Suite CSA (bleu `#1C3B6B`, gris `#F1F2F2`, noir `#231F20`, blanc). La version 4.5.0 est conservée sur le tag `v4.5.0-backup`.
 
 Staging : [https://lasuitecsa.wpcomstaging.com](https://lasuitecsa.wpcomstaging.com)
 
@@ -10,7 +10,7 @@ Staging : [https://lasuitecsa.wpcomstaging.com](https://lasuitecsa.wpcomstaging.
 
 | Où | Quoi |
 |----|------|
-| **Pages → Accueil** | Hero (sur-titre, 2 lignes de marque, texte, bouton, visuel), 3 cartes glass, texte de promesse |
+| **Pages → Accueil** | Hero (sur-titre, 2 lignes de marque, texte, bouton, visuel), 3 services (piliers), texte de promesse |
 | **Site Options** (menu) | Pied de page, téléphone, adresse, courriel, réseaux, fondateurs (nom, rôle, extrait, bio, photo) |
 | **Liens ressources** (menu) | Annuaire de la page Ressources : ajouter, modifier, retirer, réordonner (champ Ordre), catégories, logo, URL |
 | **Articles** | Blogue |
@@ -36,9 +36,13 @@ Le design (CSS, structure, animations) reste dans le code thème : le client ne 
 | Near black | `#231F20` |
 | White | `#FFFFFF` |
 
-**Type :** Plus Jakarta Sans.
+**Type :** Inter (texte) et Syne (titres), fichiers locaux dans `assets/fonts/`.
 
-**Logo :** `assets/images/brand/logo-la-suite-csa-gris.svg` dans l’en-tête et le pied de page. Un logo défini dans l’outil de personnalisation le remplace. Le favicon du thème s’affiche tant qu’aucune icône de site WordPress n’est enregistrée.
+**Motion :** GSAP 3.12.5, ScrollTrigger, Lenis 1.1.20 et SplitType 0.3.4, dans `assets/vendor/`. Aucune étape de build à l’installation. `prefers-reduced-motion` et `?static` désactivent l’épinglage et les animations.
+
+**Logo :** paire blanc / bleu dans l’en-tête, logo blanc dans le pied de page. Un logo défini dans l’outil de personnalisation remplace cette paire. Le favicon du thème s’affiche tant qu’aucune icône de site WordPress n’est enregistrée.
+
+**Photos :** voir `wp-content/themes/la-suite-csa/CREDITS.md`.
 
 ## Déployer le thème (WordPress.com Business / Atomic)
 
