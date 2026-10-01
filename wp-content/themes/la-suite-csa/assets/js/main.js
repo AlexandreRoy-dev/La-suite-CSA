@@ -71,22 +71,63 @@
 		});
 	}
 
+	function adminOffset() {
+		var bar = document.getElementById("wpadminbar");
+		if (!bar) return 0;
+		var rect = bar.getBoundingClientRect();
+		return rect.height > 0 && rect.bottom > 0 ? Math.round(rect.height) : 0;
+	}
+
 	function updateHeader(y) {
 		if (!hdr) return;
-		var probe = document.elementFromPoint(window.innerWidth / 2, hdr.offsetHeight + 8);
-		var sec = probe && probe.closest("[data-section]");
+		if (typeof y !== "number" || isNaN(y)) y = window.scrollY || 0;
+		var bar = adminOffset();
+		hdr.style.top = bar ? bar + "px" : "";
+		var probeY = Math.min(window.innerHeight - 2, bar + hdr.offsetHeight + 12);
+		var probe = document.elementFromPoint(Math.min(window.innerWidth - 2, window.innerWidth / 2), probeY);
+		if (probe && probe.closest && probe.closest(".hdr, #wpadminbar")) {
+			probe = document.elementFromPoint(window.innerWidth / 2, probeY + hdr.offsetHeight);
+		}
+		var sec = probe && probe.closest ? probe.closest("[data-section]") : null;
 		var tone = sec ? sec.getAttribute("data-section") : "light";
 		if (document.body.classList.contains("nav-open")) tone = "dark";
 		var overDarkTop = tone === "dark" && y < window.innerHeight * 0.72;
 		hdr.classList.toggle("is-solid", tone === "light" && !overDarkTop);
 		hdr.classList.toggle("is-dark", tone === "dark" && !overDarkTop && y > 24);
-		if (!reduce && !document.body.classList.contains("nav-open")) {
-			hdr.classList.toggle("is-hidden", y > window.innerHeight * 0.8 && y > lastY + 4);
-			if (y < lastY - 4) hdr.classList.remove("is-hidden");
-		} else {
+		var slotBottom = bar + hdr.offsetHeight;
+		var overFooter = footerHitsHeader(bar, slotBottom);
+		var down = y > lastY + 8;
+		var up = y < lastY - 8;
+		if (document.body.classList.contains("nav-open")) {
+			hdr.classList.remove("is-hidden");
+		} else if (overFooter) {
+			if (!hdr.classList.contains("is-hidden")) {
+				hdr.classList.add("is-instant");
+				hdr.classList.add("is-hidden");
+				window.requestAnimationFrame(function () {
+					window.requestAnimationFrame(function () { hdr.classList.remove("is-instant"); });
+				});
+			}
+		} else if (!reduce && y > window.innerHeight * 0.8 && down) {
+			hdr.classList.add("is-hidden");
+		} else if (reduce || up || y < bar + 24) {
 			hdr.classList.remove("is-hidden");
 		}
 		lastY = y;
+	}
+
+	function footerHitsHeader(slotTop, slotBottom) {
+		var footer = document.querySelector(".ftr");
+		if (!footer) return false;
+		var rect = footer.getBoundingClientRect();
+		if (rect.top < slotBottom + 12 && rect.bottom > slotTop) return true;
+		var nodes = document.querySelectorAll(".ftr__logo, .ftr__tag");
+		for (var i = 0; i < nodes.length; i++) {
+			var box = nodes[i].getBoundingClientRect();
+			if (box.width < 1 || box.height < 1) continue;
+			if (box.top < slotBottom + 12 && box.bottom > slotTop) return true;
+		}
+		return false;
 	}
 
 	function splitLines(el) {
@@ -126,7 +167,8 @@
 		window.__lenis = lenis;
 		lenis.on("scroll", function (e) {
 			ScrollTrigger.update();
-			updateHeader(e.scroll);
+			var y = e && typeof e.scroll === "number" ? e.scroll : window.scrollY;
+			updateHeader(y);
 		});
 		gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
 		gsap.ticker.lagSmoothing(0);
@@ -344,9 +386,22 @@
 			});
 		}
 
-		window.addEventListener("load", function () { ScrollTrigger.refresh(); });
+		scheduleRefresh();
+		window.addEventListener("load", scheduleRefresh);
+		window.addEventListener("pageshow", scheduleRefresh);
 		if (document.fonts && document.fonts.ready) {
-			document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
+			document.fonts.ready.then(scheduleRefresh);
+		}
+		$all("img").forEach(function (img) {
+			if (img.complete) return;
+			img.addEventListener("load", scheduleRefresh, { once: true });
+			img.addEventListener("error", scheduleRefresh, { once: true });
+		});
+		if ("ResizeObserver" in window) {
+			var watcher = new ResizeObserver(function () { scheduleRefresh(); });
+			watcher.observe(document.body);
+			var track = $(".hscroll__track");
+			if (track) watcher.observe(track);
 		}
 		if (!isHome) window.__ready = true;
 	}
@@ -473,24 +528,75 @@
 		return function () { sec.classList.remove("is-pinned"); };
 	}
 
+	var refreshTimer = 0;
+	var refreshSnapshot = "";
+	function scheduleRefresh() {
+		if (!window.ScrollTrigger) return;
+		window.clearTimeout(refreshTimer);
+		refreshTimer = window.setTimeout(function () {
+			var track = $(".hscroll__track");
+			var snap = [
+				document.documentElement.scrollHeight,
+				track ? track.scrollWidth : 0,
+				track ? track.offsetWidth : 0,
+				window.innerWidth,
+				window.innerHeight
+			].join(":");
+			if (snap === refreshSnapshot) return;
+			ScrollTrigger.refresh();
+			if (lenis && typeof lenis.resize === "function") lenis.resize();
+			var trackAfter = $(".hscroll__track");
+			refreshSnapshot = [
+				document.documentElement.scrollHeight,
+				trackAfter ? trackAfter.scrollWidth : 0,
+				trackAfter ? trackAfter.offsetWidth : 0,
+				window.innerWidth,
+				window.innerHeight
+			].join(":");
+		}, 80);
+	}
+
 	function pinHorizontal() {
 		var svc = $(".hscroll");
 		var track = $(".hscroll__track");
 		if (!svc || !track) return;
 		svc.classList.add("is-hscroll");
-		var dist = function () { return Math.max(0, track.scrollWidth - window.innerWidth); };
+		function distance() {
+			var width = 0;
+			$all(".hpanel", track).forEach(function (panel) {
+				width += panel.offsetWidth;
+			});
+			var view = document.documentElement.clientWidth || window.innerWidth;
+			var fromPanels = Math.max(0, width - view);
+			var fromTrack = Math.max(0, track.scrollWidth - view);
+			return Math.round(fromPanels > 0 ? fromPanels : fromTrack);
+		}
+		ScrollTrigger.addEventListener("refreshInit", function () {
+			gsap.set(track, { x: 0 });
+		});
 		gsap.to(track, {
-			x: function () { return -dist(); },
+			x: function () { return -distance(); },
 			ease: "none",
 			scrollTrigger: {
 				trigger: svc,
 				start: "top top",
-				end: function () { return "+=" + dist(); },
+				end: function () { return "+=" + distance(); },
 				pin: ".hscroll__pin",
 				scrub: 0.85,
 				invalidateOnRefresh: true,
 				onUpdate: function (self) {
 					gsap.set(".hscroll__prog i", { scaleX: self.progress });
+				},
+				onRefresh: function (self) {
+					var pin = self.pin;
+					var spacer = pin && pin.parentElement;
+					if (!spacer || !spacer.classList.contains("pin-spacer") || svc.dataset.repin) return;
+					var expected = Math.round(pin.offsetHeight + distance());
+					if (spacer.offsetHeight <= expected + 8) return;
+					svc.dataset.repin = "1";
+					gsap.set(track, { x: 0 });
+					refreshSnapshot = "";
+					scheduleRefresh();
 				}
 			}
 		});

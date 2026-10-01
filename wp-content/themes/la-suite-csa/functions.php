@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'LA_SUITE_CSA_VERSION', '5.0.1' );
+define( 'LA_SUITE_CSA_VERSION', '5.0.2' );
 define( 'LA_SUITE_CSA_DIR', get_template_directory() );
 define( 'LA_SUITE_CSA_URI', get_template_directory_uri() );
 

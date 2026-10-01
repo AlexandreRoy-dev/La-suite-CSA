@@ -220,7 +220,6 @@ $aria_title  = trim( $hero_brand_line_1 . ' ' . $hero_brand_line_2 . ' ' . $hero
 							alt="<?php echo esc_attr( $pillar['media']['alt'] ); ?>"
 							width="<?php echo esc_attr( (string) $pillar['media']['width'] ); ?>"
 							height="<?php echo esc_attr( (string) $pillar['media']['height'] ); ?>"
-							loading="lazy"
 							decoding="async"
 						>
 					<?php endforeach; ?>
@@ -267,7 +266,6 @@ $aria_title  = trim( $hero_brand_line_1 . ' ' . $hero_brand_line_2 . ' ' . $hero
 								alt=""
 								width="<?php echo esc_attr( (string) $shot['width'] ); ?>"
 								height="<?php echo esc_attr( (string) $shot['height'] ); ?>"
-								loading="lazy"
 								decoding="async"
 							>
 						</figure>

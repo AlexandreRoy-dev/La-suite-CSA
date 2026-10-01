@@ -33,8 +33,8 @@ $show_cta = ! empty( $args['show_cta'] );
 		<?php endif; ?>
 		<ul class="team__grid">
 			<?php foreach ( $founders as $member ) : ?>
-				<li class="team__card reveal-clip" data-cursor>
-					<figure class="team__photo">
+				<li class="team__card" data-cursor>
+					<figure class="team__photo reveal-clip">
 						<img
 							src="<?php echo esc_url( $member['photo']['src'] ); ?>"
 							alt="<?php echo esc_attr( $member['photo']['alt'] ); ?>"

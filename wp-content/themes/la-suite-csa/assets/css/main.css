@@ -90,7 +90,6 @@ html {
 	-webkit-text-size-adjust: 100%;
 	text-rendering: optimizeLegibility;
 	scroll-padding-top: 96px;
-	overflow-x: clip;
 }
 
 html.lenis,
@@ -337,7 +336,12 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 }
 .hdr.is-dark .hdr__logo-n { opacity: 0; }
 .hdr.is-dark .hdr__logo-w { opacity: 1; }
-.hdr.is-hidden { transform: translateY(-110%); }
+.hdr.is-hidden { transform: translateY(calc(-100% - 48px)); }
+.hdr.is-instant { transition: none; }
+body.admin-bar .hdr { top: 32px; }
+@media screen and (max-width: 782px) {
+	body.admin-bar .hdr { top: 46px; }
+}
 .hdr.is-top.is-solid .btn--sm { --bg: var(--blue); --fg: var(--white); }
 
 .nav-toggle {
@@ -821,13 +825,18 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 }
 .is-hscroll .hpanel {
 	width: 78vw;
+	max-width: 78vw;
+	min-width: 0;
 	flex: none;
 	height: 100%;
 	padding: 120px 5vw 110px;
 	border-top: 0;
 	border-left: 1px solid var(--line-dark);
 	align-items: center;
+	overflow: hidden;
 }
+.is-hscroll .hpanel__fig,
+.is-hscroll .hpanel__body { min-width: 0; max-width: 100%; }
 .is-hscroll .hpanel--intro {
 	width: 46vw;
 	border-left: 0;
