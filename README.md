@@ -1,6 +1,6 @@
 # La Suite CSA Inc.
 
-Thème WordPress vitrine, version **5.0.0**. Services : **Financements**, **Subventions**, **Crédits d’impôt**.
+Thème WordPress vitrine, version **5.0.1**. Services : **Financements**, **Subventions**, **Crédits d’impôt**.
 
 Direction éditoriale claire, proche du rythme de [versa.roymarketing.ca](https://versa.roymarketing.ca/) : hero plein écran, texte découpé, section services épinglée, défilement horizontal du déroulement. La palette reste celle de La Suite CSA (bleu `#1C3B6B`, gris `#F1F2F2`, noir `#231F20`, blanc). La version 4.5.0 est conservée sur le tag `v4.5.0-backup`.
 

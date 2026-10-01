@@ -47,15 +47,16 @@ for ( $i = 1; $i <= 3; $i++ ) {
 	);
 }
 
-$about_image = la_suite_csa_media_get( 'entreprise' );
+$about_image = la_suite_csa_media_get( 'about' );
 $facade      = la_suite_csa_media_get( 'facade' );
-$value_image = la_suite_csa_media_get( 'cta' );
+$value_image = la_suite_csa_media_get( 'value' );
+$cta_image   = la_suite_csa_media_get( 'cta' );
 $step_media  = array(
-	la_suite_csa_media_get( 'atelier' ),
-	la_suite_csa_media_get( 'financements' ),
-	la_suite_csa_media_get( 'credits' ),
-	la_suite_csa_media_get( 'subventions' ),
-	la_suite_csa_media_get( 'atmosphere' ),
+	la_suite_csa_media_get( 'step_talk' ),
+	la_suite_csa_media_get( 'step_map' ),
+	la_suite_csa_media_get( 'step_file' ),
+	la_suite_csa_media_get( 'step_exchange' ),
+	la_suite_csa_media_get( 'step_follow' ),
 );
 $phone       = la_suite_csa_get_phone();
 $email       = la_suite_csa_get_email();
@@ -344,13 +345,13 @@ get_template_part(
 <?php endif; ?>
 
 <section class="cta" id="contact" data-section="dark">
-	<?php if ( $value_image ) : ?>
+	<?php if ( $cta_image ) : ?>
 		<div class="cta__media" aria-hidden="true">
 			<img
-				src="<?php echo esc_url( $value_image['src'] ); ?>"
+				src="<?php echo esc_url( $cta_image['src'] ); ?>"
 				alt=""
-				width="<?php echo esc_attr( (string) $value_image['width'] ); ?>"
-				height="<?php echo esc_attr( (string) $value_image['height'] ); ?>"
+				width="<?php echo esc_attr( (string) $cta_image['width'] ); ?>"
+				height="<?php echo esc_attr( (string) $cta_image['height'] ); ?>"
 				loading="lazy"
 				decoding="async"
 			>

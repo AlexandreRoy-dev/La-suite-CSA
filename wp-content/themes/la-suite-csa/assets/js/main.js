@@ -8,7 +8,9 @@
 	var root = document.documentElement;
 	var params = new URLSearchParams(window.location.search);
 	var reduce = root.classList.contains("no-motion") || params.has("static");
-	var skipLoader = reduce || params.has("noloader") || params.has("static");
+	var lite = root.classList.contains("lite") || window.matchMedia("(max-width: 899px), (hover: none), (pointer: coarse)").matches;
+	if (lite) root.classList.add("lite");
+	var skipLoader = reduce || lite || params.has("noloader") || params.has("static");
 	var gsap = window.gsap;
 	var ScrollTrigger = window.ScrollTrigger;
 	var LenisCtor = window.Lenis;
@@ -115,7 +117,7 @@
 	if (window.__csaStall) window.clearTimeout(window.__csaStall);
 
 	var lenis = null;
-	if (LenisCtor) {
+	if (!lite && LenisCtor) {
 		lenis = new LenisCtor({
 			duration: 1.15,
 			easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
@@ -144,7 +146,51 @@
 	}
 	updateHeader(window.scrollY || 0);
 
+	function initLite() {
+		var loader = $(".loader");
+		if (loader) loader.style.display = "none";
+		root.classList.add("hero-in");
+		if (window.__csaStall) window.clearTimeout(window.__csaStall);
+		var nodes = $all(".fade, .pillar, .hpanel, .vrow, .team__card, .inter__content, .sec-head").filter(function (el) {
+			if (el.closest(".hero")) return false;
+			if (el.classList.contains("fade") && el.closest(".pillar, .hpanel, .vrow, .team__card, .inter__content")) return false;
+			return true;
+		});
+		function reveal(el) {
+			if (!gsap) {
+				el.style.opacity = "1";
+				el.style.transform = "none";
+				return;
+			}
+			gsap.to(el, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out", overwrite: true });
+		}
+		var pending = [];
+		nodes.forEach(function (el) {
+			var rect = el.getBoundingClientRect();
+			if (rect.top < window.innerHeight * 0.92 && rect.bottom > 24) return;
+			if (gsap) gsap.set(el, { autoAlpha: 0, y: 14 });
+			pending.push(el);
+		});
+		if (pending.length && "IntersectionObserver" in window) {
+			var watcher = new IntersectionObserver(function (entries) {
+				entries.forEach(function (entry) {
+					if (!entry.isIntersecting) return;
+					reveal(entry.target);
+					watcher.unobserve(entry.target);
+				});
+			}, { rootMargin: "0px 0px 15% 0px", threshold: 0 });
+			pending.forEach(function (el) { watcher.observe(el); });
+		} else {
+			pending.forEach(reveal);
+		}
+		window.__ready = true;
+	}
+
 	function initMotion() {
+		if (lite) {
+			initLite();
+			return;
+		}
 		var isHome = document.body.classList.contains("home");
 
 		$all(".split").forEach(function (el) {
@@ -245,7 +291,7 @@
 		if (isHome) {
 			runHomeIntro();
 			var mm = gsap.matchMedia();
-			mm.add("(min-width: 900px)", function () {
+			mm.add("(min-width: 900px) and (hover: hover) and (pointer: fine)", function () {
 				var unpinPillars = pinPillars();
 				var unpinTrack = pinHorizontal();
 				return function () {

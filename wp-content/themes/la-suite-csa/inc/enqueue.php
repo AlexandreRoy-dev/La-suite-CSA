@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Mark motion support before paint so content stays visible without JS.
  */
 function la_suite_csa_print_motion_flag() {
-	echo "<script>document.documentElement.classList.add('js');if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&]static(?:=|&|$)/.test(location.search)){document.documentElement.classList.add('no-motion');}else{document.documentElement.classList.add('motion');window.__csaStall=setTimeout(function(){document.documentElement.classList.add('js-stalled');},7000);}</script>\n";
+	echo "<script>document.documentElement.classList.add('js');if(window.matchMedia('(max-width: 899px), (hover: none), (pointer: coarse)').matches){document.documentElement.classList.add('lite');}if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&]static(?:=|&|$)/.test(location.search)){document.documentElement.classList.add('no-motion');}else{document.documentElement.classList.add('motion');if(!document.documentElement.classList.contains('lite')){window.__csaStall=setTimeout(function(){document.documentElement.classList.add('js-stalled');},7000);}}</script>\n";
 }
 add_action( 'wp_head', 'la_suite_csa_print_motion_flag', 1 );
 
