@@ -31,6 +31,33 @@ document.documentElement.classList.add('js');
 		});
 	}
 
+	var progress = document.querySelector('.progress');
+	if (progress) {
+		var paintProgress = function () {
+			var max = document.documentElement.scrollHeight - window.innerHeight;
+			var value = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+			progress.style.setProperty('--progress', String(value));
+		};
+		paintProgress();
+		window.addEventListener('scroll', paintProgress, { passive: true });
+		window.addEventListener('resize', paintProgress);
+	}
+
+	document.querySelectorAll('[aria-controls^="founder-bio-"]').forEach(function (button) {
+		button.addEventListener('click', function () {
+			var dialog = document.getElementById(button.getAttribute('aria-controls'));
+			if (dialog && typeof dialog.showModal === 'function' && !dialog.open) {
+				dialog.showModal();
+			}
+		});
+	});
+
+	document.querySelectorAll('.bio-dialog').forEach(function (dialog) {
+		dialog.addEventListener('click', function (event) {
+			if (event.target === dialog) dialog.close();
+		});
+	});
+
 	var levers = document.querySelectorAll('.lever');
 	if (levers.length && finePointer) {
 		levers.forEach(function (lever) {

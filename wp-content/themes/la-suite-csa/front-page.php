@@ -29,11 +29,17 @@ if ( is_array( $hero_visual ) && ! empty( $hero_visual['url'] ) ) {
 	$hero_visual_h   = ! empty( $hero_visual['height'] ) ? (int) $hero_visual['height'] : 480;
 }
 
+$lever_links  = array(
+	'/services/financements/',
+	'/services/subventions/',
+	'/services/credits-impot/',
+);
 $glass_levers = array();
 for ( $i = 1; $i <= 3; $i++ ) {
 	$glass_levers[] = array(
 		'title' => la_suite_csa_field_or_copy( 'lever_' . $i . '_title', 'home.lever_' . $i . '_title' ),
 		'text'  => la_suite_csa_field_or_copy( 'lever_' . $i . '_text', 'home.lever_' . $i . '_text' ),
+		'url'   => $lever_links[ $i - 1 ],
 	);
 }
 if ( empty( array_filter( wp_list_pluck( $glass_levers, 'title' ) ) ) && $services ) {
@@ -42,6 +48,7 @@ if ( empty( array_filter( wp_list_pluck( $glass_levers, 'title' ) ) ) && $servic
 		$glass_levers[] = array(
 			'title' => $service['title'],
 			'text'  => wp_trim_words( $service['text'], 9, '…' ),
+			'url'   => $service['link'] ?? '/services/',
 		);
 	}
 }
@@ -94,19 +101,19 @@ if ( empty( array_filter( wp_list_pluck( $glass_levers, 'title' ) ) ) && $servic
 				<?php foreach ( $glass_levers as $index => $lever ) : ?>
 					<?php if ( empty( $lever['title'] ) ) { continue; } ?>
 					<li class="glass-shell">
-						<div class="glass-card glass-tile">
-							<span class="glass-icon" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span>
-							<div class="glass-copy">
+						<a class="glass-card glass-tile" href="<?php echo esc_url( home_url( $lever['url'] ) ); ?>">
+							<span class="glass-mark" aria-hidden="true"></span>
+							<span class="glass-copy">
 								<strong><?php echo esc_html( $lever['title'] ); ?></strong>
 								<?php if ( ! empty( $lever['text'] ) ) : ?>
 									<span><?php echo esc_html( $lever['text'] ); ?></span>
 								<?php endif; ?>
-							</div>
-						</div>
+							</span>
+						</a>
 					</li>
 				<?php endforeach; ?>
 			</ul>
-			<a class="explore" href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Explorer</a>
+			<a class="explore" href="#services-apercu">Explorer</a>
 		</aside>
 	</div>
 
@@ -150,9 +157,8 @@ if ( empty( array_filter( wp_list_pluck( $glass_levers, 'title' ) ) ) && $servic
 		</header>
 		<?php if ( ! empty( $home['problem_points'] ) ) : ?>
 			<ul class="friction-list">
-				<?php foreach ( $home['problem_points'] as $index => $point ) : ?>
+				<?php foreach ( $home['problem_points'] as $point ) : ?>
 					<li class="friction-list__item reveal" data-reveal>
-						<span class="friction-list__index" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span>
 						<div>
 							<h3 class="friction-list__title"><?php echo esc_html( $point['label'] ); ?></h3>
 							<p><?php echo esc_html( $point['text'] ); ?></p>
@@ -173,10 +179,9 @@ if ( empty( array_filter( wp_list_pluck( $glass_levers, 'title' ) ) ) && $servic
 		</header>
 	</div>
 	<ul class="service-bands">
-		<?php foreach ( $services as $index => $item ) : ?>
+		<?php foreach ( $services as $item ) : ?>
 			<li class="service-band reveal" data-reveal>
 				<div class="section-block service-band__inner">
-					<span class="service-band__index" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span>
 					<div class="service-band__copy">
 						<h3 class="service-band__title"><?php echo esc_html( $item['title'] ); ?></h3>
 						<p><?php echo esc_html( $item['text'] ); ?></p>
@@ -211,11 +216,10 @@ if ( empty( array_filter( wp_list_pluck( $glass_levers, 'title' ) ) ) && $servic
 			<h2 class="section-header__title" id="process-heading"><?php echo esc_html( $home['method_title'] ); ?></h2>
 		</header>
 		<ol class="timeline">
-			<?php foreach ( $home['method_steps'] as $index => $step ) : ?>
+			<?php foreach ( $home['method_steps'] as $step ) : ?>
 				<li class="timeline-item" data-reveal>
 					<span class="timeline-dot" aria-hidden="true"></span>
 					<div class="timeline-card glass-card">
-						<p class="timeline-step">Étape <?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></p>
 						<h3 class="timeline-card__title"><?php echo esc_html( $step['title'] ); ?></h3>
 						<p><?php echo esc_html( $step['text'] ); ?></p>
 					</div>
@@ -235,51 +239,14 @@ if ( empty( array_filter( wp_list_pluck( $glass_levers, 'title' ) ) ) && $servic
 </section>
 
 <?php
-$team = la_suite_csa_copy_get( 'about.team' );
-if ( is_array( $team ) && ! empty( $team ) ) :
-	$about = la_suite_csa_copy_get( 'about' );
-	?>
-	<section class="content-section team-section">
-		<div class="section-block">
-			<header class="section-header section-header--center reveal">
-				<h2 class="section-header__title"><?php echo esc_html( $about['team_title'] ); ?></h2>
-				<p class="section-lede"><?php echo esc_html( $about['team_intro'] ); ?></p>
-			</header>
-			<ul class="team-grid">
-				<?php foreach ( $team as $member ) : ?>
-					<?php $photo = ! empty( $member['photo'] ) ? la_suite_csa_media_get( $member['photo'] ) : null; ?>
-					<li class="team-card reveal" data-reveal>
-						<figure class="team-card__media">
-							<?php if ( $photo ) : ?>
-								<img
-									src="<?php echo esc_url( $photo['src'] ); ?>"
-									alt="<?php echo esc_attr( $photo['alt'] ?: $member['name'] ); ?>"
-									width="900"
-									height="1100"
-									loading="lazy"
-									decoding="async"
-								>
-							<?php else : ?>
-								<span class="team-card__placeholder" aria-hidden="true"></span>
-							<?php endif; ?>
-						</figure>
-						<div class="team-card__body">
-							<p class="team-card__role"><?php echo esc_html( $member['role'] ); ?></p>
-							<h3 class="team-card__name"><?php echo esc_html( $member['name'] ); ?></h3>
-							<p class="team-card__bio"><?php echo esc_html( $member['bio'] ); ?></p>
-						</div>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-			<p class="section-cta section-cta--center reveal">
-				<a class="button button--ghost" href="<?php echo esc_url( home_url( '/entreprise/' ) ); ?>">
-					Découvrir l’entreprise
-					<span class="button__icon" aria-hidden="true">→</span>
-				</a>
-			</p>
-		</div>
-	</section>
-<?php endif; ?>
+get_template_part(
+	'template-parts/founders',
+	null,
+	array(
+		'show_cta' => true,
+	)
+);
+?>
 
 <section class="content-section band--cta band--cta-saas">
 	<?php if ( $cta_media ) : ?>

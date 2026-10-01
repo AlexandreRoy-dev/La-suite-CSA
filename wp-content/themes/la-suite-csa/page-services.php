@@ -38,7 +38,6 @@ $copy = la_suite_csa_copy_get( 'services' );
 					>
 				<?php endif; ?>
 				<div class="lever__copy">
-					<p class="lever__index"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></p>
 					<h2 class="lever__title"><?php echo esc_html( $section['title'] ); ?></h2>
 					<p class="lever__text"><?php echo esc_html( $section['text'] ); ?></p>
 					<span class="lever__link">Voir la page</span>

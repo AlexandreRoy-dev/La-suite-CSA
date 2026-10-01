@@ -8,9 +8,10 @@
 
 get_header();
 
-$copy  = la_suite_csa_copy_get( 'contact' );
-$phone = la_suite_csa_get_option( 'phone' );
-$email = la_suite_csa_get_option( 'email' );
+$copy    = la_suite_csa_copy_get( 'contact' );
+$phone   = la_suite_csa_get_phone();
+$email   = la_suite_csa_get_email();
+$address = la_suite_csa_get_address();
 ?>
 
 <section class="content-section">
@@ -67,10 +68,13 @@ $email = la_suite_csa_get_option( 'email' );
 			<h2 class="feature-grid__title"><?php echo esc_html( $copy['aside_title'] ); ?></h2>
 			<p><?php echo esc_html( $copy['aside_text'] ); ?></p>
 			<?php if ( $phone ) : ?>
-				<p><a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a></p>
+				<p><a href="<?php echo esc_attr( la_suite_csa_tel_href( $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a></p>
 			<?php endif; ?>
 			<?php if ( $email ) : ?>
 				<p><a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a></p>
+			<?php endif; ?>
+			<?php if ( $address ) : ?>
+				<p><?php echo esc_html( $address ); ?></p>
 			<?php endif; ?>
 		</aside>
 	</div>
