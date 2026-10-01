@@ -22,15 +22,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="progress" aria-hidden="true"></div>
 <div class="atmosphere" aria-hidden="true">
 	<span class="orb orb-blue"></span>
-	<span class="orb orb-wine"></span>
+	<span class="orb orb-mist"></span>
 	<span class="grain"></span>
 </div>
 
 <header class="site-header" role="banner">
 	<div class="site-header__inner">
-		<a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-			<?php bloginfo( 'name' ); ?>
-		</a>
+		<?php echo la_suite_csa_brand_logo( 'header' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 		<nav class="site-nav" id="site-nav" aria-label="Navigation principale">
 			<?php if ( has_nav_menu( 'primary' ) ) : ?>

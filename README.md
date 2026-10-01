@@ -1,8 +1,8 @@
 # La Suite CSA Inc.
 
-Thème WordPress vitrine, version **4.4.1**. Services : **Financements**, **Subventions**, **Crédits d’impôt**.
+Thème WordPress vitrine, version **4.5.0**. Services : **Financements**, **Subventions**, **Crédits d’impôt**.
 
-Direction visuelle sombre (encre, crème, bleu et vin), inspirée de la maquette [darkcsa.roymarketing.ca](https://darkcsa.roymarketing.ca/).
+Direction visuelle sombre, construite sur le bleu de marque du client, avec typographie gris clair. La structure reprend la maquette [darkcsa.roymarketing.ca](https://darkcsa.roymarketing.ca/).
 
 Staging : [https://lasuitecsa.wpcomstaging.com](https://lasuitecsa.wpcomstaging.com)
 
@@ -26,12 +26,19 @@ Le design (CSS, structure, animations) reste dans le code thème : le client ne 
 
 | Role | Hex |
 |------|-----|
-| Cream | `#F2EEE4` |
-| Ink | `#05060B`, `#090C14`, `#0D111C` |
-| Cobalt | `#16378A` (lit `#4A7AE8`) |
-| Wine | `#6E1C28` (lit `#B8334A`) |
+| Blue (marque, boutons, orbes) | `#1C3B6B` |
+| Light grey / text | `#F1F2F2` |
+| Text soft | `#D3D8DF` |
+| Muted | `#B1BBC9` |
+| Links and focus | `#99A7BC` |
+| Blue pale | `#BFC8D6` |
+| Ink | `#0B1629`, `#0E1E36`, `#122644` |
+| Near black | `#231F20` |
+| White | `#FFFFFF` |
 
-**Type :** Plus Jakarta Sans, Archivo Black pour le nom dans l’en-tête.
+**Type :** Plus Jakarta Sans.
+
+**Logo :** `assets/images/brand/logo-la-suite-csa-gris.svg` dans l’en-tête et le pied de page. Un logo défini dans l’outil de personnalisation le remplace. Le favicon du thème s’affiche tant qu’aucune icône de site WordPress n’est enregistrée.
 
 ## Déployer le thème (WordPress.com Business / Atomic)
 

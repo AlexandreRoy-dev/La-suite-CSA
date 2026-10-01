@@ -342,3 +342,48 @@ function la_suite_csa_split_headline( $text ) {
 
 	return $html;
 }
+
+/**
+ * Official logo: Customizer logo when set, otherwise the bundled grey SVG.
+ *
+ * @param string $placement header or footer.
+ * @return string
+ */
+function la_suite_csa_brand_logo( $placement = 'header' ) {
+	$placement = ( 'footer' === $placement ) ? 'footer' : 'header';
+	$alt       = 'La Suite CSA';
+	$img       = '';
+
+	if ( has_custom_logo() ) {
+		$logo_id = (int) get_theme_mod( 'custom_logo' );
+		$img     = wp_get_attachment_image(
+			$logo_id,
+			'full',
+			false,
+			array(
+				'class'    => 'site-logo__img',
+				'alt'      => $alt,
+				'decoding' => 'async',
+			)
+		);
+		if ( is_string( $img ) && preg_match( '/\b(?:width|height)="0"/', $img ) ) {
+			$img = preg_replace( '/\s(?:width|height)="0"/', '', $img );
+		}
+	}
+
+	if ( ! $img ) {
+		$img = sprintf(
+			'<img class="site-logo__img" src="%1$s" alt="%2$s" width="301" height="177" decoding="async">',
+			esc_url( LA_SUITE_CSA_URI . '/assets/images/brand/logo-la-suite-csa-gris.svg' ),
+			esc_attr( $alt )
+		);
+	}
+
+	return sprintf(
+		'<a class="site-logo site-logo--%1$s" href="%2$s" aria-label="%3$s">%4$s</a>',
+		esc_attr( $placement ),
+		esc_url( home_url( '/' ) ),
+		esc_attr( $alt ),
+		$img
+	);
+}

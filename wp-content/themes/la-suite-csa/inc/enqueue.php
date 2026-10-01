@@ -42,7 +42,7 @@ add_filter( 'wp_resource_hints', 'la_suite_csa_font_preconnect', 10, 2 );
 function la_suite_csa_enqueue_assets() {
 	wp_enqueue_style(
 		'la-suite-csa-fonts',
-		'https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap',
+		'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap',
 		array(),
 		null
 	);
@@ -87,3 +87,28 @@ function la_suite_csa_enqueue_assets() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'la_suite_csa_enqueue_assets' );
+
+/**
+ * Bundled favicon when the site has no WordPress site icon.
+ */
+function la_suite_csa_print_favicon() {
+	if ( function_exists( 'has_site_icon' ) && has_site_icon() ) {
+		return;
+	}
+
+	$base = LA_SUITE_CSA_URI . '/assets/images/brand/';
+
+	printf(
+		'<link rel="icon" href="%s" type="image/svg+xml">' . "\n",
+		esc_url( $base . 'favicon.svg' )
+	);
+	printf(
+		'<link rel="icon" href="%s" type="image/png" sizes="32x32">' . "\n",
+		esc_url( $base . 'favicon-32.png' )
+	);
+	printf(
+		'<link rel="apple-touch-icon" href="%s" sizes="180x180">' . "\n",
+		esc_url( $base . 'apple-touch-icon.png' )
+	);
+}
+add_action( 'wp_head', 'la_suite_csa_print_favicon', 5 );

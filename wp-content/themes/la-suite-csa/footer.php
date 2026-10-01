@@ -22,7 +22,7 @@ $social_links = la_suite_csa_get_social_links();
 
 <footer class="site-footer" role="contentinfo">
 	<div class="site-footer__inner">
-		<p class="site-footer__brand"><?php bloginfo( 'name' ); ?></p>
+		<?php echo la_suite_csa_brand_logo( 'footer' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<?php if ( $footer_blurb ) : ?>
 			<p class="site-footer__blurb"><?php echo esc_html( $footer_blurb ); ?></p>
 		<?php endif; ?>
