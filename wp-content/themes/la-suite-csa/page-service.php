@@ -29,6 +29,16 @@ if ( ! $data ) {
 
 $media   = la_suite_csa_media_get( $data['media'] );
 $atmos   = la_suite_csa_media_get( 'atmosphere' );
+
+get_template_part(
+	'template-parts/page-intro',
+	null,
+	array(
+		'eyebrow' => $data['eyebrow'] ?? 'Services',
+		'title'   => $data['title'],
+		'lede'    => $data['lead'] ?? '',
+	)
+);
 $all     = la_suite_csa_service_pages();
 $related = array();
 foreach ( $data['related'] ?? array() as $rel_slug ) {
@@ -55,12 +65,6 @@ foreach ( $data['related'] ?? array() as $rel_slug ) {
 			</div>
 		<?php endif; ?>
 		<div class="reveal">
-			<header class="section-header section-header--flush">
-				<h1 class="entry__title"><?php echo esc_html( $data['title'] ); ?></h1>
-				<?php if ( ! empty( $data['lead'] ) ) : ?>
-					<p class="section-lede"><?php echo esc_html( $data['lead'] ); ?></p>
-				<?php endif; ?>
-			</header>
 			<?php if ( ! empty( $data['intro'] ) ) : ?>
 				<div class="prose-stack">
 					<p><?php echo esc_html( $data['intro'] ); ?></p>
@@ -128,13 +132,9 @@ foreach ( $data['related'] ?? array() as $rel_slug ) {
 				<h2 class="section-header__title"><?php echo esc_html( $data['process_title'] ?? 'Comment ça se passe' ); ?></h2>
 			</header>
 			<div class="steps-wrap reveal">
-				<div class="steps__rail" aria-hidden="true"></div>
 				<ol class="steps steps--timeline" data-stagger>
-					<?php foreach ( $data['process'] as $index => $step ) : ?>
+					<?php foreach ( $data['process'] as $step ) : ?>
 						<li class="steps__item">
-							<div class="steps__marker" aria-hidden="true">
-								<span class="steps__circle"><?php echo esc_html( (string) ( $index + 1 ) ); ?></span>
-							</div>
 							<h3 class="steps__title"><?php echo esc_html( $step['title'] ); ?></h3>
 							<p><?php echo esc_html( $step['text'] ); ?></p>
 						</li>
@@ -220,10 +220,8 @@ foreach ( $data['related'] ?? array() as $rel_slug ) {
 			</header>
 			<ul class="expertise-grid expertise-grid--duo">
 				<?php
-				$i = 0;
 				foreach ( $related as $rel_slug => $rel ) :
 					$rel_media = la_suite_csa_media_get( $rel['media'] );
-					$i++;
 					?>
 					<li class="expertise-grid__item reveal">
 						<div class="tray">
@@ -241,7 +239,6 @@ foreach ( $data['related'] ?? array() as $rel_slug ) {
 									</div>
 								<?php endif; ?>
 								<div class="tray__body">
-									<p class="tray__index">0<?php echo esc_html( (string) $i ); ?></p>
 									<h3 class="feature-grid__title"><?php echo esc_html( $rel['title'] ); ?></h3>
 									<p><?php echo esc_html( $rel['lead'] ); ?></p>
 									<a class="tray__link" href="<?php echo esc_url( home_url( '/services/' . $rel_slug . '/' ) ); ?>">

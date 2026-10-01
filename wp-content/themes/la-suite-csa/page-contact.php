@@ -8,18 +8,25 @@
 
 get_header();
 
-$copy  = la_suite_csa_copy_get( 'contact' );
-$phone = la_suite_csa_get_option( 'phone' );
-$email = la_suite_csa_get_option( 'email' );
+$copy    = la_suite_csa_copy_get( 'contact' );
+$phone   = la_suite_csa_get_phone();
+$email   = la_suite_csa_get_email();
+$address = la_suite_csa_get_address();
+
+get_template_part(
+	'template-parts/page-intro',
+	null,
+	array(
+		'eyebrow' => 'Contact',
+		'title'   => $copy['title'],
+		'lede'    => $copy['intro'],
+	)
+);
 ?>
 
 <section class="content-section">
 	<div class="section-block contact-layout">
 		<div class="contact-layout__main">
-			<header class="section-header">
-				<h1 class="entry__title"><?php echo esc_html( $copy['title'] ); ?></h1>
-				<p class="section-lede"><?php echo esc_html( $copy['intro'] ); ?></p>
-			</header>
 
 			<?php
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -67,10 +74,13 @@ $email = la_suite_csa_get_option( 'email' );
 			<h2 class="feature-grid__title"><?php echo esc_html( $copy['aside_title'] ); ?></h2>
 			<p><?php echo esc_html( $copy['aside_text'] ); ?></p>
 			<?php if ( $phone ) : ?>
-				<p><a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a></p>
+				<p><a href="<?php echo esc_attr( la_suite_csa_tel_href( $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a></p>
 			<?php endif; ?>
 			<?php if ( $email ) : ?>
 				<p><a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a></p>
+			<?php endif; ?>
+			<?php if ( $address ) : ?>
+				<p><?php echo esc_html( $address ); ?></p>
 			<?php endif; ?>
 		</aside>
 	</div>

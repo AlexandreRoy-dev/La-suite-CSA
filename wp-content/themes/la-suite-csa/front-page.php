@@ -1,6 +1,6 @@
 <?php
 /**
- * Front page: Accueil - Devis Expert-style canvas hero.
+ * Front page. Versa-style sequence mapped onto La Suite CSA content.
  *
  * @package La_Suite_CSA
  */
@@ -15,294 +15,374 @@ $hero_cta_label    = la_suite_csa_field_or_copy( 'hero_cta_label', 'home.hero_ct
 $hero_cta_url      = la_suite_csa_field_or_copy( 'hero_cta_url', 'home.hero_cta_url' );
 $promise_text      = la_suite_csa_field_or_copy( 'promise_text', 'home.promise_text' );
 $home              = la_suite_csa_copy_get( 'home' );
-$cta_media         = la_suite_csa_media_get( 'cta' );
-$pulse             = ! empty( $home['pulse'] ) && is_array( $home['pulse'] ) ? $home['pulse'] : array();
-$services          = ! empty( $home['services'] ) && is_array( $home['services'] ) ? $home['services'] : array();
+$about             = la_suite_csa_copy_get( 'about' );
+$hero_headline     = isset( $home['hero_headline'] ) ? (string) $home['hero_headline'] : '';
+
+$hero_media = la_suite_csa_media_get( 'hero' );
+$hero_src   = $hero_media ? $hero_media['src'] : '';
+$hero_alt   = $hero_media ? $hero_media['alt'] : '';
+$hero_w     = $hero_media ? (int) $hero_media['width'] : 2400;
+$hero_h     = $hero_media ? (int) $hero_media['height'] : 1600;
 
 $hero_visual = function_exists( 'get_field' ) ? get_field( 'hero_visual' ) : null;
-$hero_visual_src = get_template_directory_uri() . '/assets/images/hero-suite.svg';
-$hero_visual_w   = 720;
-$hero_visual_h   = 480;
 if ( is_array( $hero_visual ) && ! empty( $hero_visual['url'] ) ) {
-	$hero_visual_src = $hero_visual['url'];
-	$hero_visual_w   = ! empty( $hero_visual['width'] ) ? (int) $hero_visual['width'] : 720;
-	$hero_visual_h   = ! empty( $hero_visual['height'] ) ? (int) $hero_visual['height'] : 480;
+	$hero_src = $hero_visual['url'];
+	$hero_alt = ! empty( $hero_visual['alt'] ) ? $hero_visual['alt'] : $hero_alt;
+	$hero_w   = ! empty( $hero_visual['width'] ) ? (int) $hero_visual['width'] : $hero_w;
+	$hero_h   = ! empty( $hero_visual['height'] ) ? (int) $hero_visual['height'] : $hero_h;
 }
 
-$glass_levers = array();
+$lever_links = array(
+	'/services/financements/',
+	'/services/subventions/',
+	'/services/credits-impot/',
+);
+$pillars     = array();
 for ( $i = 1; $i <= 3; $i++ ) {
-	$glass_levers[] = array(
+	$pillars[] = array(
 		'title' => la_suite_csa_field_or_copy( 'lever_' . $i . '_title', 'home.lever_' . $i . '_title' ),
 		'text'  => la_suite_csa_field_or_copy( 'lever_' . $i . '_text', 'home.lever_' . $i . '_text' ),
+		'url'   => $lever_links[ $i - 1 ],
+		'media' => la_suite_csa_media_get( la_suite_csa_service_media_key( $i - 1 ) ),
 	);
 }
-if ( empty( array_filter( wp_list_pluck( $glass_levers, 'title' ) ) ) && $services ) {
-	$glass_levers = array();
-	foreach ( array_slice( $services, 0, 3 ) as $service ) {
-		$glass_levers[] = array(
-			'title' => $service['title'],
-			'text'  => wp_trim_words( $service['text'], 9, '…' ),
-		);
-	}
-}
+
+$about_image = la_suite_csa_media_get( 'about' );
+$facade      = la_suite_csa_media_get( 'facade' );
+$value_image = la_suite_csa_media_get( 'value' );
+$cta_image   = la_suite_csa_media_get( 'cta' );
+$step_media  = array(
+	la_suite_csa_media_get( 'step_talk' ),
+	la_suite_csa_media_get( 'step_map' ),
+	la_suite_csa_media_get( 'step_file' ),
+	la_suite_csa_media_get( 'step_exchange' ),
+	la_suite_csa_media_get( 'step_follow' ),
+);
+$phone       = la_suite_csa_get_phone();
+$email       = la_suite_csa_get_email();
+$address     = la_suite_csa_get_address();
+$aria_title  = trim( $hero_brand_line_1 . ' ' . $hero_brand_line_2 . ' ' . $hero_headline );
 ?>
 
-<section class="hero hero--canvas" aria-label="Accueil">
-	<div class="hero__atmosphere" aria-hidden="true">
-		<span class="hero__orb hero__orb--a"></span>
-		<span class="hero__orb hero__orb--b"></span>
-		<span class="hero__orb hero__orb--c"></span>
-		<span class="hero__vignette"></span>
-		<span class="hero__grain"></span>
-	</div>
-
-	<?php if ( $hero_eyebrow ) : ?>
-		<p class="hero-eyebrow"><span><?php echo esc_html( $hero_eyebrow ); ?></span></p>
-	<?php endif; ?>
-
-	<div class="hero-canvas">
-		<h1 class="hero-brand" aria-label="<?php echo esc_attr( trim( $hero_brand_line_1 . ' ' . $hero_brand_line_2 ) ); ?>">
-			<span><?php echo esc_html( $hero_brand_line_1 ); ?></span>
-			<span><?php echo esc_html( $hero_brand_line_2 ); ?></span>
-		</h1>
-
-		<div class="hero-stage">
-			<div class="hero-stage__glow" aria-hidden="true"></div>
+<section class="hero" data-section="dark">
+	<div class="hero__media">
+		<?php if ( $hero_src ) : ?>
 			<img
-				class="hero-visual"
-				src="<?php echo esc_url( $hero_visual_src ); ?>"
-				alt=""
-				width="<?php echo esc_attr( (string) $hero_visual_w ); ?>"
-				height="<?php echo esc_attr( (string) $hero_visual_h ); ?>"
+				class="hero__img"
+				src="<?php echo esc_url( $hero_src ); ?>"
+				alt="<?php echo esc_attr( $hero_alt ); ?>"
+				width="<?php echo esc_attr( (string) $hero_w ); ?>"
+				height="<?php echo esc_attr( (string) $hero_h ); ?>"
 				fetchpriority="high"
 				decoding="async"
 			>
-		</div>
-
-		<div class="hero-left">
-			<p><?php echo esc_html( $hero_text ); ?></p>
-			<?php if ( $hero_cta_label && $hero_cta_url ) : ?>
-				<a class="button button--hero" href="<?php echo esc_url( la_suite_csa_url( $hero_cta_url ) ); ?>">
-					<?php echo esc_html( $hero_cta_label ); ?>
-					<span class="button__icon" aria-hidden="true">→</span>
-				</a>
+		<?php endif; ?>
+		<div class="hero__grade" aria-hidden="true"></div>
+		<div class="hero__veil" aria-hidden="true"></div>
+		<div class="hero__cols" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+		<div class="grain" aria-hidden="true"></div>
+	</div>
+	<div class="hero__grid wrap">
+		<div class="hero__top">
+			<?php if ( $hero_eyebrow ) : ?>
+				<p class="label label--on-dark hero__kicker">
+					<span class="stripes" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+					<?php echo esc_html( $hero_eyebrow ); ?>
+				</p>
 			<?php endif; ?>
 		</div>
-
-		<aside class="hero-right" aria-label="Leviers">
-			<ul class="glass-stack">
-				<?php foreach ( $glass_levers as $index => $lever ) : ?>
-					<?php if ( empty( $lever['title'] ) ) { continue; } ?>
-					<li class="glass-shell">
-						<div class="glass-card glass-tile">
-							<span class="glass-icon" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span>
-							<div class="glass-copy">
-								<strong><?php echo esc_html( $lever['title'] ); ?></strong>
-								<?php if ( ! empty( $lever['text'] ) ) : ?>
-									<span><?php echo esc_html( $lever['text'] ); ?></span>
-								<?php endif; ?>
-							</div>
-						</div>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-			<a class="explore" href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Explorer</a>
-		</aside>
-	</div>
-
-	<div class="scroll-hint" aria-hidden="true">
-		<span>Scroll</span>
-		<i></i>
+		<h1 class="hero__title" aria-label="<?php echo esc_attr( $aria_title ); ?>">
+			<?php if ( $hero_brand_line_1 ) : ?>
+				<span class="ln"><span class="ln__i"><?php echo esc_html( $hero_brand_line_1 ); ?></span></span>
+			<?php endif; ?>
+			<?php if ( $hero_brand_line_2 ) : ?>
+				<span class="ln"><span class="ln__i"><?php echo esc_html( $hero_brand_line_2 ); ?></span></span>
+			<?php endif; ?>
+			<?php if ( $hero_headline ) : ?>
+				<span class="ln ln--sentence"><span class="ln__i"><?php echo esc_html( $hero_headline ); ?></span></span>
+			<?php endif; ?>
+		</h1>
+		<div class="hero__foot">
+			<span class="hero__rule" aria-hidden="true"></span>
+			<div class="hero__lede fade">
+				<?php if ( $hero_text ) : ?>
+					<p><?php echo esc_html( $hero_text ); ?></p>
+				<?php endif; ?>
+				<?php if ( $hero_cta_label && $hero_cta_url ) : ?>
+					<a class="btn btn--light" href="<?php echo esc_url( la_suite_csa_url( $hero_cta_url ) ); ?>" data-magnetic>
+						<span class="btn__label" data-text="<?php echo esc_attr( $hero_cta_label ); ?>"><?php echo esc_html( $hero_cta_label ); ?></span>
+						<span class="btn__arrow" aria-hidden="true"></span>
+					</a>
+				<?php endif; ?>
+			</div>
+			<div class="hero__meta fade">
+				<p class="label label--on-dark"><?php echo esc_html( $home['expertise_eyebrow'] ?? 'Nos services' ); ?></p>
+				<p class="hero__aside">
+					<?php
+					$aside = array();
+					foreach ( $pillars as $pillar ) {
+						if ( ! empty( $pillar['title'] ) ) {
+							$aside[] = esc_html( $pillar['title'] );
+						}
+					}
+					echo implode( '<br>', $aside ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					?>
+				</p>
+			</div>
+			<a class="hero__scroll fade" href="#promesse" data-hover>
+				<span class="label label--on-dark">Découvrir</span>
+				<span class="hero__scroll-line" aria-hidden="true"></span>
+			</a>
+		</div>
 	</div>
 </section>
 
-<?php if ( $promise_text ) : ?>
-	<section class="promise" aria-label="Promesse">
-		<div class="glass-card promise-card">
-			<p><?php echo wp_kses_post( la_suite_csa_format_marked_text( $promise_text ) ); ?></p>
+<section class="about" id="promesse" data-section="light">
+	<div class="wrap">
+		<div class="sec-head">
+			<p class="label">Promesse</p>
+			<span class="hair" aria-hidden="true"></span>
 		</div>
-	</section>
-<?php endif; ?>
-
-<?php if ( $pulse ) : ?>
-	<section class="logo-cloud" aria-label="Écosystème">
-		<div class="section-block">
-			<p class="logo-cloud__label reveal">Dans l’écosystème des programmes publics et privés</p>
-			<div class="logo-cloud__track" aria-hidden="true">
-				<div class="logo-cloud__row">
-					<?php for ( $i = 0; $i < 2; $i++ ) : ?>
-						<?php foreach ( $pulse as $item ) : ?>
-							<span><?php echo esc_html( $item ); ?></span>
+		<?php if ( $promise_text ) : ?>
+			<p class="about__statement" data-words><?php echo wp_kses_post( la_suite_csa_format_marked_text( $promise_text ) ); ?></p>
+		<?php endif; ?>
+		<div class="about__grid">
+			<?php if ( $about_image ) : ?>
+				<figure class="about__fig reveal-clip" data-cursor>
+					<div class="about__fig-in parallax" data-speed="0.12">
+						<img
+							src="<?php echo esc_url( $about_image['src'] ); ?>"
+							alt="<?php echo esc_attr( $about_image['alt'] ); ?>"
+							width="<?php echo esc_attr( (string) $about_image['width'] ); ?>"
+							height="<?php echo esc_attr( (string) $about_image['height'] ); ?>"
+							loading="lazy"
+							decoding="async"
+						>
+					</div>
+				</figure>
+			<?php endif; ?>
+			<div class="about__copy">
+				<?php if ( ! empty( $about['lead'] ) ) : ?>
+					<p class="about__lead split"><?php echo esc_html( $about['lead'] ); ?></p>
+				<?php endif; ?>
+				<?php if ( ! empty( $about['body'][0] ) ) : ?>
+					<p class="body fade"><?php echo esc_html( $about['body'][0] ); ?></p>
+				<?php endif; ?>
+				<?php if ( ! empty( $home['problem_points'] ) ) : ?>
+					<div class="about__trio fade">
+						<?php foreach ( $home['problem_points'] as $point ) : ?>
+							<div>
+								<p class="label"><?php echo esc_html( $point['label'] ); ?></p>
+								<p><?php echo esc_html( $point['text'] ); ?></p>
+							</div>
 						<?php endforeach; ?>
-					<?php endfor; ?>
+					</div>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="pillars" id="services" data-section="light">
+	<div class="pillars__pin">
+		<div class="wrap pillars__wrap">
+			<div class="pillars__top">
+				<p class="label"><?php echo esc_html( $home['expertise_eyebrow'] ?? 'Nos services' ); ?></p>
+				<?php if ( ! empty( $home['services_intro'] ) ) : ?>
+					<p class="pillars__intro"><?php echo esc_html( $home['services_intro'] ); ?></p>
+				<?php endif; ?>
+				<ol class="pillars__tabs">
+					<?php foreach ( $pillars as $index => $pillar ) : ?>
+						<?php if ( empty( $pillar['title'] ) ) { continue; } ?>
+						<li<?php echo 0 === $index ? ' class="is-on"' : ''; ?>><span><?php echo esc_html( $pillar['title'] ); ?></span><i></i></li>
+					<?php endforeach; ?>
+				</ol>
+			</div>
+			<div class="pillars__stage">
+				<div class="pillars__texts">
+					<?php foreach ( $pillars as $pillar ) : ?>
+						<?php if ( empty( $pillar['title'] ) ) { continue; } ?>
+						<article class="pillar">
+							<h2 class="pillar__title"><?php echo esc_html( $pillar['title'] ); ?></h2>
+							<?php if ( ! empty( $pillar['text'] ) ) : ?>
+								<p class="pillar__body"><?php echo esc_html( $pillar['text'] ); ?></p>
+							<?php endif; ?>
+							<a class="pillar__link" href="<?php echo esc_url( home_url( $pillar['url'] ) ); ?>">Voir le service</a>
+						</article>
+					<?php endforeach; ?>
+				</div>
+				<div class="pillars__frame" data-cursor>
+					<?php foreach ( $pillars as $pillar ) : ?>
+						<?php if ( empty( $pillar['media'] ) ) { continue; } ?>
+						<img
+							class="pillars__img"
+							src="<?php echo esc_url( $pillar['media']['src'] ); ?>"
+							alt="<?php echo esc_attr( $pillar['media']['alt'] ); ?>"
+							width="<?php echo esc_attr( (string) $pillar['media']['width'] ); ?>"
+							height="<?php echo esc_attr( (string) $pillar['media']['height'] ); ?>"
+							decoding="async"
+						>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>
-	</section>
-<?php endif; ?>
+	</div>
+</section>
 
-<section class="content-section problem-split">
-	<div class="section-block problem-split__grid">
-		<header class="problem-split__intro reveal">
-			<p class="eyebrow"><?php echo esc_html( $home['problem_eyebrow'] ?? 'Contexte' ); ?></p>
-			<h2 class="section-header__title"><?php echo esc_html( $home['problem_title'] ); ?></h2>
-			<p class="section-lede"><?php echo esc_html( $home['problem_text'] ); ?></p>
-		</header>
-		<?php if ( ! empty( $home['problem_points'] ) ) : ?>
-			<ul class="friction-list">
-				<?php foreach ( $home['problem_points'] as $index => $point ) : ?>
-					<li class="friction-list__item reveal" data-reveal>
-						<span class="friction-list__index" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span>
-						<div>
-							<h3 class="friction-list__title"><?php echo esc_html( $point['label'] ); ?></h3>
-							<p><?php echo esc_html( $point['text'] ); ?></p>
+<section class="inter" data-section="dark">
+	<div class="inter__media">
+		<?php if ( $facade ) : ?>
+			<img
+				src="<?php echo esc_url( $facade['src'] ); ?>"
+				alt=""
+				width="<?php echo esc_attr( (string) $facade['width'] ); ?>"
+				height="<?php echo esc_attr( (string) $facade['height'] ); ?>"
+				loading="lazy"
+				decoding="async"
+			>
+		<?php endif; ?>
+	</div>
+	<div class="inter__content wrap">
+		<p class="label label--on-dark"><?php echo esc_html( $home['problem_eyebrow'] ?? 'Contexte' ); ?></p>
+		<h2 class="inter__title split"><?php echo esc_html( $home['problem_title'] ); ?></h2>
+		<p class="inter__body fade"><?php echo esc_html( $home['problem_text'] ); ?></p>
+	</div>
+</section>
+
+<section class="hscroll" id="deroulement" data-section="dark">
+	<div class="hscroll__pin">
+		<div class="hscroll__track">
+			<div class="hpanel hpanel--intro">
+				<p class="label label--on-dark"><?php echo esc_html( $home['method_eyebrow'] ?? 'Déroulement' ); ?></p>
+				<h2 class="hpanel__title split"><?php echo esc_html( $home['method_title'] ); ?></h2>
+			</div>
+			<?php foreach ( $home['method_steps'] as $index => $step ) : ?>
+				<?php $shot = $step_media[ $index ] ?? null; ?>
+				<article class="hpanel">
+					<?php if ( $shot ) : ?>
+						<figure class="hpanel__fig" data-cursor>
+							<img
+								src="<?php echo esc_url( $shot['src'] ); ?>"
+								alt=""
+								width="<?php echo esc_attr( (string) $shot['width'] ); ?>"
+								height="<?php echo esc_attr( (string) $shot['height'] ); ?>"
+								decoding="async"
+							>
+						</figure>
+					<?php endif; ?>
+					<div class="hpanel__body">
+						<p class="label label--on-dark"><?php echo esc_html( $home['method_eyebrow'] ?? 'Déroulement' ); ?></p>
+						<h3 class="hpanel__name"><?php echo esc_html( $step['title'] ); ?></h3>
+						<p><?php echo esc_html( $step['text'] ); ?></p>
+					</div>
+				</article>
+			<?php endforeach; ?>
+		</div>
+		<div class="hscroll__bar wrap" aria-hidden="true">
+			<span class="label label--on-dark">Défiler</span>
+			<div class="hscroll__prog"><i></i></div>
+		</div>
+	</div>
+</section>
+
+<section class="value" id="valeur" data-section="light">
+	<div class="wrap">
+		<div class="sec-head">
+			<p class="label"><?php echo esc_html( $about['values_title'] ?? 'Ce qui nous guide' ); ?></p>
+			<span class="hair" aria-hidden="true"></span>
+		</div>
+		<div class="value__grid">
+			<div class="value__side">
+				<h2 class="value__title split"><?php echo esc_html( $about['values_title'] ); ?></h2>
+				<?php if ( $value_image ) : ?>
+					<figure class="value__fig reveal-clip" data-cursor>
+						<div class="parallax" data-speed="0.1">
+							<img
+								src="<?php echo esc_url( $value_image['src'] ); ?>"
+								alt="<?php echo esc_attr( $value_image['alt'] ); ?>"
+								width="<?php echo esc_attr( (string) $value_image['width'] ); ?>"
+								height="<?php echo esc_attr( (string) $value_image['height'] ); ?>"
+								loading="lazy"
+								decoding="async"
+							>
 						</div>
+					</figure>
+				<?php endif; ?>
+			</div>
+			<ul class="value__list">
+				<?php foreach ( $about['values'] as $value ) : ?>
+					<li class="vrow">
+						<span class="vrow__t"><?php echo esc_html( $value['title'] ); ?></span>
+						<span class="vrow__d"><?php echo esc_html( $value['text'] ); ?></span>
 					</li>
 				<?php endforeach; ?>
 			</ul>
-		<?php endif; ?>
-	</div>
-</section>
-
-<section class="content-section features-bands" id="services-apercu">
-	<div class="section-block">
-		<header class="section-header section-header--center reveal">
-			<p class="eyebrow"><?php echo esc_html( $home['expertise_eyebrow'] ?? 'Nos services' ); ?></p>
-			<h2 class="section-header__title"><?php echo esc_html( $home['services_title'] ); ?></h2>
-			<p class="section-lede"><?php echo esc_html( $home['services_intro'] ); ?></p>
-		</header>
-	</div>
-	<ul class="service-bands">
-		<?php foreach ( $services as $index => $item ) : ?>
-			<li class="service-band reveal" data-reveal>
-				<div class="section-block service-band__inner">
-					<span class="service-band__index" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span>
-					<div class="service-band__copy">
-						<h3 class="service-band__title"><?php echo esc_html( $item['title'] ); ?></h3>
-						<p><?php echo esc_html( $item['text'] ); ?></p>
-					</div>
-					<a class="service-band__link" href="<?php echo esc_url( home_url( $item['link'] ?? '/services/' ) ); ?>">
-						En savoir plus
-						<span aria-hidden="true">→</span>
-					</a>
-				</div>
-			</li>
-		<?php endforeach; ?>
-	</ul>
-</section>
-
-<section class="content-section trust-saas">
-	<div class="section-block">
-		<ul class="trust-metrics">
-			<?php foreach ( $home['trust'] as $item ) : ?>
-				<li class="trust-metrics__item reveal" data-reveal>
-					<p class="trust-metrics__label"><?php echo esc_html( $item['label'] ); ?></p>
-					<p class="trust-metrics__value"><?php echo esc_html( $item['value'] ); ?></p>
-				</li>
-			<?php endforeach; ?>
-		</ul>
-	</div>
-</section>
-
-<section class="content-section process-section" id="processus">
-	<div class="section-block">
-		<header class="process-intro reveal">
-			<p class="eyebrow"><?php echo esc_html( $home['method_eyebrow'] ?? 'Déroulement' ); ?></p>
-			<h2 class="section-header__title" id="process-heading"><?php echo esc_html( $home['method_title'] ); ?></h2>
-		</header>
-		<ol class="timeline">
-			<?php foreach ( $home['method_steps'] as $index => $step ) : ?>
-				<li class="timeline-item" data-reveal>
-					<span class="timeline-dot" aria-hidden="true"></span>
-					<div class="timeline-card glass-card">
-						<p class="timeline-step">Étape <?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></p>
-						<h3 class="timeline-card__title"><?php echo esc_html( $step['title'] ); ?></h3>
-						<p><?php echo esc_html( $step['text'] ); ?></p>
-					</div>
-				</li>
-			<?php endforeach; ?>
-		</ol>
-	</div>
-</section>
-
-<section class="content-section quote-saas">
-	<div class="section-block section-block--narrow reveal">
-		<blockquote class="quote quote--saas">
-			<p><?php echo esc_html( $home['quote_text'] ); ?></p>
-			<footer><?php echo esc_html( $home['quote_attr'] ); ?></footer>
-		</blockquote>
+		</div>
 	</div>
 </section>
 
 <?php
-$team = la_suite_csa_copy_get( 'about.team' );
-if ( is_array( $team ) && ! empty( $team ) ) :
-	$about = la_suite_csa_copy_get( 'about' );
-	?>
-	<section class="content-section team-section">
-		<div class="section-block">
-			<header class="section-header section-header--center reveal">
-				<h2 class="section-header__title"><?php echo esc_html( $about['team_title'] ); ?></h2>
-				<p class="section-lede"><?php echo esc_html( $about['team_intro'] ); ?></p>
-			</header>
-			<ul class="team-grid">
-				<?php foreach ( $team as $member ) : ?>
-					<?php $photo = ! empty( $member['photo'] ) ? la_suite_csa_media_get( $member['photo'] ) : null; ?>
-					<li class="team-card reveal" data-reveal>
-						<figure class="team-card__media">
-							<?php if ( $photo ) : ?>
-								<img
-									src="<?php echo esc_url( $photo['src'] ); ?>"
-									alt="<?php echo esc_attr( $photo['alt'] ?: $member['name'] ); ?>"
-									width="900"
-									height="1100"
-									loading="lazy"
-									decoding="async"
-								>
-							<?php else : ?>
-								<span class="team-card__placeholder" aria-hidden="true"></span>
-							<?php endif; ?>
-						</figure>
-						<div class="team-card__body">
-							<p class="team-card__role"><?php echo esc_html( $member['role'] ); ?></p>
-							<h3 class="team-card__name"><?php echo esc_html( $member['name'] ); ?></h3>
-							<p class="team-card__bio"><?php echo esc_html( $member['bio'] ); ?></p>
-						</div>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-			<p class="section-cta section-cta--center reveal">
-				<a class="button button--ghost" href="<?php echo esc_url( home_url( '/entreprise/' ) ); ?>">
-					Découvrir l’entreprise
-					<span class="button__icon" aria-hidden="true">→</span>
-				</a>
-			</p>
+get_template_part(
+	'template-parts/founders',
+	null,
+	array(
+		'show_cta' => true,
+	)
+);
+?>
+
+<?php if ( ! empty( $home['quote_text'] ) ) : ?>
+	<section class="engage" data-section="light">
+		<div class="wrap engage__wrap">
+			<p class="label"><?php echo esc_html( $home['quote_attr'] ); ?></p>
+			<blockquote class="engage__quote split">
+				<p><?php echo esc_html( $home['quote_text'] ); ?></p>
+			</blockquote>
 		</div>
 	</section>
 <?php endif; ?>
 
-<section class="content-section band--cta band--cta-saas">
-	<?php if ( $cta_media ) : ?>
-		<div class="cta-media" aria-hidden="true">
+<section class="cta" id="contact" data-section="dark">
+	<?php if ( $cta_image ) : ?>
+		<div class="cta__media" aria-hidden="true">
 			<img
-				src="<?php echo esc_url( $cta_media['src'] ); ?>"
+				src="<?php echo esc_url( $cta_image['src'] ); ?>"
 				alt=""
-				width="1600"
-				height="900"
+				width="<?php echo esc_attr( (string) $cta_image['width'] ); ?>"
+				height="<?php echo esc_attr( (string) $cta_image['height'] ); ?>"
 				loading="lazy"
 				decoding="async"
 			>
 		</div>
 	<?php endif; ?>
-	<div class="section-block section-block--narrow reveal">
-		<h2 class="section-header__title"><?php echo esc_html( $home['cta_title'] ); ?></h2>
-		<p class="section-lede"><?php echo esc_html( $home['cta_text'] ); ?></p>
-		<p class="section-cta section-cta--center">
-			<a class="button" href="<?php echo esc_url( la_suite_csa_url( $home['cta_url'] ) ); ?>">
-				<?php echo esc_html( $home['cta_label'] ); ?>
-				<span class="button__icon" aria-hidden="true">→</span>
+	<div class="cta__grade" aria-hidden="true"></div>
+	<div class="wrap cta__wrap">
+		<p class="label label--on-dark">Contact</p>
+		<h2 class="cta__title split"><?php echo esc_html( $home['cta_title'] ); ?></h2>
+		<p class="cta__lede fade"><?php echo esc_html( $home['cta_text'] ); ?></p>
+		<div class="cta__row">
+			<?php if ( $phone ) : ?>
+				<a class="cta__link" href="<?php echo esc_attr( la_suite_csa_tel_href( $phone ) ); ?>">
+					<span class="label label--on-dark">Téléphone</span>
+					<span class="cta__big"><?php echo esc_html( $phone ); ?></span>
+				</a>
+			<?php endif; ?>
+			<?php if ( $email ) : ?>
+				<a class="cta__link" href="mailto:<?php echo esc_attr( $email ); ?>">
+					<span class="label label--on-dark">Courriel</span>
+					<span class="cta__big"><?php echo esc_html( $email ); ?></span>
+				</a>
+			<?php elseif ( $address ) : ?>
+				<div class="cta__link">
+					<span class="label label--on-dark">Adresse</span>
+					<span class="cta__big"><?php echo esc_html( $address ); ?></span>
+				</div>
+			<?php endif; ?>
+			<a class="btn btn--light" href="<?php echo esc_url( la_suite_csa_url( $home['cta_url'] ) ); ?>" data-magnetic>
+				<span class="btn__label" data-text="<?php echo esc_attr( $home['cta_label'] ); ?>"><?php echo esc_html( $home['cta_label'] ); ?></span>
+				<span class="btn__arrow" aria-hidden="true"></span>
 			</a>
-		</p>
+		</div>
 	</div>
 </section>
 

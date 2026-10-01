@@ -9,16 +9,20 @@
 get_header();
 
 $copy = la_suite_csa_copy_get( 'services' );
+
+get_template_part(
+	'template-parts/page-intro',
+	null,
+	array(
+		'eyebrow' => 'Services',
+		'title'   => $copy['title'],
+		'lede'    => $copy['intro'],
+	)
+);
 ?>
 
 <section class="content-section">
 	<div class="section-block">
-		<header class="section-header reveal">
-			<h1 class="entry__title"><?php echo esc_html( $copy['title'] ); ?></h1>
-			<p class="section-lede"><?php echo esc_html( $copy['intro'] ); ?></p>
-		</header>
-	</div>
-
 	<div class="lever-stage">
 		<?php foreach ( $copy['sections'] as $index => $section ) : ?>
 			<?php
@@ -38,13 +42,13 @@ $copy = la_suite_csa_copy_get( 'services' );
 					>
 				<?php endif; ?>
 				<div class="lever__copy">
-					<p class="lever__index"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></p>
 					<h2 class="lever__title"><?php echo esc_html( $section['title'] ); ?></h2>
 					<p class="lever__text"><?php echo esc_html( $section['text'] ); ?></p>
 					<span class="lever__link">Voir la page</span>
 				</div>
 			</a>
 		<?php endforeach; ?>
+	</div>
 	</div>
 
 	<div class="section-block">

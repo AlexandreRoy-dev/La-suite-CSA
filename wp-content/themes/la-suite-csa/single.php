@@ -16,8 +16,8 @@ $blog = la_suite_csa_copy_get( 'blog' );
 			<?php the_post(); ?>
 			<article <?php post_class( 'entry entry--single reveal' ); ?>>
 				<header class="entry__header">
-					<p class="eyebrow"><?php echo esc_html( $blog['eyebrow'] ?? 'Perspectives' ); ?></p>
-					<h1 class="entry__title"><?php the_title(); ?></h1>
+					<p class="label"><?php echo esc_html( $blog['eyebrow'] ?? 'Perspectives' ); ?></p>
+					<h1 class="entry__title split"><?php the_title(); ?></h1>
 					<p class="entry__meta">
 						<time datetime="<?php echo esc_attr( get_the_date( DATE_W3C ) ); ?>">
 							<?php echo esc_html( get_the_date() ); ?>

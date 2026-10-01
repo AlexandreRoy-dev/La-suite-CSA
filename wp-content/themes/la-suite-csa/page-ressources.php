@@ -9,16 +9,17 @@
 get_header();
 
 $data = la_suite_csa_ressources();
-?>
 
-<section class="content-section ressources-hero">
-	<div class="section-block reveal">
-		<header class="section-header">
-			<h1 class="entry__title"><?php echo esc_html( $data['title'] ); ?></h1>
-			<p class="section-lede"><?php echo esc_html( $data['lead'] ); ?></p>
-		</header>
-	</div>
-</section>
+get_template_part(
+	'template-parts/page-intro',
+	null,
+	array(
+		'eyebrow' => 'Ressources',
+		'title'   => $data['title'],
+		'lede'    => $data['lead'],
+	)
+);
+?>
 
 <?php foreach ( $data['categories'] as $category ) : ?>
 	<section class="content-section band">
@@ -38,14 +39,18 @@ $data = la_suite_csa_ressources();
 							rel="noopener noreferrer"
 						>
 							<span class="resource-card__logo">
-								<img
-									src="<?php echo esc_url( la_suite_csa_logo_uri( $item['logo'] ) ); ?>"
-									alt=""
-									width="160"
-									height="64"
-									loading="lazy"
-									decoding="async"
-								>
+								<?php if ( ! empty( $item['logo_url'] ) ) : ?>
+									<img
+										src="<?php echo esc_url( $item['logo_url'] ); ?>"
+										alt=""
+										width="160"
+										height="64"
+										loading="lazy"
+										decoding="async"
+									>
+								<?php else : ?>
+									<span class="resource-card__logo-fallback"><?php echo esc_html( $item['short'] ?? '' ); ?></span>
+								<?php endif; ?>
 							</span>
 							<span class="resource-card__meta">
 								<span class="resource-card__tag"><?php echo esc_html( $item['tag'] ); ?></span>
