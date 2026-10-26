@@ -8,13 +8,23 @@
 get_header();
 ?>
 
+<?php
+while ( have_posts() ) :
+	the_post();
+	get_template_part(
+		'template-parts/page-intro',
+		null,
+		array(
+			'title' => get_the_title(),
+		)
+	);
+endwhile;
+rewind_posts();
+?>
 <section class="content-section">
 	<?php while ( have_posts() ) : ?>
 		<?php the_post(); ?>
 		<article <?php post_class( 'entry' ); ?>>
-			<header class="entry__header">
-				<h1 class="entry__title"><?php the_title(); ?></h1>
-			</header>
 			<div class="entry__content">
 				<?php the_content(); ?>
 			</div>

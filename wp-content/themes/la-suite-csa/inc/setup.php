@@ -32,8 +32,8 @@ function la_suite_csa_setup() {
 	add_theme_support(
 		'custom-logo',
 		array(
-			'height'      => 80,
-			'width'       => 240,
+			'height'      => 177,
+			'width'       => 301,
 			'flex-height' => true,
 			'flex-width'  => true,
 		)

@@ -1,22 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" fill="none" role="img" aria-hidden="true">
   <defs>
     <linearGradient id="ambient" x1="120" y1="360" x2="600" y2="440" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#16378a" stop-opacity="0.16"/>
-      <stop offset="0.55" stop-color="#6e1c28" stop-opacity="0.08"/>
-      <stop offset="1" stop-color="#16378a" stop-opacity="0.04"/>
+      <stop stop-color="#1C3B6B" stop-opacity="0.28"/>
+      <stop offset="0.55" stop-color="#99A7BC" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="#1C3B6B" stop-opacity="0.06"/>
     </linearGradient>
     <linearGradient id="plateA" x1="160" y1="120" x2="520" y2="340" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#ffffff"/>
-      <stop offset="1" stop-color="#eef2f8"/>
+      <stop stop-color="#122644" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#0B1629" stop-opacity="0.9"/>
     </linearGradient>
     <linearGradient id="plateB" x1="220" y1="90" x2="560" y2="300" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1a3f96"/>
-      <stop offset="1" stop-color="#0c1220"/>
+      <stop stop-color="#1C3B6B"/>
+      <stop offset="1" stop-color="#0B1629"/>
     </linearGradient>
     <linearGradient id="plateC" x1="200" y1="70" x2="540" y2="280" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#ffffff"/>
-      <stop offset="0.55" stop-color="#f7f5f0"/>
-      <stop offset="1" stop-color="#ebe7de"/>
+      <stop stop-color="#122644"/>
+      <stop offset="0.55" stop-color="#0E1E36"/>
+      <stop offset="1" stop-color="#0B1629"/>
     </linearGradient>
     <linearGradient id="sheen" x1="210" y1="90" x2="480" y2="250" gradientUnits="userSpaceOnUse">
       <stop stop-color="#ffffff" stop-opacity="0.7"/>
@@ -24,11 +24,11 @@
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="inkBar" x1="230" y1="140" x2="360" y2="140" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#16378a"/>
-      <stop offset="1" stop-color="#6e1c28"/>
+      <stop stop-color="#265092"/>
+      <stop offset="1" stop-color="#1C3B6B"/>
     </linearGradient>
     <filter id="depth" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#0c1220" flood-opacity="0.2"/>
+      <feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#0B1629" flood-opacity="0.2"/>
     </filter>
     <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
       <feGaussianBlur stdDeviation="18" result="b"/>
@@ -42,25 +42,25 @@
   <ellipse cx="360" cy="410" rx="240" ry="34" fill="url(#ambient)"/>
 
   <g filter="url(#depth)">
-    <rect x="132" y="168" width="360" height="224" rx="28" fill="url(#plateA)" stroke="rgba(12,18,32,0.06)" transform="rotate(-9 312 280)"/>
+    <rect x="132" y="168" width="360" height="224" rx="28" fill="url(#plateA)" stroke="rgba(11,22,41,0.06)" transform="rotate(-9 312 280)"/>
     <rect x="196" y="122" width="360" height="224" rx="28" fill="url(#plateB)" transform="rotate(7 376 234)"/>
     <g transform="translate(168 88)">
-      <rect width="384" height="236" rx="30" fill="url(#plateC)" stroke="rgba(255,255,255,0.9)" stroke-width="1.25"/>
-      <rect x="14" y="14" width="356" height="208" rx="22" fill="rgba(255,255,255,0.55)" stroke="rgba(12,18,32,0.05)"/>
+      <rect width="384" height="236" rx="30" fill="url(#plateC)" stroke="rgba(255,255,255,0.22)" stroke-width="1.25"/>
+      <rect x="14" y="14" width="356" height="208" rx="22" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
       <rect width="384" height="236" rx="30" fill="url(#sheen)"/>
-      <circle cx="36" cy="40" r="5" fill="#ff5f57"/>
-      <circle cx="54" cy="40" r="5" fill="#febc2e"/>
-      <circle cx="72" cy="40" r="5" fill="#28c840"/>
-      <rect x="96" y="34" width="120" height="12" rx="6" fill="rgba(12,18,32,0.08)"/>
+      <circle cx="36" cy="40" r="5" fill="#99A7BC"/>
+      <circle cx="54" cy="40" r="5" fill="#BFC8D6"/>
+      <circle cx="72" cy="40" r="5" fill="#F1F2F2"/>
+      <rect x="96" y="34" width="120" height="12" rx="6" fill="rgba(241,242,242,0.16)"/>
       <rect x="42" y="72" width="148" height="14" rx="7" fill="url(#inkBar)"/>
-      <rect x="42" y="104" width="248" height="10" rx="5" fill="rgba(12,18,32,0.14)"/>
-      <rect x="42" y="128" width="210" height="10" rx="5" fill="rgba(12,18,32,0.1)"/>
-      <rect x="42" y="152" width="228" height="10" rx="5" fill="rgba(12,18,32,0.08)"/>
-      <rect x="42" y="186" width="102" height="30" rx="15" fill="#6e1c28"/>
-      <rect x="156" y="190" width="78" height="22" rx="11" fill="rgba(22,55,138,0.12)"/>
+      <rect x="42" y="104" width="248" height="10" rx="5" fill="rgba(241,242,242,0.22)"/>
+      <rect x="42" y="128" width="210" height="10" rx="5" fill="rgba(241,242,242,0.14)"/>
+      <rect x="42" y="152" width="228" height="10" rx="5" fill="rgba(241,242,242,0.1)"/>
+      <rect x="42" y="186" width="102" height="30" rx="15" fill="#1C3B6B"/>
+      <rect x="156" y="190" width="78" height="22" rx="11" fill="rgba(153,167,188,0.45)"/>
       <g filter="url(#softGlow)">
-        <circle cx="318" cy="86" r="32" fill="#16378a"/>
-        <path d="M306 86h24M318 74v24" stroke="#f4f2ec" stroke-width="3.2" stroke-linecap="round"/>
+        <circle cx="318" cy="86" r="32" fill="#1C3B6B"/>
+        <path d="M306 86h24M318 74v24" stroke="#F1F2F2" stroke-width="3.2" stroke-linecap="round"/>
       </g>
     </g>
   </g>

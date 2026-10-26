@@ -3,6 +3,10 @@
  * Template Name: Outils
  * Interactive business calculators (fr-CA).
  *
+ * Retired on the public site in 5.1.0. To restore, set
+ * LA_SUITE_CSA_ENABLE_OUTILS to true in functions.php, publish this page,
+ * and keep the Outils item in the menu.
+ *
  * @package La_Suite_CSA
  */
 
@@ -10,16 +14,17 @@ get_header();
 
 $data  = la_suite_csa_outils();
 $tools = $data['tools'];
-?>
 
-<section class="content-section ressources-hero">
-	<div class="section-block reveal">
-		<header class="section-header">
-			<h1 class="entry__title"><?php echo esc_html( $data['title'] ); ?></h1>
-			<p class="section-lede"><?php echo esc_html( $data['lead'] ); ?></p>
-		</header>
-	</div>
-</section>
+get_template_part(
+	'template-parts/page-intro',
+	null,
+	array(
+		'eyebrow' => 'Outils',
+		'title'   => $data['title'],
+		'lede'    => $data['lead'],
+	)
+);
+?>
 
 <section class="content-section band">
 	<div class="section-block">

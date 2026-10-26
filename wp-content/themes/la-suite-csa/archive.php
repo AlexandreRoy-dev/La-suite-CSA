@@ -8,17 +8,17 @@
 get_header();
 
 $blog = la_suite_csa_copy_get( 'blog' );
-?>
 
-<section class="content-section blog-hero">
-	<div class="section-block reveal">
-		<header class="section-header section-header--flush">
-			<p class="eyebrow"><?php echo esc_html( $blog['eyebrow'] ?? 'Perspectives' ); ?></p>
-			<h1 class="entry__title"><?php the_archive_title(); ?></h1>
-			<?php the_archive_description( '<p class="section-lede">', '</p>' ); ?>
-		</header>
-	</div>
-</section>
+get_template_part(
+	'template-parts/page-intro',
+	null,
+	array(
+		'eyebrow' => $blog['eyebrow'] ?? 'Blogue',
+		'title'   => wp_strip_all_tags( get_the_archive_title() ),
+		'lede'    => wp_strip_all_tags( get_the_archive_description() ),
+	)
+);
+?>
 
 <section class="content-section band blog-index">
 	<div class="section-block">

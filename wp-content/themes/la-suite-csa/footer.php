@@ -2,6 +2,9 @@
 /**
  * Footer template.
  *
+ * One horizontal row: logo, blurb, email, address, page links.
+ * The page list is printed once (the old Pages column repeated the footer menu).
+ *
  * @package La_Suite_CSA
  */
 
@@ -13,59 +16,52 @@ $footer_blurb = la_suite_csa_get_option( 'footer_blurb' );
 if ( ! is_string( $footer_blurb ) || '' === trim( $footer_blurb ) ) {
 	$footer_blurb = la_suite_csa_copy_get( 'footer.blurb' );
 }
-$phone        = la_suite_csa_get_option( 'phone' );
-$email        = la_suite_csa_get_option( 'email' );
+$email        = la_suite_csa_get_email();
+$address      = la_suite_csa_get_address();
 $social_links = la_suite_csa_get_social_links();
 ?>
 </main>
 
-<footer class="site-footer" role="contentinfo">
-	<div class="site-footer__inner">
-		<?php if ( $footer_blurb ) : ?>
-			<p class="site-footer__blurb"><?php echo esc_html( $footer_blurb ); ?></p>
-		<?php endif; ?>
-
-		<div class="site-footer__contact">
-			<?php if ( $phone ) : ?>
-				<a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a>
+<footer class="ftr" data-section="dark" role="contentinfo">
+	<div class="wrap">
+		<div class="ftr__row">
+			<?php echo la_suite_csa_brand_logo( 'footer' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php if ( $footer_blurb ) : ?>
+				<p class="ftr__tag"><?php echo esc_html( $footer_blurb ); ?></p>
 			<?php endif; ?>
-			<?php if ( $email ) : ?>
-				<a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
-			<?php endif; ?>
-		</div>
-
-		<?php if ( ! empty( $social_links ) ) : ?>
-			<ul class="site-footer__social">
+			<div class="ftr__meta">
+				<?php if ( $email ) : ?>
+					<a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
+				<?php endif; ?>
+				<?php if ( $address ) : ?>
+					<span><?php echo esc_html( $address ); ?></span>
+				<?php endif; ?>
 				<?php foreach ( $social_links as $link ) : ?>
-					<li>
-						<a href="<?php echo esc_url( $link['url'] ); ?>" target="_blank" rel="noopener noreferrer">
-							<?php echo esc_html( $link['label'] ); ?>
-						</a>
-					</li>
+					<a href="<?php echo esc_url( $link['url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $link['label'] ); ?></a>
 				<?php endforeach; ?>
-			</ul>
-		<?php endif; ?>
-
-		<?php if ( has_nav_menu( 'footer' ) ) : ?>
-			<nav class="site-footer__nav" aria-label="<?php echo esc_attr( la_suite_csa_copy_get( 'nav.contact' ) ); ?>">
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'footer',
-						'container'      => false,
-						'menu_class'     => 'site-footer__nav-list',
-						'fallback_cb'    => false,
-						'depth'          => 1,
-					)
-				);
-				?>
+			</div>
+			<nav aria-label="Pied de page">
+				<?php if ( has_nav_menu( 'primary' ) ) : ?>
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'primary',
+							'container'      => false,
+							'menu_class'     => 'ftr__links',
+							'fallback_cb'    => false,
+							'depth'          => 1,
+						)
+					);
+					?>
+				<?php else : ?>
+					<ul class="ftr__links">
+						<?php foreach ( la_suite_csa_primary_nav_items() as $item ) : ?>
+							<li><a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['label'] ); ?></a></li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
 			</nav>
-		<?php endif; ?>
-
-		<p class="site-footer__copy">
-			&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?>
-			<?php bloginfo( 'name' ); ?>
-		</p>
+		</div>
 	</div>
 </footer>
 
