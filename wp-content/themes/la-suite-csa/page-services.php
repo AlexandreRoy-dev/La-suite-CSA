@@ -44,12 +44,14 @@ get_template_part(
 				<div class="lever__copy">
 					<h2 class="lever__title"><?php echo esc_html( $section['title'] ); ?></h2>
 					<p class="lever__text"><?php echo esc_html( $section['text'] ); ?></p>
-					<span class="lever__link">Voir la page</span>
+					<span class="lever__link">Plus de détails</span>
 				</div>
 			</a>
 		<?php endforeach; ?>
 	</div>
 	</div>
+
+	<?php get_template_part( 'template-parts/method' ); ?>
 
 	<div class="section-block">
 		<p class="legal-note reveal"><?php echo esc_html( $copy['note'] ); ?></p>

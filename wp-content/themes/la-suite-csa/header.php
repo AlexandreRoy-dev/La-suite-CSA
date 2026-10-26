@@ -9,7 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$phone = la_suite_csa_get_phone();
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -31,11 +30,6 @@ $phone = la_suite_csa_get_phone();
 		</div>
 	</div>
 <?php endif; ?>
-
-<div class="cursor" aria-hidden="true">
-	<div class="cursor__ring"><span class="cursor__label">Voir</span></div>
-	<div class="cursor__dot"></div>
-</div>
 
 <header class="hdr<?php echo is_front_page() ? '' : ' is-solid'; ?>" data-hdr>
 	<?php echo la_suite_csa_brand_logo( 'header' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -64,9 +58,6 @@ $phone = la_suite_csa_get_phone();
 	</nav>
 
 	<div class="hdr__cta">
-		<?php if ( $phone ) : ?>
-			<a class="hdr__tel" href="<?php echo esc_attr( la_suite_csa_tel_href( $phone ) ); ?>" data-hover><?php echo esc_html( $phone ); ?></a>
-		<?php endif; ?>
 		<a class="btn btn--sm" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" data-magnetic>
 			<span class="btn__label" data-text="<?php echo esc_attr( la_suite_csa_copy_get( 'nav.contact' ) ); ?>"><?php echo esc_html( la_suite_csa_copy_get( 'nav.contact' ) ); ?></span>
 			<span class="btn__arrow" aria-hidden="true"></span>

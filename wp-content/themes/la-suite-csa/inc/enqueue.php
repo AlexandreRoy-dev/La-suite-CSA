@@ -77,13 +77,15 @@ function la_suite_csa_enqueue_assets() {
 		true
 	);
 
-	wp_enqueue_script(
-		'la-suite-csa-outils',
-		LA_SUITE_CSA_URI . '/assets/js/outils.js',
-		array(),
-		LA_SUITE_CSA_VERSION,
-		true
-	);
+	if ( la_suite_csa_outils_enabled() && is_page_template( 'page-outils.php' ) ) {
+		wp_enqueue_script(
+			'la-suite-csa-outils',
+			LA_SUITE_CSA_URI . '/assets/js/outils.js',
+			array(),
+			LA_SUITE_CSA_VERSION,
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'la_suite_csa_enqueue_assets' );
 

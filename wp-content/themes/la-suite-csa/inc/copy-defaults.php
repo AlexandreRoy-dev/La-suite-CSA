@@ -26,15 +26,16 @@ function la_suite_csa_copy() {
 		'nav'     => array(
 			'accueil'    => 'Accueil',
 			'services'   => 'Services',
-			'entreprise' => 'Entreprise',
+			'entreprise' => 'Notre équipe',
 			'ressources' => 'Ressources',
 			'outils'     => 'Outils',
 			'contact'    => 'Contact',
 			'blog'       => 'Blogue',
 		),
 		'footer'  => array(
-			'blurb'   => 'La Suite CSA Inc. accompagne les entreprises du Québec en financements, subventions et crédits d’impôt.',
+			'blurb'   => 'La Suite CSA Inc. accompagne les entrepreneurs du Québec en financements, subventions et crédits d’impôt.',
 			'phone'   => '514-830-2355',
+			'email'   => 'charles.brassard@lasuitecsa.com',
 			'address' => '2011 Rue Léonard-de-Vinci, Suite 100, Sainte-Julie, QC J3E 1Z2',
 		),
 		'home'    => array(
@@ -43,7 +44,7 @@ function la_suite_csa_copy() {
 			'hero_brand_line_1' => 'La Suite',
 			'hero_brand_line_2' => 'CSA',
 			'hero_text'         => 'La Suite CSA Inc. aide les entrepreneurs québécois à structurer leurs demandes de financement, à repérer les subventions pertinentes et à maximiser les crédits d’impôt disponibles.',
-			'hero_cta_label'    => 'Réserver un appel',
+			'hero_cta_label'    => 'Planifier un appel',
 			'hero_cta_url'      => '/contact/',
 			'promise_text'      => 'Quand vous voulez avancer, nous structurons **financement, subventions et crédits d’impôt** autour d’une méthode claire, sans jargon.',
 			'lever_1_title'     => 'Financements',
@@ -53,7 +54,7 @@ function la_suite_csa_copy() {
 			'lever_3_title'     => 'Crédits d’impôt',
 			'lever_3_text'      => 'Les crédits auxquels vous avez droit.',
 			'hero_meta'         => array(
-				'Entreprises du Québec',
+				'Entrepreneurs du Québec',
 				'Trois leviers, une suite',
 				'Approche concrète',
 			),
@@ -69,7 +70,7 @@ function la_suite_csa_copy() {
 			),
 			'problem_eyebrow'   => 'Contexte',
 			'problem_title'     => 'Les occasions existent. Encore faut-il les saisir.',
-			'problem_text'      => 'Entre les programmes publics, les critères changeants et la paperasse, beaucoup d’entreprises passent à côté d’argent auquel elles auraient droit. Notre rôle : tracer le chemin et accélérer les dossiers.',
+			'problem_text'      => 'Entre les programmes publics, les critères changeants et la paperasse, beaucoup d’entrepreneurs passent à côté d’argent auquel ils auraient droit. Notre rôle : tracer le chemin et accélérer les dossiers.',
 			'problem_points'    => array(
 				array(
 					'label' => 'Programmes',
@@ -147,7 +148,7 @@ function la_suite_csa_copy() {
 			'quote_attr'        => 'La Suite CSA Inc.',
 			'perspectives_eyebrow' => 'Blogue',
 			'perspectives_title'   => 'Des notes pour vos prochaines démarches.',
-			'perspectives_intro'   => 'Articles à venir : programmes, critères et conseils pour les entreprises du Québec.',
+			'perspectives_intro'   => 'Articles à venir : programmes, critères et conseils pour les entrepreneurs du Québec.',
 			'cta_title'         => 'Votre projet mérite d’être financé correctement.',
 			'cta_text'          => 'Parlez-nous de votre situation. Nous vous dirons rapidement ce qui est réaliste : financement, subvention, crédit d’impôt, ou une combinaison.',
 			'cta_label'         => 'Nous contacter',
@@ -178,8 +179,8 @@ function la_suite_csa_copy() {
 			'cta_url'     => '/contact/',
 		),
 		'about'   => array(
-			'title'        => 'Entreprise',
-			'lead'         => 'La Suite CSA Inc. est un cabinet québécois dédié aux financements, aux subventions et aux crédits d’impôt pour les entreprises.',
+			'title'        => 'Notre équipe',
+			'lead'         => 'La Suite CSA Inc. est un cabinet québécois dédié aux financements, aux subventions et aux crédits d’impôt pour les entrepreneurs.',
 			'body'         => array(
 				'Nous travaillons avec des dirigeants qui veulent avancer sans se perdre dans la complexité administrative. Notre valeur : clarifier ce qui est accessible, prioriser, et accompagner le dossier jusqu’au bout.',
 				'« La Suite », parce que le financement d’entreprise se joue rarement en un seul geste. C’est un enchaînement de décisions, de demandes et de suivis. CSA, c’est notre signature d’exigence et de rigueur.',
@@ -188,16 +189,24 @@ function la_suite_csa_copy() {
 			'values_title' => 'Ce qui nous guide',
 			'values'       => array(
 				array(
-					'title' => 'Clarté',
-					'text'  => 'Vous savez ce qui est réaliste, ce qui ne l’est pas, et pourquoi.',
+					'title' => 'Personnalisation',
+					'text'  => 'Chaque dossier est préparé à partir du projet, des échéances et de la situation propre à l’entrepreneur. Les leviers retenus suivent cette réalité.',
 				),
 				array(
-					'title' => 'Rigueur',
-					'text'  => 'Des dossiers préparés pour passer les filtres, pas pour « essayer ».',
+					'title' => 'Créativité',
+					'text'  => 'Nous explorons des combinaisons de financement, de subventions et de crédits d’impôt adaptées au projet. Chaque piste retenue est documentée de façon claire.',
 				),
 				array(
-					'title' => 'Proximité',
-					'text'  => 'Un accompagnement humain, ancré dans les réalités des entreprises du Québec.',
+					'title' => 'Proactivité',
+					'text'  => 'Les pièces, les critères et le calendrier sont préparés tôt dans la démarche. Le suivi reste régulier, afin que le dossier avance avant les dates limites.',
+				),
+				array(
+					'title' => 'Authenticité',
+					'text'  => 'Nous décrivons ce qui est réaliste, avec les conditions et les limites du dossier. Le conseil est direct et formulé dans un langage clair.',
+				),
+				array(
+					'title' => 'Solidarité',
+					'text'  => 'Nous accompagnons les entrepreneurs du Québec du premier échange jusqu’à la réponse obtenue. Le dossier est porté avec eux, dans la durée.',
 				),
 			),
 			'team_eyebrow' => 'Équipe',
@@ -207,8 +216,8 @@ function la_suite_csa_copy() {
 				array(
 					'name'    => 'Charles Brassard',
 					'role'    => 'Cofondateur · Financement et modélisation financière',
-					'excerpt' => 'Expertise en finances, comptabilité, modélisation financière et dossiers de financement pour les entreprises en croissance.',
-					'bio'     => "Charles possède plusieurs années d’expérience en finances, en comptabilité et en gestion financière, acquise auprès de PME, de grandes entreprises et de cabinets comptables. Son parcours lui a permis de développer une expertise diversifiée couvrant notamment la comptabilité, l’analyse financière, la planification budgétaire, la modélisation financière et la planification stratégique.\n\nIl intervient particulièrement dans l’accompagnement des entreprises à la recherche de financement ou souhaitant structurer leur croissance. Son expertise en modélisation financière lui permet d’élaborer des projections, d’analyser différents scénarios et de mesurer l’impact des décisions financières sur la performance et la capacité de l’entreprise à atteindre ses objectifs. Il contribue également à la préparation de dossiers de financement et à l’analyse des besoins financiers liés aux projets de croissance, aux investissements ou aux transactions d’affaires.\n\nSon approche combine rigueur financière, compréhension des réalités opérationnelles et vision stratégique. Charles cherche avant tout à transformer les données financières en information utile à la prise de décision, en proposant des analyses claires et des solutions adaptées à la réalité de chaque entreprise.",
+					'excerpt' => 'Expertise en finances, comptabilité, modélisation financière et dossiers de financement pour les entrepreneurs en croissance.',
+					'bio'     => "Charles possède plusieurs années d’expérience en finances, en comptabilité et en gestion financière, acquise auprès de PME, de grandes entreprises et de cabinets comptables. Son parcours lui a permis de développer une expertise diversifiée couvrant notamment la comptabilité, l’analyse financière, la planification budgétaire, la modélisation financière et la planification stratégique.\n\nIl intervient particulièrement dans l’accompagnement des entrepreneurs à la recherche de financement ou souhaitant structurer leur croissance. Son expertise en modélisation financière lui permet d’élaborer des projections, d’analyser différents scénarios et de mesurer l’impact des décisions financières sur la performance et la capacité de l’entreprise à atteindre ses objectifs. Il contribue également à la préparation de dossiers de financement et à l’analyse des besoins financiers liés aux projets de croissance, aux investissements ou aux transactions d’affaires.\n\nSon approche combine rigueur financière, compréhension des réalités opérationnelles et vision stratégique. Charles cherche avant tout à transformer les données financières en information utile à la prise de décision, en proposant des analyses claires et des solutions adaptées à la réalité de chaque entreprise.",
 					'photo'   => 'charles-brassard.jpg',
 				),
 				array(
@@ -226,7 +235,7 @@ function la_suite_csa_copy() {
 					'photo'   => 'sandrine-quirion.jpg',
 				),
 			),
-			'cta_label'    => 'Entrer en contact',
+			'cta_label'    => 'Contact',
 			'cta_url'      => '/contact/',
 		),
 		'contact' => array(
@@ -246,7 +255,7 @@ function la_suite_csa_copy() {
 			'title'      => 'Blogue',
 			'eyebrow'    => 'Perspectives',
 			'intro'      => 'Conseils et mises à jour sur les financements, subventions et crédits d’impôt au Québec.',
-			'empty'      => 'Le blogue ouvrira bientôt. En attendant, explorez nos ressources et outils, ou parlez-nous de votre dossier.',
+			'empty'      => 'Le blogue ouvrira bientôt. En attendant, explorez nos ressources, ou parlez-nous de votre dossier.',
 			'empty_note' => 'Sujets à venir',
 			'topics'     => array(
 				'Nouveaux programmes et critères',
@@ -259,17 +268,17 @@ function la_suite_csa_copy() {
 		),
 		'meta'    => array(
 			'home_title'     => 'La Suite CSA Inc. | Financements, subventions et crédits d’impôt',
-			'home_desc'      => 'La Suite CSA Inc. accompagne les entreprises du Québec : financements, subventions et crédits d’impôt.',
+			'home_desc'      => 'La Suite CSA Inc. accompagne les entrepreneurs du Québec : financements, subventions et crédits d’impôt.',
 			'services_title' => 'Services | La Suite CSA Inc.',
-			'services_desc'  => 'Financements, subventions et crédits d’impôt pour les entreprises québécoises.',
-			'about_title'    => 'Entreprise | La Suite CSA Inc.',
+			'services_desc'  => 'Financements, subventions et crédits d’impôt pour les entrepreneurs québécois.',
+			'about_title'    => 'Notre équipe | La Suite CSA Inc.',
 			'about_desc'     => 'Découvrez La Suite CSA Inc., cabinet québécois en financements, subventions et crédits d’impôt.',
 			'contact_title'  => 'Contact | La Suite CSA Inc.',
 			'contact_desc'   => 'Contactez La Suite CSA Inc. pour discuter de votre dossier de financement, de subvention ou de crédit d’impôt.',
 			'blog_title'         => 'Blogue | La Suite CSA Inc.',
 			'blog_desc'          => 'Articles à venir sur les financements, subventions et crédits d’impôt au Québec.',
 			'ressources_title'   => 'Ressources | La Suite CSA Inc.',
-			'ressources_desc'    => 'Annuaire des portails officiels : ARC, Revenu Québec, clicSÉQUR, Investissement Québec, subventions et plus.',
+			'ressources_desc'    => 'Liens pour les subventions, les crédits d’impôt et le financement, au Québec et au Canada.',
 		),
 		'404'     => array(
 			'title' => 'Page introuvable',

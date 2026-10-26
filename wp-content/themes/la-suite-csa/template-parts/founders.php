@@ -33,17 +33,30 @@ $show_cta = ! empty( $args['show_cta'] );
 		<?php endif; ?>
 		<ul class="team__grid">
 			<?php foreach ( $founders as $member ) : ?>
-				<li class="team__card" data-cursor>
-					<figure class="team__photo reveal-clip">
-						<img
-							src="<?php echo esc_url( $member['photo']['src'] ); ?>"
-							alt="<?php echo esc_attr( $member['photo']['alt'] ); ?>"
-							width="<?php echo esc_attr( (string) $member['photo']['width'] ); ?>"
-							height="<?php echo esc_attr( (string) $member['photo']['height'] ); ?>"
-							loading="lazy"
-							decoding="async"
-						>
-					</figure>
+				<li class="team__card">
+					<?php if ( ! empty( $member['paragraphs'] ) ) : ?>
+						<a class="team__photo reveal-clip" href="#<?php echo esc_attr( $member['id'] ); ?>" aria-label="<?php echo esc_attr( sprintf( 'Bio de %s', $member['name'] ) ); ?>">
+							<img
+								src="<?php echo esc_url( $member['photo']['src'] ); ?>"
+								alt="<?php echo esc_attr( $member['photo']['alt'] ); ?>"
+								width="<?php echo esc_attr( (string) $member['photo']['width'] ); ?>"
+								height="<?php echo esc_attr( (string) $member['photo']['height'] ); ?>"
+								loading="lazy"
+								decoding="async"
+							>
+						</a>
+					<?php else : ?>
+						<figure class="team__photo reveal-clip">
+							<img
+								src="<?php echo esc_url( $member['photo']['src'] ); ?>"
+								alt="<?php echo esc_attr( $member['photo']['alt'] ); ?>"
+								width="<?php echo esc_attr( (string) $member['photo']['width'] ); ?>"
+								height="<?php echo esc_attr( (string) $member['photo']['height'] ); ?>"
+								loading="lazy"
+								decoding="async"
+							>
+						</figure>
+					<?php endif; ?>
 					<div class="team__body">
 						<?php if ( $member['role'] ) : ?>
 							<p class="label"><?php echo esc_html( $member['role'] ); ?></p>
@@ -52,24 +65,13 @@ $show_cta = ! empty( $args['show_cta'] );
 						<?php if ( $member['excerpt'] ) : ?>
 							<p class="team__excerpt"><?php echo esc_html( $member['excerpt'] ); ?></p>
 						<?php endif; ?>
-						<?php if ( ! empty( $member['paragraphs'] ) ) : ?>
-							<button
-								type="button"
-								class="team__more"
-								aria-haspopup="dialog"
-								aria-controls="<?php echo esc_attr( $member['id'] ); ?>"
-								aria-label="<?php echo esc_attr( sprintf( 'Lire la bio de %s', $member['name'] ) ); ?>"
-							>
-								Lire la bio
-							</button>
-						<?php endif; ?>
 					</div>
 				</li>
 			<?php endforeach; ?>
 		</ul>
 		<?php if ( $show_cta ) : ?>
 			<p class="team__cta fade">
-				<a class="btn" href="<?php echo esc_url( home_url( '/entreprise/' ) ); ?>" data-magnetic>
+				<a class="btn" href="<?php echo esc_url( la_suite_csa_team_url() ); ?>" data-magnetic>
 					<span class="btn__label" data-text="Découvrir l’entreprise">Découvrir l’entreprise</span>
 					<span class="btn__arrow" aria-hidden="true"></span>
 				</a>

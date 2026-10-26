@@ -107,8 +107,8 @@ function la_suite_csa_primary_nav_items() {
 			'check' => 'services',
 		),
 		array(
-			'label' => $nav['entreprise'] ?? 'Entreprise',
-			'url'   => home_url( '/entreprise/' ),
+			'label' => $nav['entreprise'] ?? 'Notre équipe',
+			'url'   => la_suite_csa_team_url(),
 			'check' => 'page',
 		),
 		array(
@@ -116,16 +116,20 @@ function la_suite_csa_primary_nav_items() {
 			'url'   => home_url( '/ressources/' ),
 			'check' => 'page',
 		),
-		array(
+	);
+
+	if ( la_suite_csa_outils_enabled() ) {
+		$items[] = array(
 			'label' => $nav['outils'] ?? 'Outils',
 			'url'   => home_url( '/outils/' ),
 			'check' => 'page',
-		),
-		array(
-			'label' => $nav['blog'] ?? 'Blogue',
-			'url'   => home_url( '/blogue/' ),
-			'check' => 'blog',
-		),
+		);
+	}
+
+	$items[] = array(
+		'label' => $nav['blog'] ?? 'Blogue',
+		'url'   => home_url( '/blogue/' ),
+		'check' => 'blog',
 	);
 
 	foreach ( $items as $index => $item ) {
@@ -146,6 +150,85 @@ function la_suite_csa_primary_nav_items() {
 
 	return $items;
 }
+
+/**
+ * Public URL of the team page (template Entreprise, title Notre équipe).
+ *
+ * @return string
+ */
+function la_suite_csa_team_url() {
+	$pages = get_posts(
+		array(
+			'post_type'      => 'page',
+			'post_status'    => 'publish',
+			'posts_per_page' => 1,
+			'meta_key'       => '_wp_page_template',
+			'meta_value'     => 'page-entreprise.php',
+			'no_found_rows'  => true,
+		)
+	);
+	if ( ! empty( $pages[0] ) && $pages[0] instanceof WP_Post ) {
+		$link = get_permalink( $pages[0] );
+		if ( is_string( $link ) && '' !== $link ) {
+			return $link;
+		}
+	}
+
+	$page = get_page_by_path( 'entreprise' );
+	if ( $page instanceof WP_Post ) {
+		$link = get_permalink( $page );
+		if ( is_string( $link ) && '' !== $link ) {
+			return $link;
+		}
+	}
+
+	return home_url( '/entreprise/' );
+}
+
+/**
+ * Hide the Outils menu item while the page is retired.
+ * The item stays in the admin menu so it can be shown again.
+ *
+ * @param array<int, WP_Post> $items Menu items.
+ * @return array<int, WP_Post>
+ */
+function la_suite_csa_hide_outils_menu_items( $items ) {
+	if ( la_suite_csa_outils_enabled() || ! is_array( $items ) ) {
+		return $items;
+	}
+
+	foreach ( $items as $index => $item ) {
+		$url   = ( $item instanceof WP_Post && isset( $item->url ) ) ? (string) $item->url : '';
+		$title = ( $item instanceof WP_Post && isset( $item->title ) ) ? (string) $item->title : '';
+		if ( 'Outils' === $title || preg_match( '#/outils/?($|\?)#', $url ) ) {
+			unset( $items[ $index ] );
+		}
+	}
+
+	return $items;
+}
+add_filter( 'wp_nav_menu_objects', 'la_suite_csa_hide_outils_menu_items' );
+
+/**
+ * Keep a published Outils page out of the public site while the flag is off.
+ */
+function la_suite_csa_block_outils_page() {
+	if ( la_suite_csa_outils_enabled() ) {
+		return;
+	}
+	if ( is_page( 'outils' ) || is_page_template( 'page-outils.php' ) ) {
+		wp_safe_redirect( home_url( '/' ), 302 );
+		exit;
+	}
+
+	$request = isset( $_SERVER['REQUEST_URI'] ) ? (string) wp_unslash( $_SERVER['REQUEST_URI'] ) : '';
+	$path    = trim( (string) wp_parse_url( $request, PHP_URL_PATH ), '/' );
+	if ( 'outils' === $path ) {
+		wp_safe_redirect( home_url( '/' ), 302 );
+		exit;
+	}
+}
+add_action( 'template_redirect', 'la_suite_csa_block_outils_page' );
 
 /**
  * Phone, with the public default when Site Options is empty.
@@ -185,7 +268,8 @@ function la_suite_csa_get_email() {
 	if ( is_string( $email ) && is_email( $email ) ) {
 		return $email;
 	}
-	return '';
+	$fallback = la_suite_csa_copy_get( 'footer.email', '' );
+	return ( is_string( $fallback ) && is_email( $fallback ) ) ? $fallback : '';
 }
 
 /**

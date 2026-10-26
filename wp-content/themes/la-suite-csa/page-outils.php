@@ -3,6 +3,10 @@
  * Template Name: Outils
  * Interactive business calculators (fr-CA).
  *
+ * Retired on the public site in 5.1.0. To restore, set
+ * LA_SUITE_CSA_ENABLE_OUTILS to true in functions.php, publish this page,
+ * and keep the Outils item in the menu.
+ *
  * @package La_Suite_CSA
  */
 

@@ -46,11 +46,13 @@
 		});
 	}
 
-	$all("[aria-controls^='founder-bio-']").forEach(function (button) {
-		button.addEventListener("click", function () {
-			var dialog = document.getElementById(button.getAttribute("aria-controls"));
-			if (dialog && typeof dialog.showModal === "function" && !dialog.open) {
-				dialog.showModal();
+	$all("a.team__photo[href^='#founder-bio-']").forEach(function (link) {
+		link.addEventListener("click", function (event) {
+			var id = (link.getAttribute("href") || "").slice(1);
+			var dialog = document.getElementById(id);
+			if (dialog && typeof dialog.showModal === "function") {
+				event.preventDefault();
+				if (!dialog.open) dialog.showModal();
 			}
 		});
 	});
@@ -296,7 +298,7 @@
 				scrollTrigger: {
 					trigger: el,
 					start: "top 72%",
-					end: "top 46%",
+					end: "top 60%",
 					scrub: 0.35
 				}
 			});
@@ -332,48 +334,28 @@
 
 		if (isHome) {
 			runHomeIntro();
-			var mm = gsap.matchMedia();
-			mm.add("(min-width: 900px) and (hover: hover) and (pointer: fine)", function () {
-				var unpinPillars = pinPillars();
-				var unpinTrack = pinHorizontal();
-				return function () {
-					if (unpinPillars) unpinPillars();
-					if (unpinTrack) unpinTrack();
-				};
-			});
-			mm.add("(max-width: 899px)", function () {
-				$all(".hpanel__fig, .pillars__img").forEach(function (el) {
-					gsap.fromTo(el, { clipPath: "inset(12% 0 0 0)" }, {
-						clipPath: "inset(0% 0 0 0)",
-						duration: 1.1,
-						ease: "expo.out",
-						scrollTrigger: { trigger: el, start: "top 88%", once: true }
-					});
+		}
+		var mm = gsap.matchMedia();
+		mm.add("(min-width: 900px) and (hover: hover) and (pointer: fine)", function () {
+			var unpinPillars = isHome ? pinPillars() : null;
+			var unpinTrack = pinHorizontal();
+			return function () {
+				if (unpinPillars) unpinPillars();
+				if (unpinTrack) unpinTrack();
+			};
+		});
+		mm.add("(max-width: 899px)", function () {
+			$all(".hpanel__fig, .pillars__img").forEach(function (el) {
+				gsap.fromTo(el, { clipPath: "inset(12% 0 0 0)" }, {
+					clipPath: "inset(0% 0 0 0)",
+					duration: 1.1,
+					ease: "expo.out",
+					scrollTrigger: { trigger: el, start: "top 88%", once: true }
 				});
 			});
-		}
+		});
 
 		if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-			root.classList.add("has-cursor");
-			var c = $(".cursor");
-			var dot = $(".cursor__dot");
-			var ring = $(".cursor__ring");
-			if (c && dot && ring) {
-				var dx = gsap.quickTo(dot, "x", { duration: 0.12 });
-				var dy = gsap.quickTo(dot, "y", { duration: 0.12 });
-				var rx = gsap.quickTo(ring, "x", { duration: 0.45, ease: "power3" });
-				var ry = gsap.quickTo(ring, "y", { duration: 0.45, ease: "power3" });
-				var shown = false;
-				window.addEventListener("pointermove", function (e) {
-					if (!shown) { shown = true; c.classList.add("is-on"); }
-					dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY);
-				});
-				document.addEventListener("pointerover", function (e) {
-					var t = e.target;
-					c.classList.toggle("is-link", !!(t.closest && t.closest("a, button")));
-					c.classList.toggle("is-media", !!(t.closest && t.closest("[data-cursor]")));
-				});
-			}
 			$all("[data-magnetic]").forEach(function (el) {
 				var xT = gsap.quickTo(el, "x", { duration: 0.6, ease: "power3.out" });
 				var yT = gsap.quickTo(el, "y", { duration: 0.6, ease: "power3.out" });
@@ -444,12 +426,12 @@
 			.fromTo(".hero .fade", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0.5, duration: 0.9, stagger: 0.06 }, s + 0.35)
 			.add(function () { root.classList.add("hero-in"); });
 		gsap.to(".hero__img", {
-			yPercent: 10,
+			yPercent: 6,
 			ease: "none",
 			scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
 		});
 		gsap.to(".hero__title", {
-			yPercent: -12,
+			yPercent: -8,
 			autoAlpha: 0.35,
 			ease: "none",
 			scrollTrigger: { trigger: ".hero", start: "35% top", end: "bottom top", scrub: true }
@@ -513,7 +495,7 @@
 		ScrollTrigger.create({
 			trigger: sec,
 			start: "top top",
-			end: "+=180%",
+			end: "+=120%",
 			pin: ".pillars__pin",
 			scrub: 0.6,
 			animation: tl,

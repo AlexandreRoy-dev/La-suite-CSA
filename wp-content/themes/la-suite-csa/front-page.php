@@ -49,16 +49,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 
 $about_image = la_suite_csa_media_get( 'about' );
 $facade      = la_suite_csa_media_get( 'facade' );
-$value_image = la_suite_csa_media_get( 'value' );
 $cta_image   = la_suite_csa_media_get( 'cta' );
-$step_media  = array(
-	la_suite_csa_media_get( 'step_talk' ),
-	la_suite_csa_media_get( 'step_map' ),
-	la_suite_csa_media_get( 'step_file' ),
-	la_suite_csa_media_get( 'step_exchange' ),
-	la_suite_csa_media_get( 'step_follow' ),
-);
-$phone       = la_suite_csa_get_phone();
 $email       = la_suite_csa_get_email();
 $address     = la_suite_csa_get_address();
 $aria_title  = trim( $hero_brand_line_1 . ' ' . $hero_brand_line_2 . ' ' . $hero_headline );
@@ -148,7 +139,7 @@ $aria_title  = trim( $hero_brand_line_1 . ' ' . $hero_brand_line_2 . ' ' . $hero
 		<?php endif; ?>
 		<div class="about__grid">
 			<?php if ( $about_image ) : ?>
-				<figure class="about__fig reveal-clip" data-cursor>
+				<figure class="about__fig reveal-clip">
 					<div class="about__fig-in parallax" data-speed="0.12">
 						<img
 							src="<?php echo esc_url( $about_image['src'] ); ?>"
@@ -187,7 +178,10 @@ $aria_title  = trim( $hero_brand_line_1 . ' ' . $hero_brand_line_2 . ' ' . $hero
 	<div class="pillars__pin">
 		<div class="wrap pillars__wrap">
 			<div class="pillars__top">
-				<p class="label"><?php echo esc_html( $home['expertise_eyebrow'] ?? 'Nos services' ); ?></p>
+				<div>
+					<p class="label"><?php echo esc_html( $home['expertise_eyebrow'] ?? 'Nos services' ); ?></p>
+					<a class="pillar__link pillars__all" href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Voir la page Services</a>
+				</div>
 				<?php if ( ! empty( $home['services_intro'] ) ) : ?>
 					<p class="pillars__intro"><?php echo esc_html( $home['services_intro'] ); ?></p>
 				<?php endif; ?>
@@ -211,7 +205,7 @@ $aria_title  = trim( $hero_brand_line_1 . ' ' . $hero_brand_line_2 . ' ' . $hero
 						</article>
 					<?php endforeach; ?>
 				</div>
-				<div class="pillars__frame" data-cursor>
+				<div class="pillars__frame">
 					<?php foreach ( $pillars as $pillar ) : ?>
 						<?php if ( empty( $pillar['media'] ) ) { continue; } ?>
 						<img
@@ -249,86 +243,8 @@ $aria_title  = trim( $hero_brand_line_1 . ' ' . $hero_brand_line_2 . ' ' . $hero
 	</div>
 </section>
 
-<section class="hscroll" id="deroulement" data-section="dark">
-	<div class="hscroll__pin">
-		<div class="hscroll__track">
-			<div class="hpanel hpanel--intro">
-				<p class="label label--on-dark"><?php echo esc_html( $home['method_eyebrow'] ?? 'Déroulement' ); ?></p>
-				<h2 class="hpanel__title split"><?php echo esc_html( $home['method_title'] ); ?></h2>
-			</div>
-			<?php foreach ( $home['method_steps'] as $index => $step ) : ?>
-				<?php $shot = $step_media[ $index ] ?? null; ?>
-				<article class="hpanel">
-					<?php if ( $shot ) : ?>
-						<figure class="hpanel__fig" data-cursor>
-							<img
-								src="<?php echo esc_url( $shot['src'] ); ?>"
-								alt=""
-								width="<?php echo esc_attr( (string) $shot['width'] ); ?>"
-								height="<?php echo esc_attr( (string) $shot['height'] ); ?>"
-								decoding="async"
-							>
-						</figure>
-					<?php endif; ?>
-					<div class="hpanel__body">
-						<p class="label label--on-dark"><?php echo esc_html( $home['method_eyebrow'] ?? 'Déroulement' ); ?></p>
-						<h3 class="hpanel__name"><?php echo esc_html( $step['title'] ); ?></h3>
-						<p><?php echo esc_html( $step['text'] ); ?></p>
-					</div>
-				</article>
-			<?php endforeach; ?>
-		</div>
-		<div class="hscroll__bar wrap" aria-hidden="true">
-			<span class="label label--on-dark">Défiler</span>
-			<div class="hscroll__prog"><i></i></div>
-		</div>
-	</div>
-</section>
-
-<section class="value" id="valeur" data-section="light">
-	<div class="wrap">
-		<div class="sec-head">
-			<p class="label"><?php echo esc_html( $about['values_title'] ?? 'Ce qui nous guide' ); ?></p>
-			<span class="hair" aria-hidden="true"></span>
-		</div>
-		<div class="value__grid">
-			<div class="value__side">
-				<h2 class="value__title split"><?php echo esc_html( $about['values_title'] ); ?></h2>
-				<?php if ( $value_image ) : ?>
-					<figure class="value__fig reveal-clip" data-cursor>
-						<div class="parallax" data-speed="0.1">
-							<img
-								src="<?php echo esc_url( $value_image['src'] ); ?>"
-								alt="<?php echo esc_attr( $value_image['alt'] ); ?>"
-								width="<?php echo esc_attr( (string) $value_image['width'] ); ?>"
-								height="<?php echo esc_attr( (string) $value_image['height'] ); ?>"
-								loading="lazy"
-								decoding="async"
-							>
-						</div>
-					</figure>
-				<?php endif; ?>
-			</div>
-			<ul class="value__list">
-				<?php foreach ( $about['values'] as $value ) : ?>
-					<li class="vrow">
-						<span class="vrow__t"><?php echo esc_html( $value['title'] ); ?></span>
-						<span class="vrow__d"><?php echo esc_html( $value['text'] ); ?></span>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-		</div>
-	</div>
-</section>
-
 <?php
-get_template_part(
-	'template-parts/founders',
-	null,
-	array(
-		'show_cta' => true,
-	)
-);
+get_template_part( 'template-parts/founders', null, array( 'show_cta' => true ) );
 ?>
 
 <?php if ( ! empty( $home['quote_text'] ) ) : ?>
@@ -361,12 +277,6 @@ get_template_part(
 		<h2 class="cta__title split"><?php echo esc_html( $home['cta_title'] ); ?></h2>
 		<p class="cta__lede fade"><?php echo esc_html( $home['cta_text'] ); ?></p>
 		<div class="cta__row">
-			<?php if ( $phone ) : ?>
-				<a class="cta__link" href="<?php echo esc_attr( la_suite_csa_tel_href( $phone ) ); ?>">
-					<span class="label label--on-dark">Téléphone</span>
-					<span class="cta__big"><?php echo esc_html( $phone ); ?></span>
-				</a>
-			<?php endif; ?>
 			<?php if ( $email ) : ?>
 				<a class="cta__link" href="mailto:<?php echo esc_attr( $email ); ?>">
 					<span class="label label--on-dark">Courriel</span>

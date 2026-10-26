@@ -1,21 +1,20 @@
 <?php
 /**
  * Template Name: Entreprise
- * Company page (fr-CA) with founders team.
+ * Team page. Public title: Notre équipe. Slug stays entreprise unless changed in the admin.
  *
  * @package La_Suite_CSA
  */
 
 get_header();
 
-$copy  = la_suite_csa_copy_get( 'about' );
-$media = la_suite_csa_media_get( 'entreprise' );
+$copy = la_suite_csa_copy_get( 'about' );
 
 get_template_part(
 	'template-parts/page-intro',
 	null,
 	array(
-		'eyebrow' => 'Entreprise',
+		'eyebrow' => 'Équipe',
 		'title'   => $copy['title'],
 		'lede'    => $copy['lead'],
 	)
@@ -23,27 +22,11 @@ get_template_part(
 ?>
 
 <section class="content-section">
-	<div class="section-block split-media">
-		<?php if ( $media ) : ?>
-			<div class="split-media__frame mask-reveal reveal">
-				<div class="split-media__crop">
-					<img
-						src="<?php echo esc_url( $media['src'] ); ?>"
-						alt="<?php echo esc_attr( $media['alt'] ); ?>"
-						width="1200"
-						height="1500"
-						loading="eager"
-						decoding="async"
-					>
-				</div>
-			</div>
-		<?php endif; ?>
-		<div class="reveal">
-			<div class="prose-stack">
-				<?php foreach ( $copy['body'] as $paragraph ) : ?>
-					<p><?php echo esc_html( $paragraph ); ?></p>
-				<?php endforeach; ?>
-			</div>
+	<div class="section-block section-block--narrow">
+		<div class="prose-stack reveal">
+			<?php foreach ( $copy['body'] as $paragraph ) : ?>
+				<p><?php echo esc_html( $paragraph ); ?></p>
+			<?php endforeach; ?>
 		</div>
 	</div>
 </section>
@@ -57,7 +40,7 @@ get_template_part( 'template-parts/founders' );
 		<header class="section-header reveal">
 			<h2 class="section-header__title"><?php echo esc_html( $copy['values_title'] ); ?></h2>
 		</header>
-		<ul class="feature-grid" data-stagger>
+		<ul class="feature-grid feature-grid--five" data-stagger>
 			<?php foreach ( $copy['values'] as $value ) : ?>
 				<li class="feature-grid__item">
 					<h3 class="feature-grid__title"><?php echo esc_html( $value['title'] ); ?></h3>

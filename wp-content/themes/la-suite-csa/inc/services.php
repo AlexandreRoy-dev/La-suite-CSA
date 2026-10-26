@@ -73,7 +73,7 @@ function la_suite_csa_service_pages() {
 				'Liste de pièces à réunir et calendrier de dépôt.',
 			),
 			'situations_eyebrow' => 'Cas types',
-			'situations_title'  => 'Situations où ce service aide',
+			'situations_title'  => 'Contexte de financement',
 			'situations'        => array(
 				array(
 					'title' => 'Croissance',
@@ -170,7 +170,7 @@ function la_suite_csa_service_pages() {
 				'Suivi des échanges avec l’organisme.',
 			),
 			'situations_eyebrow' => 'Cas types',
-			'situations_title'  => 'Situations où ce service aide',
+			'situations_title'  => 'Contexte de financement',
 			'situations'        => array(
 				array(
 					'title' => 'Innovation',
@@ -267,7 +267,7 @@ function la_suite_csa_service_pages() {
 				'Points de coordination avec votre équipe fiscale.',
 			),
 			'situations_eyebrow' => 'Cas types',
-			'situations_title'  => 'Situations où ce service aide',
+			'situations_title'  => 'Contexte de financement',
 			'situations'        => array(
 				array(
 					'title' => 'RS&DE',

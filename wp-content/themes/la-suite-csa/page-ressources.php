@@ -75,18 +75,5 @@ get_template_part(
 	</div>
 </section>
 
-<section class="content-section band band--cta">
-	<div class="section-block section-block--narrow reveal">
-		<h2 class="section-header__title"><?php echo esc_html( $data['cta_label'] ); ?></h2>
-		<p class="section-lede"><?php echo esc_html( $data['cta_text'] ); ?></p>
-		<p class="section-cta">
-			<a class="button" href="<?php echo esc_url( la_suite_csa_url( $data['cta_url'] ) ); ?>">
-				<?php echo esc_html( $data['cta_button'] ); ?>
-				<span class="button__icon" aria-hidden="true">→</span>
-			</a>
-		</p>
-	</div>
-</section>
-
 <?php
 get_footer();

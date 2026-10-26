@@ -1,8 +1,8 @@
 # La Suite CSA Inc.
 
-Thème WordPress vitrine, version **5.0.2**. Services : **Financements**, **Subventions**, **Crédits d’impôt**.
+Thème WordPress vitrine, version **5.1.0**. Services : **Financements**, **Subventions**, **Crédits d’impôt**.
 
-Direction éditoriale claire, proche du rythme de [versa.roymarketing.ca](https://versa.roymarketing.ca/) : hero plein écran, texte découpé, section services épinglée, défilement horizontal du déroulement. La palette reste celle de La Suite CSA (bleu `#1C3B6B`, gris `#F1F2F2`, noir `#231F20`, blanc). La version 4.5.0 est conservée sur le tag `v4.5.0-backup`.
+Direction éditoriale claire, proche du rythme de [versa.roymarketing.ca](https://versa.roymarketing.ca/) : hero plein écran, texte découpé, section services épinglée, défilement horizontal du déroulement sur la page Services. La palette reste celle de La Suite CSA (bleu `#1C3B6B`, gris `#F1F2F2`, noir `#231F20`, blanc). La version 4.5.0 est conservée sur le tag `v4.5.0-backup`.
 
 Staging : [https://lasuitecsa.wpcomstaging.com](https://lasuitecsa.wpcomstaging.com)
 
@@ -18,7 +18,7 @@ Staging : [https://lasuitecsa.wpcomstaging.com](https://lasuitecsa.wpcomstaging.
 
 Sur l’Accueil, utilisez `**mots**` dans le champ Promesse pour le gras.
 
-Les champs laissés vides sur Site Options reprennent le texte et les photos livrés avec le thème. Les liens ressources sont créés une seule fois dans l’admin au premier chargement. S’il n’y a encore aucun lien, la page affiche les 17 entrées par défaut.
+Les champs laissés vides sur Site Options reprennent le texte et les photos livrés avec le thème. Les liens ressources sont créés une seule fois dans l’admin au premier chargement. S’il n’y a encore aucun lien, la page affiche le catalogue livré avec le thème (subventions et crédits d’impôt, puis financements).
 
 Le design (CSS, structure, animations) reste dans le code thème : le client ne casse pas la mise en page.
 
@@ -46,7 +46,7 @@ Le design (CSS, structure, animations) reste dans le code thème : le client ne 
 
 ## Déployer le thème (WordPress.com Business / Atomic)
 
-1. Zip prêt : `la-suite-csa-theme.zip` (dossier `la-suite-csa` à la racine du zip).
+1. Zip prêt : dossier `la-suite-csa` à la racine du zip (artifact `la-suite-csa-5.1.0.zip`).
 2. WP Admin → **Apparence → Thèmes → Ajouter → Téléverser**.
 3. Activer **La Suite CSA**.
 4. Plugin **Advanced Custom Fields** (déjà actif sur le staging).
@@ -60,9 +60,9 @@ SFTP (Atomic) : `sftp.wp.com` → `wp-content/themes/la-suite-csa/`.
 Les champs ACF déjà enregistrés gardent leur valeur et passent avant les textes par défaut du thème. Sur un site existant, vérifiez :
 
 - **Pages → Accueil** : sur-titre, lignes de marque, texte du hero, bouton, promesse, titres et textes des 3 cartes.
-- **Site Options** : téléphone, adresse, texte du pied de page. S’ils sont vides, le thème affiche `514-830-2355` et `2011 Rue Léonard-de-Vinci, Suite 100, Sainte-Julie, QC J3E 1Z2`.
+- **Site Options** : téléphone (affiché seulement sur Contact), adresse, courriel (pied de page), texte du pied de page. S’ils sont vides, le thème affiche `514-830-2355` sur Contact, `charles.brassard@lasuitecsa.com` dans le pied de page, et `2011 Rue Léonard-de-Vinci, Suite 100, Sainte-Julie, QC J3E 1Z2`.
 - **Fondateurs** : rien à saisir pour le premier affichage. Les trois bios et photos du thème s’affichent tant que les champs sont vides.
-- **Liens ressources** : au premier passage dans l’admin après la mise à jour, les 17 liens sont créés s’il n’y en a aucun. Ensuite, la page Ressources lit cette liste.
+- **Liens ressources** : au premier passage dans l’admin après la mise à jour 5.1.0, les anciennes rubriques Fiscalité et Registres sont retirées de l’affichage, les rubriques deviennent Subventions et crédits d’impôt puis Financements, et les liens culturels sont ajoutés s’ils manquent. Le détail des clics dans l’admin est dans `wp-content/themes/la-suite-csa/ADMIN.md`.
 
 ## Local
 

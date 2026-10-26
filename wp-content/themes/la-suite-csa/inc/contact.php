@@ -26,7 +26,7 @@ function la_suite_csa_seed_content() {
 			'template' => 'page-services.php',
 		),
 		array(
-			'title'    => 'Entreprise',
+			'title'    => 'Notre équipe',
 			'slug'     => 'entreprise',
 			'template' => 'page-entreprise.php',
 		),
@@ -39,6 +39,7 @@ function la_suite_csa_seed_content() {
 			'title'    => 'Outils',
 			'slug'     => 'outils',
 			'template' => 'page-outils.php',
+			'status'   => 'draft',
 		),
 		array(
 			'title'    => 'Blogue',
@@ -70,7 +71,7 @@ function la_suite_csa_seed_content() {
 			array(
 				'post_title'   => $page['title'],
 				'post_name'    => $page['slug'],
-				'post_status'  => 'publish',
+				'post_status'  => ! empty( $page['status'] ) ? $page['status'] : 'publish',
 				'post_type'    => 'page',
 				'post_content' => '',
 			),

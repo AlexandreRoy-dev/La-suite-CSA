@@ -74,39 +74,6 @@ foreach ( $data['related'] ?? array() as $rel_slug ) {
 	</div>
 </section>
 
-<?php if ( ! empty( $data['points'] ) ) : ?>
-	<section class="content-section band">
-		<div class="section-block">
-			<header class="section-header reveal">
-				<h2 class="section-header__title"><?php echo esc_html( $data['points_title'] ?? 'Une démarche claire, étape par étape.' ); ?></h2>
-			</header>
-			<ul class="feature-grid">
-				<?php foreach ( $data['points'] as $point ) : ?>
-					<li class="feature-grid__item reveal">
-						<h3 class="feature-grid__title"><?php echo esc_html( $point['title'] ); ?></h3>
-						<p><?php echo esc_html( $point['text'] ); ?></p>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-		</div>
-	</section>
-<?php endif; ?>
-
-<?php if ( ! empty( $data['outcomes'] ) ) : ?>
-	<section class="content-section">
-		<div class="section-block reveal">
-			<header class="section-header">
-				<h2 class="section-header__title"><?php echo esc_html( $data['outcomes_title'] ?? 'Ce que vous repartez avec' ); ?></h2>
-			</header>
-			<ul class="deliverables-list">
-				<?php foreach ( $data['outcomes'] as $item ) : ?>
-					<li><?php echo esc_html( $item ); ?></li>
-				<?php endforeach; ?>
-			</ul>
-		</div>
-	</section>
-<?php endif; ?>
-
 <?php if ( $atmos ) : ?>
 	<figure class="media-band reveal">
 		<div class="media-band__frame">
@@ -145,58 +112,17 @@ foreach ( $data['related'] ?? array() as $rel_slug ) {
 	</section>
 <?php endif; ?>
 
-<?php if ( ! empty( $data['deliverables'] ) ) : ?>
-	<section class="content-section">
-		<div class="section-block context-band__grid">
-			<div class="reveal">
-				<header class="section-header section-header--flush">
-					<h2 class="section-header__title"><?php echo esc_html( $data['deliverables_title'] ?? 'Ce qui est livré' ); ?></h2>
-				</header>
-				<ul class="deliverables-list">
-					<?php foreach ( $data['deliverables'] as $item ) : ?>
-						<li><?php echo esc_html( $item ); ?></li>
-					<?php endforeach; ?>
-				</ul>
-			</div>
-			<?php if ( ! empty( $data['for_whom'] ) ) : ?>
-				<div class="service-aside reveal">
-					<h2 class="feature-grid__title"><?php echo esc_html( $data['for_whom_title'] ?? 'À qui s’adresse ce service' ); ?></h2>
-					<p><?php echo esc_html( $data['for_whom'] ); ?></p>
-				</div>
-			<?php endif; ?>
-		</div>
-	</section>
-<?php endif; ?>
-
 <?php if ( ! empty( $data['situations'] ) ) : ?>
 	<section class="content-section band">
 		<div class="section-block">
 			<header class="section-header reveal">
-				<h2 class="section-header__title"><?php echo esc_html( $data['situations_title'] ?? 'Situations où ce service aide' ); ?></h2>
+				<h2 class="section-header__title"><?php echo esc_html( $data['situations_title'] ?? 'Contexte de financement' ); ?></h2>
 			</header>
 			<ul class="feature-grid">
 				<?php foreach ( $data['situations'] as $item ) : ?>
 					<li class="feature-grid__item reveal">
 						<h3 class="feature-grid__title"><?php echo esc_html( $item['title'] ); ?></h3>
 						<p><?php echo esc_html( $item['text'] ); ?></p>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-		</div>
-	</section>
-<?php endif; ?>
-
-<?php if ( ! empty( $data['pitfalls'] ) ) : ?>
-	<section class="content-section">
-		<div class="section-block reveal">
-			<header class="section-header">
-				<h2 class="section-header__title"><?php echo esc_html( $data['pitfalls_title'] ?? 'Pièges fréquents à éviter' ); ?></h2>
-			</header>
-			<ul class="context-points">
-				<?php foreach ( $data['pitfalls'] as $item ) : ?>
-					<li class="context-points__item">
-						<p class="context-points__label"><?php echo esc_html( $item['label'] ); ?></p>
-						<p class="context-points__text"><?php echo esc_html( $item['text'] ); ?></p>
 					</li>
 				<?php endforeach; ?>
 			</ul>
